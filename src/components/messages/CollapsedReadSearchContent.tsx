@@ -1,26 +1,26 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../../stubs/bun-bundle';
 import { basename } from 'path';
 import React, { useRef } from 'react';
-import { useMinDisplayTime } from '../../hooks/useMinDisplayTime.js';
-import { Ansi, Box, Text, useTheme } from '../../ink.js';
-import { findToolByName, type Tools } from '../../Tool.js';
-import { getReplPrimitiveTools } from '../../tools/REPLTool/primitiveTools.js';
-import type { CollapsedReadSearchGroup, NormalizedAssistantMessage } from '../../types/message.js';
-import { uniq } from '../../utils/array.js';
-import { getToolUseIdsFromCollapsedGroup } from '../../utils/collapseReadSearch.js';
-import { getDisplayPath } from '../../utils/file.js';
-import { formatDuration, formatSecondsShort } from '../../utils/format.js';
-import { isFullscreenEnvEnabled } from '../../utils/fullscreen.js';
-import type { buildMessageLookups } from '../../utils/messages.js';
-import type { ThemeName } from '../../utils/theme.js';
-import { CtrlOToExpand } from '../CtrlOToExpand.js';
-import { useSelectedMessageBg } from '../messageActions.js';
-import { PrBadge } from '../PrBadge.js';
-import { ToolUseLoader } from '../ToolUseLoader.js';
+import { useMinDisplayTime } from '../../hooks/useMinDisplayTime';
+import { Ansi, Box, Text, useTheme } from '../../ink';
+import { findToolByName, type Tools } from '../../Tool';
+import { getReplPrimitiveTools } from '../../tools/REPLTool/primitiveTools';
+import type { CollapsedReadSearchGroup, NormalizedAssistantMessage } from '../../types/message';
+import { uniq } from '../../utils/array';
+import { getToolUseIdsFromCollapsedGroup } from '../../utils/collapseReadSearch';
+import { getDisplayPath } from '../../utils/file';
+import { formatDuration, formatSecondsShort } from '../../utils/format';
+import { isFullscreenEnvEnabled } from '../../utils/fullscreen';
+import type { buildMessageLookups } from '../../utils/messages';
+import type { ThemeName } from '../../utils/theme';
+import { CtrlOToExpand } from '../CtrlOToExpand';
+import { useSelectedMessageBg } from '../messageActions';
+import { PrBadge } from '../PrBadge';
+import { ToolUseLoader } from '../ToolUseLoader';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const teamMemCollapsed = feature('TEAMMEM') ? require('./teamMemCollapsed.js') as typeof import('./teamMemCollapsed.js') : null;
+const teamMemCollapsed = feature('TEAMMEM') ? require('./teamMemCollapsed') as typeof import('./teamMemCollapsed') : null;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // Hold each ⤿ hint for a minimum duration so fast-completing tool calls

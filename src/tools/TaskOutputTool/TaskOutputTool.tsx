@@ -1,32 +1,32 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { z } from 'zod/v4';
-import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.js';
-import { FallbackToolUseRejectedMessage } from '../../components/FallbackToolUseRejectedMessage.js';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { Box, Text } from '../../ink.js';
-import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay.js';
-import type { TaskType } from '../../Task.js';
-import type { Tool } from '../../Tool.js';
-import { buildTool, type ToolDef } from '../../Tool.js';
-import type { LocalAgentTaskState } from '../../tasks/LocalAgentTask/LocalAgentTask.js';
-import type { LocalShellTaskState } from '../../tasks/LocalShellTask/guards.js';
-import type { RemoteAgentTaskState } from '../../tasks/RemoteAgentTask/RemoteAgentTask.js';
-import type { TaskState } from '../../tasks/types.js';
-import { AbortError } from '../../utils/errors.js';
-import { lazySchema } from '../../utils/lazySchema.js';
-import { extractTextContent } from '../../utils/messages.js';
-import { semanticBoolean } from '../../utils/semanticBoolean.js';
-import { sleep } from '../../utils/sleep.js';
-import { jsonParse } from '../../utils/slowOperations.js';
-import { countCharInString } from '../../utils/stringUtils.js';
-import { getTaskOutput } from '../../utils/task/diskOutput.js';
-import { updateTaskState } from '../../utils/task/framework.js';
-import { formatTaskOutput } from '../../utils/task/outputFormatting.js';
-import type { ThemeName } from '../../utils/theme.js';
-import { AgentPromptDisplay, AgentResponseDisplay } from '../AgentTool/UI.js';
-import BashToolResultMessage from '../BashTool/BashToolResultMessage.js';
-import { TASK_OUTPUT_TOOL_NAME } from './constants.js';
+import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage';
+import { FallbackToolUseRejectedMessage } from '../../components/FallbackToolUseRejectedMessage';
+import { MessageResponse } from '../../components/MessageResponse';
+import { Box, Text } from '../../ink';
+import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay';
+import type { TaskType } from '../../Task';
+import type { Tool } from '../../Tool';
+import { buildTool, type ToolDef } from '../../Tool';
+import type { LocalAgentTaskState } from '../../tasks/LocalAgentTask/LocalAgentTask';
+import type { LocalShellTaskState } from '../../tasks/LocalShellTask/guards';
+import type { RemoteAgentTaskState } from '../../tasks/RemoteAgentTask/RemoteAgentTask';
+import type { TaskState } from '../../tasks/types';
+import { AbortError } from '../../utils/errors';
+import { lazySchema } from '../../utils/lazySchema';
+import { extractTextContent } from '../../utils/messages';
+import { semanticBoolean } from '../../utils/semanticBoolean';
+import { sleep } from '../../utils/sleep';
+import { jsonParse } from '../../utils/slowOperations';
+import { countCharInString } from '../../utils/stringUtils';
+import { getTaskOutput } from '../../utils/task/diskOutput';
+import { updateTaskState } from '../../utils/task/framework';
+import { formatTaskOutput } from '../../utils/task/outputFormatting';
+import type { ThemeName } from '../../utils/theme';
+import { AgentPromptDisplay, AgentResponseDisplay } from '../AgentTool/UI';
+import BashToolResultMessage from '../BashTool/BashToolResultMessage';
+import { TASK_OUTPUT_TOOL_NAME } from './constants';
 const inputSchema = lazySchema(() => z.strictObject({
   task_id: z.string().describe('The task ID to get output from'),
   block: semanticBoolean(z.boolean().default(true)).describe('Whether to wait for completion'),
@@ -54,7 +54,7 @@ type TaskOutputToolOutput = {
 };
 
 // Re-export Progress from centralized types to break import cycles
-export type { TaskOutputProgress as Progress } from '../../types/tools.js';
+export type { TaskOutputProgress as Progress } from '../../types/tools';
 
 // Get output for any task type
 async function getTaskOutputData(task: TaskState): Promise<TaskOutput> {

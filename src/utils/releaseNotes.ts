@@ -2,13 +2,13 @@ import axios from 'axios'
 import { mkdir, readFile, writeFile } from 'fs/promises'
 import { dirname, join } from 'path'
 import { coerce } from 'semver'
-import { getIsNonInteractiveSession } from '../bootstrap/state.js'
-import { getGlobalConfig, saveGlobalConfig } from './config.js'
-import { getClaudeConfigHomeDir } from './envUtils.js'
-import { toError } from './errors.js'
-import { logError } from './log.js'
-import { isEssentialTrafficOnly } from './privacyLevel.js'
-import { gt } from './semver.js'
+import { getIsNonInteractiveSession } from '../bootstrap/state'
+import { getGlobalConfig, saveGlobalConfig } from './config'
+import { getClaudeConfigHomeDir } from './envUtils'
+import { toError } from './errors'
+import { logError } from './log'
+import { isEssentialTrafficOnly } from './privacyLevel'
+import { gt } from './semver'
 
 const MAX_RELEASE_NOTES_SHOWN = 5
 
@@ -281,16 +281,16 @@ export function getAllReleaseNotes(
  * Also triggers a fetch of the latest changelog if the version has changed.
  *
  * @param lastSeenVersion The last version of release notes the user has seen
- * @param currentVersion The current application version, defaults to MACRO.VERSION
+ * @param currentVersion The current application version, defaults to '2.1.88'
  * @returns An object with hasReleaseNotes and the releaseNotes content
  */
 export async function checkForReleaseNotes(
   lastSeenVersion: string | null | undefined,
-  currentVersion: string = MACRO.VERSION,
+  currentVersion: string = '2.1.88',
 ): Promise<{ hasReleaseNotes: boolean; releaseNotes: string[] }> {
   // For Ant builds, use VERSION_CHANGELOG bundled at build time
   if (process.env.USER_TYPE === 'ant') {
-    const changelog = MACRO.VERSION_CHANGELOG
+    const changelog = ''
     if (changelog) {
       const commits = changelog.trim().split('\n').filter(Boolean)
       return {
@@ -334,11 +334,11 @@ export async function checkForReleaseNotes(
  */
 export function checkForReleaseNotesSync(
   lastSeenVersion: string | null | undefined,
-  currentVersion: string = MACRO.VERSION,
+  currentVersion: string = '2.1.88',
 ): { hasReleaseNotes: boolean; releaseNotes: string[] } {
   // For Ant builds, use VERSION_CHANGELOG bundled at build time
   if (process.env.USER_TYPE === 'ant') {
-    const changelog = MACRO.VERSION_CHANGELOG
+    const changelog = ''
     if (changelog) {
       const commits = changelog.trim().split('\n').filter(Boolean)
       return {

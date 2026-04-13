@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Text } from '../ink.js';
-import { isClaudeAISubscriber } from '../utils/auth.js';
-import { isChromeExtensionInstalled, shouldEnableClaudeInChrome } from '../utils/claudeInChrome/setup.js';
-import { isRunningOnHomespace } from '../utils/envUtils.js';
-import { useStartupNotification } from './notifs/useStartupNotification.js';
+import { Text } from '../ink';
+import { isClaudeAISubscriber } from '../utils/auth';
+import { isChromeExtensionInstalled, shouldEnableClaudeInChrome } from '../utils/claudeInChrome/setup';
+import { isRunningOnHomespace } from '../utils/envUtils';
+import { useStartupNotification } from './notifs/useStartupNotification';
 function getChromeFlag(): boolean | undefined {
   if (process.argv.includes('--chrome')) {
     return true;

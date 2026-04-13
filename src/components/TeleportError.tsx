@@ -2,11 +2,11 @@ import { c as _c } from "react/compiler-runtime";
 import React, { useCallback, useEffect, useState } from 'react';
 import { checkIsGitClean, checkNeedsClaudeAiLogin } from 'src/utils/background/remote/preconditions.js';
 import { gracefulShutdownSync } from 'src/utils/gracefulShutdown.js';
-import { Box, Text } from '../ink.js';
-import { ConsoleOAuthFlow } from './ConsoleOAuthFlow.js';
-import { Select } from './CustomSelect/index.js';
-import { Dialog } from './design-system/Dialog.js';
-import { TeleportStash } from './TeleportStash.js';
+import { Box, Text } from '../ink';
+import { ConsoleOAuthFlow } from './ConsoleOAuthFlow';
+import { Select } from './CustomSelect/index';
+import { Dialog } from './design-system/Dialog';
+import { TeleportStash } from './TeleportStash';
 export type TeleportLocalErrorType = 'needsLogin' | 'needsGitStash';
 type TeleportErrorProps = {
   onComplete: () => void;

@@ -1,10 +1,10 @@
-import { feature } from 'bun:bundle'
+import { feature } from '../stubs/bun-bundle'
 import memoize from 'lodash-es/memoize.js'
 import {
   checkStatsigFeatureGate_CACHED_MAY_BE_STALE,
   getFeatureValue_CACHED_MAY_BE_STALE,
 } from 'src/services/analytics/growthbook.js'
-import { getIsNonInteractiveSession, getSdkBetas } from '../bootstrap/state.js'
+import { getIsNonInteractiveSession, getSdkBetas } from '../bootstrap/state'
 import {
   BEDROCK_EXTRA_PARAMS_HEADERS,
   CLAUDE_CODE_20250219_BETA_HEADER,
@@ -20,15 +20,15 @@ import {
   TOOL_SEARCH_BETA_HEADER_1P,
   TOOL_SEARCH_BETA_HEADER_3P,
   WEB_SEARCH_BETA_HEADER,
-} from '../constants/betas.js'
-import { OAUTH_BETA_HEADER } from '../constants/oauth.js'
-import { isClaudeAISubscriber } from './auth.js'
-import { has1mContext } from './context.js'
-import { isEnvDefinedFalsy, isEnvTruthy } from './envUtils.js'
-import { getCanonicalName } from './model/model.js'
-import { get3PModelCapabilityOverride } from './model/modelSupportOverrides.js'
-import { getAPIProvider } from './model/providers.js'
-import { getInitialSettings } from './settings/settings.js'
+} from '../constants/betas'
+import { OAUTH_BETA_HEADER } from '../constants/oauth'
+import { isClaudeAISubscriber } from './auth'
+import { has1mContext } from './context'
+import { isEnvDefinedFalsy, isEnvTruthy } from './envUtils'
+import { getCanonicalName } from './model/model'
+import { get3PModelCapabilityOverride } from './model/modelSupportOverrides'
+import { getAPIProvider } from './model/providers'
+import { getInitialSettings } from './settings/settings'
 
 /**
  * SDK-provided betas that are allowed for API key users.

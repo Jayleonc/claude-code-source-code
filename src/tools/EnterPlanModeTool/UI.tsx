@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { BLACK_CIRCLE } from 'src/constants/figures.js';
 import { getModeColor } from 'src/utils/permissions/PermissionMode.js';
-import { Box, Text } from '../../ink.js';
-import type { ToolProgressData } from '../../Tool.js';
-import type { ProgressMessage } from '../../types/message.js';
-import type { ThemeName } from '../../utils/theme.js';
-import type { Output } from './EnterPlanModeTool.js';
+import { Box, Text } from '../../ink';
+import type { ToolProgressData } from '../../Tool';
+import type { ProgressMessage } from '../../types/message';
+import type { ThemeName } from '../../utils/theme';
+import type { Output } from './EnterPlanModeTool';
 export function renderToolUseMessage(): React.ReactNode {
   return null;
 }

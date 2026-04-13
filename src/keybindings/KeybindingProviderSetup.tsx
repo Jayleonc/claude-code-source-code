@@ -8,20 +8,20 @@ import { c as _c } from "react/compiler-runtime";
  * support when the file changes.
  */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useNotifications } from '../context/notifications.js';
-import type { InputEvent } from '../ink/events/input-event.js';
+import { useNotifications } from '../context/notifications';
+import type { InputEvent } from '../ink/events/input-event';
 // ChordInterceptor intentionally uses useInput to intercept all keystrokes before
 // other handlers process them - this is required for chord sequence support
 // eslint-disable-next-line custom-rules/prefer-use-keybindings
-import { type Key, useInput } from '../ink.js';
-import { count } from '../utils/array.js';
-import { logForDebugging } from '../utils/debug.js';
-import { plural } from '../utils/stringUtils.js';
-import { KeybindingProvider } from './KeybindingContext.js';
-import { initializeKeybindingWatcher, type KeybindingsLoadResult, loadKeybindingsSyncWithWarnings, subscribeToKeybindingChanges } from './loadUserBindings.js';
-import { resolveKeyWithChordState } from './resolver.js';
-import type { KeybindingContextName, ParsedBinding, ParsedKeystroke } from './types.js';
-import type { KeybindingWarning } from './validate.js';
+import { type Key, useInput } from '../ink';
+import { count } from '../utils/array';
+import { logForDebugging } from '../utils/debug';
+import { plural } from '../utils/stringUtils';
+import { KeybindingProvider } from './KeybindingContext';
+import { initializeKeybindingWatcher, type KeybindingsLoadResult, loadKeybindingsSyncWithWarnings, subscribeToKeybindingChanges } from './loadUserBindings';
+import { resolveKeyWithChordState } from './resolver';
+import type { KeybindingContextName, ParsedBinding, ParsedKeystroke } from './types';
+import type { KeybindingWarning } from './validate';
 
 /**
  * Timeout for chord sequences in milliseconds.

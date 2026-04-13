@@ -10,11 +10,11 @@ import { isPanelAgentTask } from 'src/tasks/LocalAgentTask/LocalAgentTask.js';
 import { getPillLabel, pillNeedsCta } from 'src/tasks/pillLabel.js';
 import { type BackgroundTaskState, isBackgroundTask, type TaskState } from 'src/tasks/types.js';
 import { calculateHorizontalScrollWindow } from 'src/utils/horizontalScroll.js';
-import { Box, Text } from '../../ink.js';
-import { AGENT_COLOR_TO_THEME_COLOR, AGENT_COLORS, type AgentColorName } from '../../tools/AgentTool/agentColorManager.js';
-import type { Theme } from '../../utils/theme.js';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.js';
-import { shouldHideTasksFooter } from './taskStatusUtils.js';
+import { Box, Text } from '../../ink';
+import { AGENT_COLOR_TO_THEME_COLOR, AGENT_COLORS, type AgentColorName } from '../../tools/AgentTool/agentColorManager';
+import type { Theme } from '../../utils/theme';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint';
+import { shouldHideTasksFooter } from './taskStatusUtils';
 type Props = {
   tasksSelected: boolean;
   isViewingTeammate?: boolean;

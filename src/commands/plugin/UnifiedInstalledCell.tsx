@@ -1,9 +1,9 @@
 import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import * as React from 'react';
-import { Box, color, Text, useTheme } from '../../ink.js';
-import { plural } from '../../utils/stringUtils.js';
-import type { UnifiedInstalledItem } from './unifiedTypes.js';
+import { Box, color, Text, useTheme } from '../../ink';
+import { plural } from '../../utils/stringUtils';
+import type { UnifiedInstalledItem } from './unifiedTypes';
 type Props = {
   item: UnifiedInstalledItem;
   isSelected: boolean;

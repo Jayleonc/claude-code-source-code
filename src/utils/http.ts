@@ -3,15 +3,15 @@
  */
 
 import axios from 'axios'
-import { OAUTH_BETA_HEADER } from '../constants/oauth.js'
+import { OAUTH_BETA_HEADER } from '../constants/oauth'
 import {
   getAnthropicApiKey,
   getClaudeAIOAuthTokens,
   handleOAuth401Error,
   isClaudeAISubscriber,
-} from './auth.js'
-import { getClaudeCodeUserAgent } from './userAgent.js'
-import { getWorkload } from './workloadContext.js'
+} from './auth'
+import { getClaudeCodeUserAgent } from './userAgent'
+import { getWorkload } from './workloadContext'
 
 // WARNING: We rely on `claude-cli` in the user agent for log filtering.
 // Please do NOT change this without making sure that logging also gets updated!
@@ -31,7 +31,7 @@ export function getUserAgent(): string {
   // so the read picks up the same setWorkload() value as getAttributionHeader.
   const workload = getWorkload()
   const workloadSuffix = workload ? `, workload/${workload}` : ''
-  return `claude-cli/${MACRO.VERSION} (${process.env.USER_TYPE}, ${process.env.CLAUDE_CODE_ENTRYPOINT ?? 'cli'}${agentSdkVersion}${clientApp}${workloadSuffix})`
+  return `claude-cli/${'2.1.88'} (${process.env.USER_TYPE}, ${process.env.CLAUDE_CODE_ENTRYPOINT ?? 'cli'}${agentSdkVersion}${clientApp}${workloadSuffix})`
 }
 
 export function getMCPUserAgent(): string {
@@ -46,7 +46,7 @@ export function getMCPUserAgent(): string {
     parts.push(`client-app/${process.env.CLAUDE_AGENT_SDK_CLIENT_APP}`)
   }
   const suffix = parts.length > 0 ? ` (${parts.join(', ')})` : ''
-  return `claude-code/${MACRO.VERSION}${suffix}`
+  return `claude-code/${'2.1.88'}${suffix}`
 }
 
 // User-Agent for WebFetch requests to arbitrary sites. `Claude-User` is

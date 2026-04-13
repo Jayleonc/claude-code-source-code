@@ -1,21 +1,21 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../../stubs/bun-bundle';
 import figures from 'figures';
 import * as React from 'react';
 import type { z } from 'zod/v4';
-import { ProgressBar } from '../../components/design-system/ProgressBar.js';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { linkifyUrlsInText, OutputLine } from '../../components/shell/OutputLine.js';
-import { stringWidth } from '../../ink/stringWidth.js';
-import { Ansi, Box, Text } from '../../ink.js';
-import type { ToolProgressData } from '../../Tool.js';
-import type { ProgressMessage } from '../../types/message.js';
-import type { MCPProgress } from '../../types/tools.js';
-import { formatNumber } from '../../utils/format.js';
-import { createHyperlink } from '../../utils/hyperlink.js';
-import { getContentSizeEstimate, type MCPToolResult } from '../../utils/mcpValidation.js';
-import { jsonParse, jsonStringify } from '../../utils/slowOperations.js';
-import type { inputSchema } from './MCPTool.js';
+import { ProgressBar } from '../../components/design-system/ProgressBar';
+import { MessageResponse } from '../../components/MessageResponse';
+import { linkifyUrlsInText, OutputLine } from '../../components/shell/OutputLine';
+import { stringWidth } from '../../ink/stringWidth';
+import { Ansi, Box, Text } from '../../ink';
+import type { ToolProgressData } from '../../Tool';
+import type { ProgressMessage } from '../../types/message';
+import type { MCPProgress } from '../../types/tools';
+import { formatNumber } from '../../utils/format';
+import { createHyperlink } from '../../utils/hyperlink';
+import { getContentSizeEstimate, type MCPToolResult } from '../../utils/mcpValidation';
+import { jsonParse, jsonStringify } from '../../utils/slowOperations';
+import type { inputSchema } from './MCPTool';
 
 // Threshold for displaying warning about large MCP responses
 const MCP_OUTPUT_WARNING_THRESHOLD_TOKENS = 10_000;

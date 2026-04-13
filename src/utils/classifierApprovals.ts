@@ -3,8 +3,8 @@
  * Populated from useCanUseTool.ts and permissions.ts, read from UserToolSuccessMessage.tsx.
  */
 
-import { feature } from 'bun:bundle'
-import { createSignal } from './signal.js'
+import { feature } from '../stubs/bun-bundle'
+import { createSignal } from './signal'
 
 type ClassifierApproval = {
   classifier: 'bash' | 'auto-mode'

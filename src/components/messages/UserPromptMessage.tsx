@@ -1,15 +1,15 @@
-import { feature } from 'bun:bundle';
+import { feature } from '../../stubs/bun-bundle';
 import type { TextBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import React, { useContext, useMemo } from 'react';
-import { getKairosActive, getUserMsgOptIn } from '../../bootstrap/state.js';
-import { Box } from '../../ink.js';
-import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.js';
-import { useAppState } from '../../state/AppState.js';
-import { isEnvTruthy } from '../../utils/envUtils.js';
-import { logError } from '../../utils/log.js';
-import { countCharInString } from '../../utils/stringUtils.js';
-import { MessageActionsSelectedContext } from '../messageActions.js';
-import { HighlightedThinkingText } from './HighlightedThinkingText.js';
+import { getKairosActive, getUserMsgOptIn } from '../../bootstrap/state';
+import { Box } from '../../ink';
+import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook';
+import { useAppState } from '../../state/AppState';
+import { isEnvTruthy } from '../../utils/envUtils';
+import { logError } from '../../utils/log';
+import { countCharInString } from '../../utils/stringUtils';
+import { MessageActionsSelectedContext } from '../messageActions';
+import { HighlightedThinkingText } from './HighlightedThinkingText';
 type Props = {
   addMargin: boolean;
   param: TextBlockParam;

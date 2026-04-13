@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto';
 import { useCallback, useRef, useState } from 'react';
-import type { TranscriptShareResponse } from './TranscriptSharePrompt.js';
-import type { FeedbackSurveyResponse } from './utils.js';
+import type { TranscriptShareResponse } from './TranscriptSharePrompt';
+import type { FeedbackSurveyResponse } from './utils';
 type SurveyState = 'closed' | 'open' | 'thanks' | 'transcript_prompt' | 'submitting' | 'submitted';
 type UseSurveyStateOptions = {
   hideThanksAfterMs: number;

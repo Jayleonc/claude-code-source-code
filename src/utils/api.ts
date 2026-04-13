@@ -27,43 +27,43 @@ import { FileWriteTool } from 'src/tools/FileWriteTool/FileWriteTool.js'
 import { getTools } from 'src/tools.js'
 import type { AgentId } from 'src/types/ids.js'
 import type { z } from 'zod/v4'
-import { CLI_SYSPROMPT_PREFIXES } from '../constants/system.js'
-import { roughTokenCountEstimation } from '../services/tokenEstimation.js'
-import type { Tool, ToolPermissionContext, Tools } from '../Tool.js'
-import { AGENT_TOOL_NAME } from '../tools/AgentTool/constants.js'
-import type { AgentDefinition } from '../tools/AgentTool/loadAgentsDir.js'
-import { EXIT_PLAN_MODE_V2_TOOL_NAME } from '../tools/ExitPlanModeTool/constants.js'
-import { TASK_OUTPUT_TOOL_NAME } from '../tools/TaskOutputTool/constants.js'
-import type { Message } from '../types/message.js'
-import { isAgentSwarmsEnabled } from './agentSwarmsEnabled.js'
+import { CLI_SYSPROMPT_PREFIXES } from '../constants/system'
+import { roughTokenCountEstimation } from '../services/tokenEstimation'
+import type { Tool, ToolPermissionContext, Tools } from '../Tool'
+import { AGENT_TOOL_NAME } from '../tools/AgentTool/constants'
+import type { AgentDefinition } from '../tools/AgentTool/loadAgentsDir'
+import { EXIT_PLAN_MODE_V2_TOOL_NAME } from '../tools/ExitPlanModeTool/constants'
+import { TASK_OUTPUT_TOOL_NAME } from '../tools/TaskOutputTool/constants'
+import type { Message } from '../types/message'
+import { isAgentSwarmsEnabled } from './agentSwarmsEnabled'
 import {
   modelSupportsStructuredOutputs,
   shouldUseGlobalCacheScope,
-} from './betas.js'
-import { getCwd } from './cwd.js'
-import { logForDebugging } from './debug.js'
-import { isEnvTruthy } from './envUtils.js'
-import { createUserMessage } from './messages.js'
+} from './betas'
+import { getCwd } from './cwd'
+import { logForDebugging } from './debug'
+import { isEnvTruthy } from './envUtils'
+import { createUserMessage } from './messages'
 import {
   getAPIProvider,
   isFirstPartyAnthropicBaseUrl,
-} from './model/providers.js'
+} from './model/providers'
 import {
   getFileReadIgnorePatterns,
   normalizePatternsToPath,
-} from './permissions/filesystem.js'
+} from './permissions/filesystem'
 import {
   getPlan,
   getPlanFilePath,
   persistFileSnapshotIfRemote,
-} from './plans.js'
-import { getPlatform } from './platform.js'
-import { countFilesRoundedRg } from './ripgrep.js'
-import { jsonStringify } from './slowOperations.js'
-import type { SystemPrompt } from './systemPromptType.js'
-import { getToolSchemaCache } from './toolSchemaCache.js'
-import { windowsPathToPosixPath } from './windowsPaths.js'
-import { zodToJsonSchema } from './zodToJsonSchema.js'
+} from './plans'
+import { getPlatform } from './platform'
+import { countFilesRoundedRg } from './ripgrep'
+import { jsonStringify } from './slowOperations'
+import type { SystemPrompt } from './systemPromptType'
+import { getToolSchemaCache } from './toolSchemaCache'
+import { windowsPathToPosixPath } from './windowsPaths'
+import { zodToJsonSchema } from './zodToJsonSchema'
 
 // Extended BetaTool type with strict mode and defer_loading support
 type BetaToolWithExtras = BetaTool & {

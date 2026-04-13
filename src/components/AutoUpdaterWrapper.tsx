@@ -1,13 +1,13 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import * as React from 'react';
-import type { AutoUpdaterResult } from '../utils/autoUpdater.js';
-import { isAutoUpdaterDisabled } from '../utils/config.js';
-import { logForDebugging } from '../utils/debug.js';
-import { getCurrentInstallationType } from '../utils/doctorDiagnostic.js';
-import { AutoUpdater } from './AutoUpdater.js';
-import { NativeAutoUpdater } from './NativeAutoUpdater.js';
-import { PackageManagerAutoUpdater } from './PackageManagerAutoUpdater.js';
+import type { AutoUpdaterResult } from '../utils/autoUpdater';
+import { isAutoUpdaterDisabled } from '../utils/config';
+import { logForDebugging } from '../utils/debug';
+import { getCurrentInstallationType } from '../utils/doctorDiagnostic';
+import { AutoUpdater } from './AutoUpdater';
+import { NativeAutoUpdater } from './NativeAutoUpdater';
+import { PackageManagerAutoUpdater } from './PackageManagerAutoUpdater';
 type Props = {
   isUpdating: boolean;
   onChangeIsUpdating: (isUpdating: boolean) => void;

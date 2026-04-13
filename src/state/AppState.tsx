@@ -1,29 +1,29 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import React, { useContext, useEffect, useEffectEvent, useState, useSyncExternalStore } from 'react';
-import { MailboxProvider } from '../context/mailbox.js';
-import { useSettingsChange } from '../hooks/useSettingsChange.js';
-import { logForDebugging } from '../utils/debug.js';
-import { createDisabledBypassPermissionsContext, isBypassPermissionsModeDisabled } from '../utils/permissions/permissionSetup.js';
-import { applySettingsChange } from '../utils/settings/applySettingsChange.js';
-import type { SettingSource } from '../utils/settings/constants.js';
-import { createStore } from './store.js';
+import { MailboxProvider } from '../context/mailbox';
+import { useSettingsChange } from '../hooks/useSettingsChange';
+import { logForDebugging } from '../utils/debug';
+import { createDisabledBypassPermissionsContext, isBypassPermissionsModeDisabled } from '../utils/permissions/permissionSetup';
+import { applySettingsChange } from '../utils/settings/applySettingsChange';
+import type { SettingSource } from '../utils/settings/constants';
+import { createStore } from './store';
 
 // DCE: voice context is ant-only. External builds get a passthrough.
 /* eslint-disable @typescript-eslint/no-require-imports */
 const VoiceProvider: (props: {
   children: React.ReactNode;
-}) => React.ReactNode = feature('VOICE_MODE') ? require('../context/voice.js').VoiceProvider : ({
+}) => React.ReactNode = feature('VOICE_MODE') ? require('../context/voice').VoiceProvider : ({
   children
 }) => children;
 
 /* eslint-enable @typescript-eslint/no-require-imports */
-import { type AppState, type AppStateStore, getDefaultAppState } from './AppStateStore.js';
+import { type AppState, type AppStateStore, getDefaultAppState } from './AppStateStore';
 
 // TODO: Remove these re-exports once all callers import directly from
 // ./AppStateStore.js. Kept for back-compat during migration so .ts callers
 // can incrementally move off the .tsx import and stop pulling React.
-export { type AppState, type AppStateStore, type CompletionBoundary, getDefaultAppState, IDLE_SPECULATION_STATE, type SpeculationResult, type SpeculationState } from './AppStateStore.js';
+export { type AppState, type AppStateStore, type CompletionBoundary, getDefaultAppState, IDLE_SPECULATION_STATE, type SpeculationResult, type SpeculationState } from './AppStateStore';
 export const AppStoreContext = React.createContext<AppStateStore | null>(null);
 type Props = {
   children: React.ReactNode;

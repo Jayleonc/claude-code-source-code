@@ -1,17 +1,17 @@
 import type { ToolResultBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import * as React from 'react';
-import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint.js';
-import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.js';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { OutputLine } from '../../components/shell/OutputLine.js';
-import { ShellProgressMessage } from '../../components/shell/ShellProgressMessage.js';
-import { ShellTimeDisplay } from '../../components/shell/ShellTimeDisplay.js';
-import { Box, Text } from '../../ink.js';
-import type { Tool } from '../../Tool.js';
-import type { ProgressMessage } from '../../types/message.js';
-import type { PowerShellProgress } from '../../types/tools.js';
-import type { ThemeName } from '../../utils/theme.js';
-import type { Out, PowerShellToolInput } from './PowerShellTool.js';
+import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint';
+import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage';
+import { MessageResponse } from '../../components/MessageResponse';
+import { OutputLine } from '../../components/shell/OutputLine';
+import { ShellProgressMessage } from '../../components/shell/ShellProgressMessage';
+import { ShellTimeDisplay } from '../../components/shell/ShellTimeDisplay';
+import { Box, Text } from '../../ink';
+import type { Tool } from '../../Tool';
+import type { ProgressMessage } from '../../types/message';
+import type { PowerShellProgress } from '../../types/tools';
+import type { ThemeName } from '../../utils/theme';
+import type { Out, PowerShellToolInput } from './PowerShellTool';
 
 // Constants for command display
 const MAX_COMMAND_DISPLAY_LINES = 2;

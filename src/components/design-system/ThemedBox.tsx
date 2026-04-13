@@ -1,13 +1,13 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { type PropsWithChildren, type Ref } from 'react';
-import Box from '../../ink/components/Box.js';
-import type { DOMElement } from '../../ink/dom.js';
-import type { ClickEvent } from '../../ink/events/click-event.js';
-import type { FocusEvent } from '../../ink/events/focus-event.js';
-import type { KeyboardEvent } from '../../ink/events/keyboard-event.js';
-import type { Color, Styles } from '../../ink/styles.js';
-import { getTheme, type Theme } from '../../utils/theme.js';
-import { useTheme } from './ThemeProvider.js';
+import Box from '../../ink/components/Box';
+import type { DOMElement } from '../../ink/dom';
+import type { ClickEvent } from '../../ink/events/click-event';
+import type { FocusEvent } from '../../ink/events/focus-event';
+import type { KeyboardEvent } from '../../ink/events/keyboard-event';
+import type { Color, Styles } from '../../ink/styles';
+import { getTheme, type Theme } from '../../utils/theme';
+import { useTheme } from './ThemeProvider';
 
 // Color props that accept theme keys
 type ThemedColorProps = {

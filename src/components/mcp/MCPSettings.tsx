@@ -1,18 +1,18 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useEffect, useMemo } from 'react';
-import type { CommandResultDisplay } from '../../commands.js';
-import { ClaudeAuthProvider } from '../../services/mcp/auth.js';
-import type { McpClaudeAIProxyServerConfig, McpHTTPServerConfig, McpSSEServerConfig, McpStdioServerConfig } from '../../services/mcp/types.js';
-import { extractAgentMcpServers, filterToolsByServer } from '../../services/mcp/utils.js';
-import { useAppState } from '../../state/AppState.js';
-import { getSessionIngressAuthToken } from '../../utils/sessionIngressAuth.js';
-import { MCPAgentServerMenu } from './MCPAgentServerMenu.js';
-import { MCPListPanel } from './MCPListPanel.js';
-import { MCPRemoteServerMenu } from './MCPRemoteServerMenu.js';
-import { MCPStdioServerMenu } from './MCPStdioServerMenu.js';
-import { MCPToolDetailView } from './MCPToolDetailView.js';
-import { MCPToolListView } from './MCPToolListView.js';
-import type { AgentMcpServerInfo, MCPViewState, ServerInfo } from './types.js';
+import type { CommandResultDisplay } from '../../commands';
+import { ClaudeAuthProvider } from '../../services/mcp/auth';
+import type { McpClaudeAIProxyServerConfig, McpHTTPServerConfig, McpSSEServerConfig, McpStdioServerConfig } from '../../services/mcp/types';
+import { extractAgentMcpServers, filterToolsByServer } from '../../services/mcp/utils';
+import { useAppState } from '../../state/AppState';
+import { getSessionIngressAuthToken } from '../../utils/sessionIngressAuth';
+import { MCPAgentServerMenu } from './MCPAgentServerMenu';
+import { MCPListPanel } from './MCPListPanel';
+import { MCPRemoteServerMenu } from './MCPRemoteServerMenu';
+import { MCPStdioServerMenu } from './MCPStdioServerMenu';
+import { MCPToolDetailView } from './MCPToolDetailView';
+import { MCPToolListView } from './MCPToolListView';
+import type { AgentMcpServerInfo, MCPViewState, ServerInfo } from './types';
 type Props = {
   onComplete: (result?: string, options?: {
     display?: CommandResultDisplay;

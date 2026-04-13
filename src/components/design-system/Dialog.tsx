@@ -1,13 +1,13 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { type ExitState, useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings.js';
-import { Box, Text } from '../../ink.js';
-import { useKeybinding } from '../../keybindings/useKeybinding.js';
-import type { Theme } from '../../utils/theme.js';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.js';
-import { Byline } from './Byline.js';
-import { KeyboardShortcutHint } from './KeyboardShortcutHint.js';
-import { Pane } from './Pane.js';
+import { type ExitState, useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings';
+import { Box, Text } from '../../ink';
+import { useKeybinding } from '../../keybindings/useKeybinding';
+import type { Theme } from '../../utils/theme';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint';
+import { Byline } from './Byline';
+import { KeyboardShortcutHint } from './KeyboardShortcutHint';
+import { Pane } from './Pane';
 type DialogProps = {
   title: React.ReactNode;
   subtitle?: React.ReactNode;

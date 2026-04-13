@@ -1,9 +1,9 @@
 import React from 'react';
-import type { StatsStore } from './context/stats.js';
-import type { Root } from './ink.js';
-import type { Props as REPLProps } from './screens/REPL.js';
-import type { AppState } from './state/AppStateStore.js';
-import type { FpsMetrics } from './utils/fpsTracker.js';
+import type { StatsStore } from './context/stats';
+import type { Root } from './ink';
+import type { Props as REPLProps } from './screens/REPL';
+import type { AppState } from './state/AppStateStore';
+import type { FpsMetrics } from './utils/fpsTracker';
 type AppWrapperProps = {
   getFpsMetrics: () => FpsMetrics | undefined;
   stats?: StatsStore;
@@ -12,10 +12,10 @@ type AppWrapperProps = {
 export async function launchRepl(root: Root, appProps: AppWrapperProps, replProps: REPLProps, renderAndRun: (root: Root, element: React.ReactNode) => Promise<void>): Promise<void> {
   const {
     App
-  } = await import('./components/App.js');
+  } = await import('./components/App');
   const {
     REPL
-  } = await import('./screens/REPL.js');
+  } = await import('./screens/REPL');
   await renderAndRun(root, <App {...appProps}>
       <REPL {...replProps} />
     </App>);

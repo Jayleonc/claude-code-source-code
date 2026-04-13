@@ -47,24 +47,24 @@ import {
 } from 'src/utils/auth.js'
 import { getPlatform, getWslVersion } from 'src/utils/platform.js'
 
-import { getCACertificates } from '../caCerts.js'
-import { registerCleanup } from '../cleanupRegistry.js'
-import { getHasFormattedOutput, logForDebugging } from '../debug.js'
-import { isEnvTruthy } from '../envUtils.js'
-import { errorMessage } from '../errors.js'
-import { getMTLSConfig } from '../mtls.js'
-import { getProxyUrl, shouldBypassProxy } from '../proxy.js'
-import { getSettings_DEPRECATED } from '../settings/settings.js'
-import { jsonStringify } from '../slowOperations.js'
-import { profileCheckpoint } from '../startupProfiler.js'
-import { isBetaTracingEnabled } from './betaSessionTracing.js'
-import { BigQueryMetricsExporter } from './bigqueryExporter.js'
-import { ClaudeCodeDiagLogger } from './logger.js'
-import { initializePerfettoTracing } from './perfettoTracing.js'
+import { getCACertificates } from '../caCerts'
+import { registerCleanup } from '../cleanupRegistry'
+import { getHasFormattedOutput, logForDebugging } from '../debug'
+import { isEnvTruthy } from '../envUtils'
+import { errorMessage } from '../errors'
+import { getMTLSConfig } from '../mtls'
+import { getProxyUrl, shouldBypassProxy } from '../proxy'
+import { getSettings_DEPRECATED } from '../settings/settings'
+import { jsonStringify } from '../slowOperations'
+import { profileCheckpoint } from '../startupProfiler'
+import { isBetaTracingEnabled } from './betaSessionTracing'
+import { BigQueryMetricsExporter } from './bigqueryExporter'
+import { ClaudeCodeDiagLogger } from './logger'
+import { initializePerfettoTracing } from './perfettoTracing'
 import {
   endInteractionSpan,
   isEnhancedTelemetryEnabled,
-} from './sessionTracing.js'
+} from './sessionTracing'
 
 const DEFAULT_METRICS_EXPORT_INTERVAL_MS = 60000
 const DEFAULT_LOGS_EXPORT_INTERVAL_MS = 5000
@@ -402,7 +402,7 @@ async function initializeBetaTracing(
   // Initialize event logger
   const eventLogger = logs.getLogger(
     'com.anthropic.claude_code.events',
-    MACRO.VERSION,
+    '2.1.88',
   )
   setEventLogger(eventLogger)
 
@@ -472,7 +472,7 @@ export async function initializeTelemetry() {
   const platform = getPlatform()
   const baseAttributes: Record<string, string> = {
     [ATTR_SERVICE_NAME]: 'claude-code',
-    [ATTR_SERVICE_VERSION]: MACRO.VERSION,
+    [ATTR_SERVICE_VERSION]: '2.1.88',
   }
 
   // Add WSL-specific attributes if running on WSL
@@ -560,7 +560,7 @@ export async function initializeTelemetry() {
     }
     registerCleanup(shutdownTelemetry)
 
-    return meterProvider.getMeter('com.anthropic.claude_code', MACRO.VERSION)
+    return meterProvider.getMeter('com.anthropic.claude_code', '2.1.88')
   }
 
   const meterProvider = new MeterProvider({
@@ -601,7 +601,7 @@ export async function initializeTelemetry() {
       // Initialize event logger
       const eventLogger = logs.getLogger(
         'com.anthropic.claude_code.events',
-        MACRO.VERSION,
+        '2.1.88',
       )
       setEventLogger(eventLogger)
       logForDebugging('[3P telemetry] Event logger set successfully')
@@ -697,7 +697,7 @@ Current timeout: ${timeoutMs}ms
   // Always register shutdown (internal metrics are always enabled)
   registerCleanup(shutdownTelemetry)
 
-  return meterProvider.getMeter('com.anthropic.claude_code', MACRO.VERSION)
+  return meterProvider.getMeter('com.anthropic.claude_code', '2.1.88')
 }
 
 /**

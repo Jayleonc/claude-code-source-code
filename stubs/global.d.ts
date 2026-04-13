@@ -1,5 +1,4 @@
-// Global type for MACRO compile-time constants
-// These are normally injected by Bun's bundler via --define at compile time
+// Global compile-time macros (normally injected by Bun bundler)
 declare const MACRO: {
   VERSION: string
   BUILD_TIME: string
@@ -9,3 +8,5 @@ declare const MACRO: {
   PACKAGE_URL: string
   VERSION_CHANGELOG: string
 }
+
+declare const Bun: any;

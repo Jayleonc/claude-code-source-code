@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useCallback } from 'react';
 import { logEvent } from 'src/services/analytics/index.js';
-import { Box, Link, Text } from '../ink.js';
-import type { ExternalClaudeMdInclude } from '../utils/claudemd.js';
-import { saveCurrentProjectConfig } from '../utils/config.js';
-import { Select } from './CustomSelect/index.js';
-import { Dialog } from './design-system/Dialog.js';
+import { Box, Link, Text } from '../ink';
+import type { ExternalClaudeMdInclude } from '../utils/claudemd';
+import { saveCurrentProjectConfig } from '../utils/config';
+import { Select } from './CustomSelect/index';
+import { Dialog } from './design-system/Dialog';
 type Props = {
   onDone(): void;
   isStandaloneDialog?: boolean;

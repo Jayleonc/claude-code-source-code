@@ -1,19 +1,19 @@
 import { c as _c } from "react/compiler-runtime";
 import type { StructuredPatchHunk } from 'diff';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import type { CommandResultDisplay } from '../../commands.js';
-import { useRegisterOverlay } from '../../context/overlayContext.js';
-import { type DiffData, useDiffData } from '../../hooks/useDiffData.js';
-import { type TurnDiff, useTurnDiffs } from '../../hooks/useTurnDiffs.js';
-import { Box, Text } from '../../ink.js';
-import { useKeybindings } from '../../keybindings/useKeybinding.js';
-import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay.js';
-import type { Message } from '../../types/message.js';
-import { plural } from '../../utils/stringUtils.js';
-import { Byline } from '../design-system/Byline.js';
-import { Dialog } from '../design-system/Dialog.js';
-import { DiffDetailView } from './DiffDetailView.js';
-import { DiffFileList } from './DiffFileList.js';
+import type { CommandResultDisplay } from '../../commands';
+import { useRegisterOverlay } from '../../context/overlayContext';
+import { type DiffData, useDiffData } from '../../hooks/useDiffData';
+import { type TurnDiff, useTurnDiffs } from '../../hooks/useTurnDiffs';
+import { Box, Text } from '../../ink';
+import { useKeybindings } from '../../keybindings/useKeybinding';
+import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay';
+import type { Message } from '../../types/message';
+import { plural } from '../../utils/stringUtils';
+import { Byline } from '../design-system/Byline';
+import { Dialog } from '../design-system/Dialog';
+import { DiffDetailView } from './DiffDetailView';
+import { DiffFileList } from './DiffFileList';
 type Props = {
   messages: Message[];
   onDone: (result?: string, options?: {

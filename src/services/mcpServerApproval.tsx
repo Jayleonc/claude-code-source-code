@@ -1,11 +1,11 @@
 import React from 'react';
-import { MCPServerApprovalDialog } from '../components/MCPServerApprovalDialog.js';
-import { MCPServerMultiselectDialog } from '../components/MCPServerMultiselectDialog.js';
-import type { Root } from '../ink.js';
-import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.js';
-import { AppStateProvider } from '../state/AppState.js';
-import { getMcpConfigsByScope } from './mcp/config.js';
-import { getProjectMcpServerStatus } from './mcp/utils.js';
+import { MCPServerApprovalDialog } from '../components/MCPServerApprovalDialog';
+import { MCPServerMultiselectDialog } from '../components/MCPServerMultiselectDialog';
+import type { Root } from '../ink';
+import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup';
+import { AppStateProvider } from '../state/AppState';
+import { getMcpConfigsByScope } from './mcp/config';
+import { getProjectMcpServerStatus } from './mcp/utils';
 
 /**
  * Show MCP server approval dialogs for pending project servers.

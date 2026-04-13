@@ -1,34 +1,34 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import type { BetaContentBlock } from '@anthropic-ai/sdk/resources/beta/messages/messages.mjs';
 import type { ImageBlockParam, TextBlockParam, ThinkingBlockParam, ToolResultBlockParam, ToolUseBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import * as React from 'react';
-import type { Command } from '../commands.js';
-import { useTerminalSize } from '../hooks/useTerminalSize.js';
-import { Box } from '../ink.js';
-import type { Tools } from '../Tool.js';
-import { type ConnectorTextBlock, isConnectorTextBlock } from '../types/connectorText.js';
-import type { AssistantMessage, AttachmentMessage as AttachmentMessageType, CollapsedReadSearchGroup as CollapsedReadSearchGroupType, GroupedToolUseMessage as GroupedToolUseMessageType, NormalizedUserMessage, ProgressMessage, SystemMessage } from '../types/message.js';
-import { type AdvisorBlock, isAdvisorBlock } from '../utils/advisor.js';
-import { isFullscreenEnvEnabled } from '../utils/fullscreen.js';
-import { logError } from '../utils/log.js';
-import type { buildMessageLookups } from '../utils/messages.js';
-import { CompactSummary } from './CompactSummary.js';
-import { AdvisorMessage } from './messages/AdvisorMessage.js';
-import { AssistantRedactedThinkingMessage } from './messages/AssistantRedactedThinkingMessage.js';
-import { AssistantTextMessage } from './messages/AssistantTextMessage.js';
-import { AssistantThinkingMessage } from './messages/AssistantThinkingMessage.js';
-import { AssistantToolUseMessage } from './messages/AssistantToolUseMessage.js';
-import { AttachmentMessage } from './messages/AttachmentMessage.js';
-import { CollapsedReadSearchContent } from './messages/CollapsedReadSearchContent.js';
-import { CompactBoundaryMessage } from './messages/CompactBoundaryMessage.js';
-import { GroupedToolUseContent } from './messages/GroupedToolUseContent.js';
-import { SystemTextMessage } from './messages/SystemTextMessage.js';
-import { UserImageMessage } from './messages/UserImageMessage.js';
-import { UserTextMessage } from './messages/UserTextMessage.js';
-import { UserToolResultMessage } from './messages/UserToolResultMessage/UserToolResultMessage.js';
-import { OffscreenFreeze } from './OffscreenFreeze.js';
-import { ExpandShellOutputProvider } from './shell/ExpandShellOutputContext.js';
+import type { Command } from '../commands';
+import { useTerminalSize } from '../hooks/useTerminalSize';
+import { Box } from '../ink';
+import type { Tools } from '../Tool';
+import { type ConnectorTextBlock, isConnectorTextBlock } from '../types/connectorText';
+import type { AssistantMessage, AttachmentMessage as AttachmentMessageType, CollapsedReadSearchGroup as CollapsedReadSearchGroupType, GroupedToolUseMessage as GroupedToolUseMessageType, NormalizedUserMessage, ProgressMessage, SystemMessage } from '../types/message';
+import { type AdvisorBlock, isAdvisorBlock } from '../utils/advisor';
+import { isFullscreenEnvEnabled } from '../utils/fullscreen';
+import { logError } from '../utils/log';
+import type { buildMessageLookups } from '../utils/messages';
+import { CompactSummary } from './CompactSummary';
+import { AdvisorMessage } from './messages/AdvisorMessage';
+import { AssistantRedactedThinkingMessage } from './messages/AssistantRedactedThinkingMessage';
+import { AssistantTextMessage } from './messages/AssistantTextMessage';
+import { AssistantThinkingMessage } from './messages/AssistantThinkingMessage';
+import { AssistantToolUseMessage } from './messages/AssistantToolUseMessage';
+import { AttachmentMessage } from './messages/AttachmentMessage';
+import { CollapsedReadSearchContent } from './messages/CollapsedReadSearchContent';
+import { CompactBoundaryMessage } from './messages/CompactBoundaryMessage';
+import { GroupedToolUseContent } from './messages/GroupedToolUseContent';
+import { SystemTextMessage } from './messages/SystemTextMessage';
+import { UserImageMessage } from './messages/UserImageMessage';
+import { UserTextMessage } from './messages/UserTextMessage';
+import { UserToolResultMessage } from './messages/UserToolResultMessage/UserToolResultMessage';
+import { OffscreenFreeze } from './OffscreenFreeze';
+import { ExpandShellOutputProvider } from './shell/ExpandShellOutputContext';
 export type Props = {
   message: NormalizedUserMessage | AssistantMessage | AttachmentMessageType | SystemMessage | GroupedToolUseMessageType | CollapsedReadSearchGroupType;
   lookups: ReturnType<typeof buildMessageLookups>;
@@ -249,21 +249,21 @@ function MessageImpl(t0) {
         if (feature("HISTORY_SNIP")) {
           const {
             isSnipBoundaryMessage
-          } = require("../services/compact/snipProjection.js") as typeof import('../services/compact/snipProjection.js');
+          } = require("../services/compact/snipProjection") as typeof import('../services/compact/snipProjection');
           const {
             isSnipMarkerMessage
-          } = require("../services/compact/snipCompact.js") as typeof import('../services/compact/snipCompact.js');
+          } = require("../services/compact/snipCompact") as typeof import('../services/compact/snipCompact');
           if (isSnipBoundaryMessage(message)) {
             let t2;
             if ($[65] === Symbol.for("react.memo_cache_sentinel")) {
-              t2 = require("./messages/SnipBoundaryMessage.js");
+              t2 = require("./messages/SnipBoundaryMessage");
               $[65] = t2;
             } else {
               t2 = $[65];
             }
             const {
               SnipBoundaryMessage
-            } = t2 as typeof import('./messages/SnipBoundaryMessage.js');
+            } = t2 as typeof import('./messages/SnipBoundaryMessage');
             let t3;
             if ($[66] !== message) {
               t3 = <SnipBoundaryMessage message={message} />;

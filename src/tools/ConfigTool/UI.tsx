@@ -1,8 +1,8 @@
 import React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { Text } from '../../ink.js';
-import { jsonStringify } from '../../utils/slowOperations.js';
-import type { Input, Output } from './ConfigTool.js';
+import { MessageResponse } from '../../components/MessageResponse';
+import { Text } from '../../ink';
+import { jsonStringify } from '../../utils/slowOperations';
+import type { Input, Output } from './ConfigTool';
 export function renderToolUseMessage(input: Partial<Input>): React.ReactNode {
   if (!input.setting) return null;
   if (input.value === undefined) {

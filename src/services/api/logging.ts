@@ -1,4 +1,4 @@
-import { feature } from 'bun:bundle'
+import { feature } from '../../stubs/bun-bundle'
 import { APIError } from '@anthropic-ai/sdk'
 import type {
   BetaStopReason,
@@ -28,16 +28,16 @@ import {
   isBetaTracingEnabled,
   type Span,
 } from 'src/utils/telemetry/sessionTracing.js'
-import type { NonNullableUsage } from '../../entrypoints/sdk/sdkUtilityTypes.js'
-import { consumeInvokingRequestId } from '../../utils/agentContext.js'
+import type { NonNullableUsage } from '../../entrypoints/sdk/sdkUtilityTypes'
+import { consumeInvokingRequestId } from '../../utils/agentContext'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
-} from '../analytics/index.js'
-import { sanitizeToolNameForAnalytics } from '../analytics/metadata.js'
-import { EMPTY_USAGE } from './emptyUsage.js'
-import { classifyAPIError } from './errors.js'
-import { extractConnectionErrorDetails } from './errorUtils.js'
+} from '../analytics/index'
+import { sanitizeToolNameForAnalytics } from '../analytics/metadata'
+import { EMPTY_USAGE } from './emptyUsage'
+import { classifyAPIError } from './errors'
+import { extractConnectionErrorDetails } from './errorUtils'
 
 export type { NonNullableUsage }
 export { EMPTY_USAGE }
@@ -162,8 +162,8 @@ function getAnthropicEnvMetadata() {
 }
 
 function getBuildAgeMinutes(): number | undefined {
-  if (!MACRO.BUILD_TIME) return undefined
-  const buildTime = new Date(MACRO.BUILD_TIME).getTime()
+  if (!'2026-04-01T03:07:00.187Z') return undefined
+  const buildTime = new Date('2026-04-01T03:07:00.187Z').getTime()
   if (isNaN(buildTime)) return undefined
   return Math.floor((Date.now() - buildTime) / 60000)
 }

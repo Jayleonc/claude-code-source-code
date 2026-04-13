@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { InterruptedByUser } from './InterruptedByUser.js';
-import { MessageResponse } from './MessageResponse.js';
+import { InterruptedByUser } from './InterruptedByUser';
+import { MessageResponse } from './MessageResponse';
 export function FallbackToolUseRejectedMessage() {
   const $ = _c(1);
   let t0;

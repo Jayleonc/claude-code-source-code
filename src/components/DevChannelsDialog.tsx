@@ -1,10 +1,10 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useCallback } from 'react';
-import type { ChannelEntry } from '../bootstrap/state.js';
-import { Box, Text } from '../ink.js';
-import { gracefulShutdownSync } from '../utils/gracefulShutdown.js';
-import { Select } from './CustomSelect/index.js';
-import { Dialog } from './design-system/Dialog.js';
+import type { ChannelEntry } from '../bootstrap/state';
+import { Box, Text } from '../ink';
+import { gracefulShutdownSync } from '../utils/gracefulShutdown';
+import { Select } from './CustomSelect/index';
+import { Dialog } from './design-system/Dialog';
 type Props = {
   channels: ChannelEntry[];
   onAccept(): void;

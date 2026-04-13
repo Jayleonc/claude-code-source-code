@@ -1,14 +1,14 @@
 import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import React from 'react';
-import { Markdown } from '../../components/Markdown.js';
-import { BLACK_CIRCLE } from '../../constants/figures.js';
-import { Box, Text } from '../../ink.js';
-import type { ProgressMessage } from '../../types/message.js';
-import { getDisplayPath } from '../../utils/file.js';
-import { formatFileSize } from '../../utils/format.js';
-import { formatBriefTimestamp } from '../../utils/formatBriefTimestamp.js';
-import type { Output } from './BriefTool.js';
+import { Markdown } from '../../components/Markdown';
+import { BLACK_CIRCLE } from '../../constants/figures';
+import { Box, Text } from '../../ink';
+import type { ProgressMessage } from '../../types/message';
+import { getDisplayPath } from '../../utils/file';
+import { formatFileSize } from '../../utils/format';
+import { formatBriefTimestamp } from '../../utils/formatBriefTimestamp';
+import type { Output } from './BriefTool';
 export function renderToolUseMessage(): React.ReactNode {
   return '';
 }

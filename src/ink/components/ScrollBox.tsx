@@ -1,12 +1,12 @@
 import React, { type PropsWithChildren, type Ref, useImperativeHandle, useRef, useState } from 'react';
 import type { Except } from 'type-fest';
-import { markScrollActivity } from '../../bootstrap/state.js';
-import type { DOMElement } from '../dom.js';
-import { markDirty, scheduleRenderFrom } from '../dom.js';
-import { markCommitStart } from '../reconciler.js';
-import type { Styles } from '../styles.js';
+import { markScrollActivity } from '../../bootstrap/state';
+import type { DOMElement } from '../dom';
+import { markDirty, scheduleRenderFrom } from '../dom';
+import { markCommitStart } from '../reconciler';
+import type { Styles } from '../styles';
 import '../global.d.ts';
-import Box from './Box.js';
+import Box from './Box';
 export type ScrollBoxHandle = {
   scrollTo: (y: number) => void;
   scrollBy: (dy: number) => void;

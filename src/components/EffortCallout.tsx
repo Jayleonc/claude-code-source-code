@@ -1,16 +1,16 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useCallback, useEffect, useRef } from 'react';
-import { Box, Text } from '../ink.js';
-import { isMaxSubscriber, isProSubscriber, isTeamSubscriber } from '../utils/auth.js';
-import { getGlobalConfig, saveGlobalConfig } from '../utils/config.js';
-import type { EffortLevel } from '../utils/effort.js';
-import { convertEffortValueToLevel, getDefaultEffortForModel, getOpusDefaultEffortConfig, toPersistableEffort } from '../utils/effort.js';
-import { parseUserSpecifiedModel } from '../utils/model/model.js';
-import { updateSettingsForSource } from '../utils/settings/settings.js';
-import type { OptionWithDescription } from './CustomSelect/select.js';
-import { Select } from './CustomSelect/select.js';
-import { effortLevelToSymbol } from './EffortIndicator.js';
-import { PermissionDialog } from './permissions/PermissionDialog.js';
+import { Box, Text } from '../ink';
+import { isMaxSubscriber, isProSubscriber, isTeamSubscriber } from '../utils/auth';
+import { getGlobalConfig, saveGlobalConfig } from '../utils/config';
+import type { EffortLevel } from '../utils/effort';
+import { convertEffortValueToLevel, getDefaultEffortForModel, getOpusDefaultEffortConfig, toPersistableEffort } from '../utils/effort';
+import { parseUserSpecifiedModel } from '../utils/model/model';
+import { updateSettingsForSource } from '../utils/settings/settings';
+import type { OptionWithDescription } from './CustomSelect/select';
+import { Select } from './CustomSelect/select';
+import { effortLevelToSymbol } from './EffortIndicator';
+import { PermissionDialog } from './permissions/PermissionDialog';
 type EffortCalloutSelection = EffortLevel | undefined | 'dismiss';
 type Props = {
   model: string;

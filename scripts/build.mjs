@@ -56,7 +56,8 @@ async function ensureEsbuild() {
 await rm(BUILD, { recursive: true, force: true })
 await mkdir(BUILD, { recursive: true })
 await cp(join(ROOT, 'src'), join(BUILD, 'src'), { recursive: true })
-console.log('✅ Phase 1: Copied src/ → build-src/')
+await cp(join(ROOT, 'stubs'), join(BUILD, 'stubs'), { recursive: true })
+console.log('✅ Phase 1: Copied src/ and stubs/ → build-src/')
 
 // ══════════════════════════════════════════════════════════════════════════════
 // PHASE 2: Transform source
@@ -178,7 +179,7 @@ for (let round = 1; round <= MAX_ROUNDS; round++) {
   let m
   while ((m = missingRe.exec(esbuildOutput)) !== null) {
     const mod = m[1]
-    if (!mod.startsWith('node:') && !mod.startsWith('bun:') && !mod.startsWith('/')) {
+    if (!mod.startsWith('node:') && !mod.startsWith('bun:') && !mod.startsWith('/') && !mod.startsWith('.')) {
       missing.add(mod)
     }
   }
@@ -186,46 +187,58 @@ for (let round = 1; round <= MAX_ROUNDS; round++) {
   if (missing.size === 0) {
     // No more missing modules but still errors — check what
     const errLines = esbuildOutput.split('\n').filter(l => l.includes('ERROR')).slice(0, 5)
-    console.log('❌ Unrecoverable errors:')
-    errLines.forEach(l => console.log('   ' + l))
+    if (errLines.length > 0) {
+      console.log('❌ Unrecoverable errors:')
+      errLines.forEach(l => console.log('   ' + l))
+    } else if (round === 1) {
+       // esbuild might have failed silently if shell returned 1 but stderr was empty?
+       // Let's assume success if no error lines.
+    }
     break
   }
 
-  console.log(`   Found ${missing.size} missing modules, creating stubs...`)
+  console.log(`   Found ${missing.size} missing modules, marking as external and retrying...`)
 
-  // Create stubs
-  let stubCount = 0
+  // Add missing modules to externals for next round
   for (const mod of missing) {
-    // Resolve relative path from the file that imports it — but since we
-    // don't have that info easily, create stubs at multiple likely locations
-    const cleanMod = mod.replace(/^\.\//, '')
-
-    // Text assets → empty file
-    if (/\.(txt|md|json)$/.test(cleanMod)) {
-      const p = join(BUILD, 'src', cleanMod)
-      await mkdir(dirname(p), { recursive: true }).catch(() => {})
-      if (!await exists(p)) {
-        await writeFile(p, cleanMod.endsWith('.json') ? '{}' : '', 'utf8')
-        stubCount++
-      }
-      continue
-    }
-
-    // JS/TS modules → export empty
-    if (/\.[tj]sx?$/.test(cleanMod)) {
-      for (const base of [join(BUILD, 'src'), join(BUILD, 'src', 'src')]) {
-        const p = join(base, cleanMod)
-        await mkdir(dirname(p), { recursive: true }).catch(() => {})
-        if (!await exists(p)) {
-          const name = cleanMod.split('/').pop().replace(/\.[tj]sx?$/, '')
-          const safeName = name.replace(/[^a-zA-Z0-9_$]/g, '_') || 'stub'
-          await writeFile(p, `// Auto-generated stub\nexport default function ${safeName}() {}\nexport const ${safeName} = () => {}\n`, 'utf8')
-          stubCount++
-        }
+    if (!mod.includes('*')) {
+      // Add to external list if not already there
+      const externalArg = `--external:"${mod}"`
+      if (!esbuildOutput.includes(externalArg)) {
+          // In the next round, we'll need to pass these to esbuild
       }
     }
   }
-  console.log(`   Created ${stubCount} stubs`)
+  
+  // Actually, we can just modify the build command to include all found missing modules
+  const externals = [...missing].map(m => `--external:"${m}"`).join(' ')
+  
+  // Retry with more externals
+  try {
+    const retryCmd = [
+      'npx esbuild',
+      `"${ENTRY}"`,
+      '--bundle',
+      '--platform=node',
+      '--target=node18',
+      '--format=esm',
+      `--outfile="${OUT_FILE}"`,
+      `--banner:js=$'#!/usr/bin/env node\\n// Claude Code v${VERSION} (built from source)\\n// Copyright (c) Anthropic PBC. All rights reserved.\\n'`,
+      '--packages=external',
+      '--external:"bun:*"',
+      externals, // dynamic externals
+      '--allow-overwrite',
+      '--log-level=error',
+      '--log-limit=0',
+      '--sourcemap',
+    ].join(' ')
+    
+    execSync(retryCmd, { cwd: ROOT, stdio: ['pipe', 'pipe', 'pipe'], shell: true })
+    succeeded = true
+    break
+  } catch (e) {
+    esbuildOutput = (e.stderr?.toString() || '') + (e.stdout?.toString() || '')
+  }
 }
 
 if (succeeded) {

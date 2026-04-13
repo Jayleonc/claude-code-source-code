@@ -4,10 +4,10 @@ import { relative } from 'path';
 import * as React from 'react';
 import { useTerminalSize } from 'src/hooks/useTerminalSize.js';
 import { getCwd } from 'src/utils/cwd.js';
-import { Box, Text } from '../ink.js';
-import { HighlightedCode } from './HighlightedCode.js';
-import { MessageResponse } from './MessageResponse.js';
-import { StructuredDiffList } from './StructuredDiffList.js';
+import { Box, Text } from '../ink';
+import { HighlightedCode } from './HighlightedCode';
+import { MessageResponse } from './MessageResponse';
+import { StructuredDiffList } from './StructuredDiffList';
 const MAX_LINES_TO_RENDER = 10;
 type Props = {
   file_path: string;

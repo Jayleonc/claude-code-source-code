@@ -1,23 +1,23 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../../stubs/bun-bundle';
 import type { TextBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import * as React from 'react';
-import { NO_CONTENT_MESSAGE } from '../../constants/messages.js';
-import { COMMAND_MESSAGE_TAG, LOCAL_COMMAND_CAVEAT_TAG, TASK_NOTIFICATION_TAG, TEAMMATE_MESSAGE_TAG, TICK_TAG } from '../../constants/xml.js';
-import { isAgentSwarmsEnabled } from '../../utils/agentSwarmsEnabled.js';
-import { extractTag, INTERRUPT_MESSAGE, INTERRUPT_MESSAGE_FOR_TOOL_USE } from '../../utils/messages.js';
-import { InterruptedByUser } from '../InterruptedByUser.js';
-import { MessageResponse } from '../MessageResponse.js';
-import { UserAgentNotificationMessage } from './UserAgentNotificationMessage.js';
-import { UserBashInputMessage } from './UserBashInputMessage.js';
-import { UserBashOutputMessage } from './UserBashOutputMessage.js';
-import { UserCommandMessage } from './UserCommandMessage.js';
-import { UserLocalCommandOutputMessage } from './UserLocalCommandOutputMessage.js';
-import { UserMemoryInputMessage } from './UserMemoryInputMessage.js';
-import { UserPlanMessage } from './UserPlanMessage.js';
-import { UserPromptMessage } from './UserPromptMessage.js';
-import { UserResourceUpdateMessage } from './UserResourceUpdateMessage.js';
-import { UserTeammateMessage } from './UserTeammateMessage.js';
+import { NO_CONTENT_MESSAGE } from '../../constants/messages';
+import { COMMAND_MESSAGE_TAG, LOCAL_COMMAND_CAVEAT_TAG, TASK_NOTIFICATION_TAG, TEAMMATE_MESSAGE_TAG, TICK_TAG } from '../../constants/xml';
+import { isAgentSwarmsEnabled } from '../../utils/agentSwarmsEnabled';
+import { extractTag, INTERRUPT_MESSAGE, INTERRUPT_MESSAGE_FOR_TOOL_USE } from '../../utils/messages';
+import { InterruptedByUser } from '../InterruptedByUser';
+import { MessageResponse } from '../MessageResponse';
+import { UserAgentNotificationMessage } from './UserAgentNotificationMessage';
+import { UserBashInputMessage } from './UserBashInputMessage';
+import { UserBashOutputMessage } from './UserBashOutputMessage';
+import { UserCommandMessage } from './UserCommandMessage';
+import { UserLocalCommandOutputMessage } from './UserLocalCommandOutputMessage';
+import { UserMemoryInputMessage } from './UserMemoryInputMessage';
+import { UserPlanMessage } from './UserPlanMessage';
+import { UserPromptMessage } from './UserPromptMessage';
+import { UserResourceUpdateMessage } from './UserResourceUpdateMessage';
+import { UserTeammateMessage } from './UserTeammateMessage';
 type Props = {
   addMargin: boolean;
   param: TextBlockParam;
@@ -94,14 +94,14 @@ export function UserTextMessage(t0) {
     if (param.text.startsWith("<github-webhook-activity>")) {
       let t1;
       if ($[9] === Symbol.for("react.memo_cache_sentinel")) {
-        t1 = require("./UserGitHubWebhookMessage.js");
+        t1 = require("./UserGitHubWebhookMessage");
         $[9] = t1;
       } else {
         t1 = $[9];
       }
       const {
         UserGitHubWebhookMessage
-      } = t1 as typeof import('./UserGitHubWebhookMessage.js');
+      } = t1 as typeof import('./UserGitHubWebhookMessage');
       let t2;
       if ($[10] !== addMargin || $[11] !== param) {
         t2 = <UserGitHubWebhookMessage addMargin={addMargin} param={param} />;
@@ -191,14 +191,14 @@ export function UserTextMessage(t0) {
     if (param.text.includes("<fork-boilerplate>")) {
       let t1;
       if ($[32] === Symbol.for("react.memo_cache_sentinel")) {
-        t1 = require("./UserForkBoilerplateMessage.js");
+        t1 = require("./UserForkBoilerplateMessage");
         $[32] = t1;
       } else {
         t1 = $[32];
       }
       const {
         UserForkBoilerplateMessage
-      } = t1 as typeof import('./UserForkBoilerplateMessage.js');
+      } = t1 as typeof import('./UserForkBoilerplateMessage');
       let t2;
       if ($[33] !== addMargin || $[34] !== param) {
         t2 = <UserForkBoilerplateMessage addMargin={addMargin} param={param} />;
@@ -215,14 +215,14 @@ export function UserTextMessage(t0) {
     if (param.text.includes("<cross-session-message")) {
       let t1;
       if ($[36] === Symbol.for("react.memo_cache_sentinel")) {
-        t1 = require("./UserCrossSessionMessage.js");
+        t1 = require("./UserCrossSessionMessage");
         $[36] = t1;
       } else {
         t1 = $[36];
       }
       const {
         UserCrossSessionMessage
-      } = t1 as typeof import('./UserCrossSessionMessage.js');
+      } = t1 as typeof import('./UserCrossSessionMessage');
       let t2;
       if ($[37] !== addMargin || $[38] !== param) {
         t2 = <UserCrossSessionMessage addMargin={addMargin} param={param} />;
@@ -239,14 +239,14 @@ export function UserTextMessage(t0) {
     if (param.text.includes("<channel source=\"")) {
       let t1;
       if ($[40] === Symbol.for("react.memo_cache_sentinel")) {
-        t1 = require("./UserChannelMessage.js");
+        t1 = require("./UserChannelMessage");
         $[40] = t1;
       } else {
         t1 = $[40];
       }
       const {
         UserChannelMessage
-      } = t1 as typeof import('./UserChannelMessage.js');
+      } = t1 as typeof import('./UserChannelMessage');
       let t2;
       if ($[41] !== addMargin || $[42] !== param) {
         t2 = <UserChannelMessage addMargin={addMargin} param={param} />;

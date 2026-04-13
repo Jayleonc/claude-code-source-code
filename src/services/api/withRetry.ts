@@ -1,4 +1,4 @@
-import { feature } from 'bun:bundle'
+import { feature } from '../../stubs/bun-bundle'
 import type Anthropic from '@anthropic-ai/sdk'
 import {
   APIConnectionError,
@@ -20,9 +20,9 @@ import {
   handleOAuth401Error,
   isClaudeAISubscriber,
   isEnterpriseSubscriber,
-} from '../../utils/auth.js'
-import { isEnvTruthy } from '../../utils/envUtils.js'
-import { errorMessage } from '../../utils/errors.js'
+} from '../../utils/auth'
+import { isEnvTruthy } from '../../utils/envUtils'
+import { errorMessage } from '../../utils/errors'
 import {
   type CooldownReason,
   handleFastModeOverageRejection,
@@ -30,22 +30,22 @@ import {
   isFastModeCooldown,
   isFastModeEnabled,
   triggerFastModeCooldown,
-} from '../../utils/fastMode.js'
-import { isNonCustomOpusModel } from '../../utils/model/model.js'
-import { disableKeepAlive } from '../../utils/proxy.js'
-import { sleep } from '../../utils/sleep.js'
-import type { ThinkingConfig } from '../../utils/thinking.js'
-import { getFeatureValue_CACHED_MAY_BE_STALE } from '../analytics/growthbook.js'
+} from '../../utils/fastMode'
+import { isNonCustomOpusModel } from '../../utils/model/model'
+import { disableKeepAlive } from '../../utils/proxy'
+import { sleep } from '../../utils/sleep'
+import type { ThinkingConfig } from '../../utils/thinking'
+import { getFeatureValue_CACHED_MAY_BE_STALE } from '../analytics/growthbook'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
-} from '../analytics/index.js'
+} from '../analytics/index'
 import {
   checkMockRateLimitError,
   isMockRateLimitError,
-} from '../rateLimitMocking.js'
-import { REPEATED_529_ERROR_MESSAGE } from './errors.js'
-import { extractConnectionErrorDetails } from './errorUtils.js'
+} from '../rateLimitMocking'
+import { REPEATED_529_ERROR_MESSAGE } from './errors'
+import { extractConnectionErrorDetails } from './errorUtils'
 
 const abortError = () => new APIUserAbortError()
 

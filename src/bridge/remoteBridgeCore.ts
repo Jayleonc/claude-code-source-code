@@ -28,21 +28,21 @@
  * REPL-only — daemon/print stay on env-based.
  */
 
-import { feature } from 'bun:bundle'
+import { feature } from '../stubs/bun-bundle'
 import axios from 'axios'
 import {
   createV2ReplTransport,
   type ReplBridgeTransport,
-} from './replBridgeTransport.js'
-import { buildCCRv2SdkUrl } from './workSecret.js'
-import { toCompatSessionId } from './sessionIdCompat.js'
-import { FlushGate } from './flushGate.js'
-import { createTokenRefreshScheduler } from './jwtUtils.js'
-import { getTrustedDeviceToken } from './trustedDevice.js'
+} from './replBridgeTransport'
+import { buildCCRv2SdkUrl } from './workSecret'
+import { toCompatSessionId } from './sessionIdCompat'
+import { FlushGate } from './flushGate'
+import { createTokenRefreshScheduler } from './jwtUtils'
+import { getTrustedDeviceToken } from './trustedDevice'
 import {
   getEnvLessBridgeConfig,
   type EnvLessBridgeConfig,
-} from './envLessBridgeConfig.js'
+} from './envLessBridgeConfig'
 import {
   handleIngressMessage,
   handleServerControlRequest,
@@ -50,26 +50,26 @@ import {
   isEligibleBridgeMessage,
   extractTitleText,
   BoundedUUIDSet,
-} from './bridgeMessaging.js'
-import { logBridgeSkip } from './debugUtils.js'
-import { logForDebugging } from '../utils/debug.js'
-import { logForDiagnosticsNoPII } from '../utils/diagLogs.js'
-import { isInProtectedNamespace } from '../utils/envUtils.js'
-import { errorMessage } from '../utils/errors.js'
-import { sleep } from '../utils/sleep.js'
-import { registerCleanup } from '../utils/cleanupRegistry.js'
+} from './bridgeMessaging'
+import { logBridgeSkip } from './debugUtils'
+import { logForDebugging } from '../utils/debug'
+import { logForDiagnosticsNoPII } from '../utils/diagLogs'
+import { isInProtectedNamespace } from '../utils/envUtils'
+import { errorMessage } from '../utils/errors'
+import { sleep } from '../utils/sleep'
+import { registerCleanup } from '../utils/cleanupRegistry'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
-} from '../services/analytics/index.js'
-import type { ReplBridgeHandle, BridgeState } from './replBridge.js'
-import type { Message } from '../types/message.js'
-import type { SDKMessage } from '../entrypoints/agentSdkTypes.js'
+} from '../services/analytics/index'
+import type { ReplBridgeHandle, BridgeState } from './replBridge'
+import type { Message } from '../types/message'
+import type { SDKMessage } from '../entrypoints/agentSdkTypes'
 import type {
   SDKControlRequest,
   SDKControlResponse,
-} from '../entrypoints/sdk/controlTypes.js'
-import type { PermissionMode } from '../utils/permissions/PermissionMode.js'
+} from '../entrypoints/sdk/controlTypes'
+import type { PermissionMode } from '../utils/permissions/PermissionMode'
 
 const ANTHROPIC_VERSION = '2023-06-01'
 
@@ -917,13 +917,13 @@ async function withRetry<T>(
 export {
   createCodeSession,
   type RemoteCredentials,
-} from './codeSessionApi.js'
+} from './codeSessionApi'
 import {
   createCodeSession,
   fetchRemoteCredentials as fetchRemoteCredentialsRaw,
   type RemoteCredentials,
-} from './codeSessionApi.js'
-import { getBridgeBaseUrlOverride } from './bridgeConfig.js'
+} from './codeSessionApi'
+import { getBridgeBaseUrlOverride } from './bridgeConfig'
 
 // CLI-side wrapper that applies the CLAUDE_BRIDGE_BASE_URL dev override and
 // injects the trusted-device token (both are env/GrowthBook reads that the

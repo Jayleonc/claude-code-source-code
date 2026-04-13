@@ -10,17 +10,17 @@ import type {
   SystemFileSnapshotMessage,
   UserMessage,
 } from 'src/types/message.js'
-import { getPlanSlugCache, getSessionId } from '../bootstrap/state.js'
-import { EXIT_PLAN_MODE_V2_TOOL_NAME } from '../tools/ExitPlanModeTool/constants.js'
-import { getCwd } from './cwd.js'
-import { logForDebugging } from './debug.js'
-import { getClaudeConfigHomeDir } from './envUtils.js'
-import { isENOENT } from './errors.js'
-import { getEnvironmentKind } from './filePersistence/outputsScanner.js'
-import { getFsImplementation } from './fsOperations.js'
-import { logError } from './log.js'
-import { getInitialSettings } from './settings/settings.js'
-import { generateWordSlug } from './words.js'
+import { getPlanSlugCache, getSessionId } from '../bootstrap/state'
+import { EXIT_PLAN_MODE_V2_TOOL_NAME } from '../tools/ExitPlanModeTool/constants'
+import { getCwd } from './cwd'
+import { logForDebugging } from './debug'
+import { getClaudeConfigHomeDir } from './envUtils'
+import { isENOENT } from './errors'
+import { getEnvironmentKind } from './filePersistence/outputsScanner'
+import { getFsImplementation } from './fsOperations'
+import { logError } from './log'
+import { getInitialSettings } from './settings/settings'
+import { generateWordSlug } from './words'
 
 const MAX_SLUG_RETRIES = 10
 
@@ -389,7 +389,7 @@ export async function persistFileSnapshotIfRemote(): Promise<void> {
       snapshotFiles,
     }
 
-    const { recordTranscript } = await import('./sessionStorage.js')
+    const { recordTranscript } = await import('./sessionStorage')
     await recordTranscript([message])
   } catch (error) {
     logError(error)

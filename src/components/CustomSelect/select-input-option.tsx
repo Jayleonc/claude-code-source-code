@@ -1,17 +1,17 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { type ReactNode, useEffect, useRef, useState } from 'react';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- UP arrow exit not in Attachments bindings
-import { Box, Text, useInput } from '../../ink.js';
-import { useKeybinding, useKeybindings } from '../../keybindings/useKeybinding.js';
-import type { PastedContent } from '../../utils/config.js';
-import { getImageFromClipboard } from '../../utils/imagePaste.js';
-import type { ImageDimensions } from '../../utils/imageResizer.js';
-import { ClickableImageRef } from '../ClickableImageRef.js';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.js';
-import { Byline } from '../design-system/Byline.js';
-import TextInput from '../TextInput.js';
-import type { OptionWithDescription } from './select.js';
-import { SelectOption } from './select-option.js';
+import { Box, Text, useInput } from '../../ink';
+import { useKeybinding, useKeybindings } from '../../keybindings/useKeybinding';
+import type { PastedContent } from '../../utils/config';
+import { getImageFromClipboard } from '../../utils/imagePaste';
+import type { ImageDimensions } from '../../utils/imageResizer';
+import { ClickableImageRef } from '../ClickableImageRef';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint';
+import { Byline } from '../design-system/Byline';
+import TextInput from '../TextInput';
+import type { OptionWithDescription } from './select';
+import { SelectOption } from './select-option';
 type Props<T> = {
   option: Extract<OptionWithDescription<T>, {
     type: 'input';

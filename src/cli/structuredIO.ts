@@ -1,4 +1,4 @@
-import { feature } from 'bun:bundle'
+import { feature } from '../stubs/bun-bundle'
 import type {
   ElicitResult,
   JSONRPCMessage,
@@ -38,21 +38,21 @@ import { hasPermissionsToUseTool } from 'src/utils/permissions/permissions.js'
 import { writeToStdout } from 'src/utils/process.js'
 import { jsonStringify } from 'src/utils/slowOperations.js'
 import { z } from 'zod/v4'
-import { notifyCommandLifecycle } from '../utils/commandLifecycle.js'
-import { normalizeControlMessageKeys } from '../utils/controlMessageCompat.js'
-import { executePermissionRequestHooks } from '../utils/hooks.js'
+import { notifyCommandLifecycle } from '../utils/commandLifecycle'
+import { normalizeControlMessageKeys } from '../utils/controlMessageCompat'
+import { executePermissionRequestHooks } from '../utils/hooks'
 import {
   applyPermissionUpdates,
   persistPermissionUpdates,
-} from '../utils/permissions/PermissionUpdate.js'
+} from '../utils/permissions/PermissionUpdate'
 import {
   notifySessionStateChanged,
   type RequiresActionDetails,
   type SessionExternalMetadata,
-} from '../utils/sessionState.js'
-import { jsonParse } from '../utils/slowOperations.js'
-import { Stream } from '../utils/stream.js'
-import { ndjsonSafeStringify } from './ndjsonSafeStringify.js'
+} from '../utils/sessionState'
+import { jsonParse } from '../utils/slowOperations'
+import { Stream } from '../utils/stream'
+import { ndjsonSafeStringify } from './ndjsonSafeStringify'
 
 /**
  * Synthetic tool name used when forwarding sandbox network permission

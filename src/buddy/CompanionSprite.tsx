@@ -1,18 +1,18 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import figures from 'figures';
 import React, { useEffect, useRef, useState } from 'react';
-import { useTerminalSize } from '../hooks/useTerminalSize.js';
-import { stringWidth } from '../ink/stringWidth.js';
-import { Box, Text } from '../ink.js';
-import { useAppState, useSetAppState } from '../state/AppState.js';
-import type { AppState } from '../state/AppStateStore.js';
-import { getGlobalConfig } from '../utils/config.js';
-import { isFullscreenActive } from '../utils/fullscreen.js';
-import type { Theme } from '../utils/theme.js';
-import { getCompanion } from './companion.js';
-import { renderFace, renderSprite, spriteFrameCount } from './sprites.js';
-import { RARITY_COLORS } from './types.js';
+import { useTerminalSize } from '../hooks/useTerminalSize';
+import { stringWidth } from '../ink/stringWidth';
+import { Box, Text } from '../ink';
+import { useAppState, useSetAppState } from '../state/AppState';
+import type { AppState } from '../state/AppStateStore';
+import { getGlobalConfig } from '../utils/config';
+import { isFullscreenActive } from '../utils/fullscreen';
+import type { Theme } from '../utils/theme';
+import { getCompanion } from './companion';
+import { renderFace, renderSprite, spriteFrameCount } from './sprites';
+import { RARITY_COLORS } from './types';
 const TICK_MS = 500;
 const BUBBLE_SHOW = 20; // ticks → ~10s at 500ms
 const FADE_WINDOW = 6; // last ~3s the bubble dims so you know it's about to go

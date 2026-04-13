@@ -1,20 +1,20 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useCallback } from 'react';
-import { Select } from '../../../components/CustomSelect/select.js';
-import { Box, Text } from '../../../ink.js';
-import type { ToolPermissionContext } from '../../../Tool.js';
-import type { PermissionBehavior, PermissionRule, PermissionRuleValue } from '../../../utils/permissions/PermissionRule.js';
-import { applyPermissionUpdate, persistPermissionUpdate } from '../../../utils/permissions/PermissionUpdate.js';
-import { permissionRuleValueToString } from '../../../utils/permissions/permissionRuleParser.js';
-import { detectUnreachableRules, type UnreachableRule } from '../../../utils/permissions/shadowedRuleDetection.js';
-import { SandboxManager } from '../../../utils/sandbox/sandbox-adapter.js';
-import { type EditableSettingSource, SOURCES } from '../../../utils/settings/constants.js';
-import { getRelativeSettingsFilePathForSource } from '../../../utils/settings/settings.js';
-import { plural } from '../../../utils/stringUtils.js';
-import type { OptionWithDescription } from '../../CustomSelect/select.js';
-import { Dialog } from '../../design-system/Dialog.js';
-import { PermissionRuleDescription } from './PermissionRuleDescription.js';
+import { Select } from '../../../components/CustomSelect/select';
+import { Box, Text } from '../../../ink';
+import type { ToolPermissionContext } from '../../../Tool';
+import type { PermissionBehavior, PermissionRule, PermissionRuleValue } from '../../../utils/permissions/PermissionRule';
+import { applyPermissionUpdate, persistPermissionUpdate } from '../../../utils/permissions/PermissionUpdate';
+import { permissionRuleValueToString } from '../../../utils/permissions/permissionRuleParser';
+import { detectUnreachableRules, type UnreachableRule } from '../../../utils/permissions/shadowedRuleDetection';
+import { SandboxManager } from '../../../utils/sandbox/sandbox-adapter';
+import { type EditableSettingSource, SOURCES } from '../../../utils/settings/constants';
+import { getRelativeSettingsFilePathForSource } from '../../../utils/settings/settings';
+import { plural } from '../../../utils/stringUtils';
+import type { OptionWithDescription } from '../../CustomSelect/select';
+import { Dialog } from '../../design-system/Dialog';
+import { PermissionRuleDescription } from './PermissionRuleDescription';
 export function optionForPermissionSaveDestination(saveDestination: EditableSettingSource): OptionWithDescription {
   switch (saveDestination) {
     case 'localSettings':

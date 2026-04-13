@@ -8,11 +8,11 @@ import {
   PR_BODY,
   PR_TITLE,
   WORKFLOW_CONTENT,
-} from '../../constants/github-app.js'
-import { openBrowser } from '../../utils/browser.js'
-import { execFileNoThrow } from '../../utils/execFileNoThrow.js'
-import { logError } from '../../utils/log.js'
-import type { Workflow } from './types.js'
+} from '../../constants/github-app'
+import { openBrowser } from '../../utils/browser'
+import { execFileNoThrow } from '../../utils/execFileNoThrow'
+import { logError } from '../../utils/log'
+import type { Workflow } from './types'
 
 async function createWorkflowFile(
   repoName: string,

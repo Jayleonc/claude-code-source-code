@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useEffect, useRef } from 'react';
-import { BLACK_CIRCLE, BULLET_OPERATOR } from '../constants/figures.js';
-import { Box, Text } from '../ink.js';
-import type { SkillUpdate } from '../utils/hooks/skillImprovement.js';
-import { normalizeFullWidthDigits } from '../utils/stringUtils.js';
-import { isValidResponseInput } from './FeedbackSurvey/FeedbackSurveyView.js';
-import type { FeedbackSurveyResponse } from './FeedbackSurvey/utils.js';
+import { BLACK_CIRCLE, BULLET_OPERATOR } from '../constants/figures';
+import { Box, Text } from '../ink';
+import type { SkillUpdate } from '../utils/hooks/skillImprovement';
+import { normalizeFullWidthDigits } from '../utils/stringUtils';
+import { isValidResponseInput } from './FeedbackSurvey/FeedbackSurveyView';
+import type { FeedbackSurveyResponse } from './FeedbackSurvey/utils';
 type Props = {
   isOpen: boolean;
   skillName: string;

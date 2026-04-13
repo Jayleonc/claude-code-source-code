@@ -34,34 +34,34 @@ import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
 } from 'src/services/analytics/index.js'
-import { getMaxVersion, shouldSkipVersion } from '../autoUpdater.js'
-import { registerCleanup } from '../cleanupRegistry.js'
-import { getGlobalConfig, saveGlobalConfig } from '../config.js'
-import { logForDebugging } from '../debug.js'
-import { getCurrentInstallationType } from '../doctorDiagnostic.js'
-import { env } from '../env.js'
-import { envDynamic } from '../envDynamic.js'
-import { isEnvTruthy } from '../envUtils.js'
-import { errorMessage, getErrnoCode, isENOENT, toError } from '../errors.js'
-import { execFileNoThrowWithCwd } from '../execFileNoThrow.js'
-import { getShellType } from '../localInstaller.js'
-import * as lockfile from '../lockfile.js'
-import { logError } from '../log.js'
-import { gt, gte } from '../semver.js'
+import { getMaxVersion, shouldSkipVersion } from '../autoUpdater'
+import { registerCleanup } from '../cleanupRegistry'
+import { getGlobalConfig, saveGlobalConfig } from '../config'
+import { logForDebugging } from '../debug'
+import { getCurrentInstallationType } from '../doctorDiagnostic'
+import { env } from '../env'
+import { envDynamic } from '../envDynamic'
+import { isEnvTruthy } from '../envUtils'
+import { errorMessage, getErrnoCode, isENOENT, toError } from '../errors'
+import { execFileNoThrowWithCwd } from '../execFileNoThrow'
+import { getShellType } from '../localInstaller'
+import * as lockfile from '../lockfile'
+import { logError } from '../log'
+import { gt, gte } from '../semver'
 import {
   filterClaudeAliases,
   getShellConfigPaths,
   readFileLines,
   writeFileLines,
-} from '../shellConfig.js'
-import { sleep } from '../sleep.js'
+} from '../shellConfig'
+import { sleep } from '../sleep'
 import {
   getUserBinDir,
   getXDGCacheHome,
   getXDGDataHome,
   getXDGStateHome,
-} from '../xdg.js'
-import { downloadVersion, getLatestVersion } from './download.js'
+} from '../xdg'
+import { downloadVersion, getLatestVersion } from './download'
 import {
   acquireProcessLifetimeLock,
   cleanupStaleLocks,
@@ -69,7 +69,7 @@ import {
   isPidBasedLockingEnabled,
   readLockContent,
   withLock,
-} from './pidLock.js'
+} from './pidLock'
 
 export const VERSION_RETENTION_COUNT = 2
 
@@ -515,9 +515,9 @@ async function updateLatest(
         `Native installer: maxVersion ${maxVersion} is set, capping update from ${version} to ${maxVersion}`,
       )
       // If we're already at or above maxVersion, skip the update entirely
-      if (gte(MACRO.VERSION, maxVersion)) {
+      if (gte('2.1.88', maxVersion)) {
         logForDebugging(
-          `Native installer: current version ${MACRO.VERSION} is already at or above maxVersion ${maxVersion}, skipping update`,
+          `Native installer: current version ${'2.1.88'} is already at or above maxVersion ${maxVersion}, skipping update`,
         )
         logEvent('tengu_native_update_skipped_max_version', {
           latency_ms: Date.now() - startTime,
@@ -1677,7 +1677,7 @@ export async function cleanupNpmInstallations(): Promise<{
 
   // Also attempt to remove MACRO.PACKAGE_URL if it's defined and different
   if (MACRO.PACKAGE_URL && MACRO.PACKAGE_URL !== '@anthropic-ai/claude-code') {
-    const macroPackageResult = await attemptNpmUninstall(MACRO.PACKAGE_URL)
+    const macroPackageResult = await attemptNpmUninstall('@anthropic-ai/claude-code')
     if (macroPackageResult.success) {
       removed++
       if (macroPackageResult.warning) {

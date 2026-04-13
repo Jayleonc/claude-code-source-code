@@ -18,15 +18,15 @@
 
 import { bindSessionContext, type ComputerUseSessionContext, type CuCallToolResult, type CuPermissionRequest, type CuPermissionResponse, DEFAULT_GRANT_FLAGS, type ScreenshotDims } from '@ant/computer-use-mcp';
 import * as React from 'react';
-import { getSessionId } from '../../bootstrap/state.js';
-import { ComputerUseApproval } from '../../components/permissions/ComputerUseApproval/ComputerUseApproval.js';
-import type { Tool, ToolUseContext } from '../../Tool.js';
-import { logForDebugging } from '../debug.js';
-import { checkComputerUseLock, tryAcquireComputerUseLock } from './computerUseLock.js';
-import { registerEscHotkey } from './escHotkey.js';
-import { getChicagoCoordinateMode } from './gates.js';
-import { getComputerUseHostAdapter } from './hostAdapter.js';
-import { getComputerUseMCPRenderingOverrides } from './toolRendering.js';
+import { getSessionId } from '../../bootstrap/state';
+import { ComputerUseApproval } from '../../components/permissions/ComputerUseApproval/ComputerUseApproval';
+import type { Tool, ToolUseContext } from '../../Tool';
+import { logForDebugging } from '../debug';
+import { checkComputerUseLock, tryAcquireComputerUseLock } from './computerUseLock';
+import { registerEscHotkey } from './escHotkey';
+import { getChicagoCoordinateMode } from './gates';
+import { getComputerUseHostAdapter } from './hostAdapter';
+import { getComputerUseMCPRenderingOverrides } from './toolRendering';
 type CallOverride = Pick<Tool, 'call'>['call'];
 type Binding = {
   ctx: ComputerUseSessionContext;

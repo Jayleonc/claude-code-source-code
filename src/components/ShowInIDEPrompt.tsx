@@ -1,12 +1,12 @@
 import { c as _c } from "react/compiler-runtime";
 import { basename, relative } from 'path';
 import React from 'react';
-import { Box, Text } from '../ink.js';
-import { getCwd } from '../utils/cwd.js';
-import { isSupportedVSCodeTerminal } from '../utils/ide.js';
-import { Select } from './CustomSelect/index.js';
-import { Pane } from './design-system/Pane.js';
-import type { PermissionOption, PermissionOptionWithLabel } from './permissions/FilePermissionDialog/permissionOptions.js';
+import { Box, Text } from '../ink';
+import { getCwd } from '../utils/cwd';
+import { isSupportedVSCodeTerminal } from '../utils/ide';
+import { Select } from './CustomSelect/index';
+import { Pane } from './design-system/Pane';
+import type { PermissionOption, PermissionOptionWithLabel } from './permissions/FilePermissionDialog/permissionOptions';
 type Props<A> = {
   filePath: string;
   input: A;

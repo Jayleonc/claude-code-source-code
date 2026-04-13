@@ -6,19 +6,19 @@
 //    key) in parallel — isRemoteManagedSettingsEligible() otherwise reads them
 //    sequentially via sync spawn inside applySafeConfigEnvironmentVariables()
 //    (~65ms on every macOS startup)
-import { profileCheckpoint, profileReport } from './utils/startupProfiler.js';
+import { profileCheckpoint, profileReport } from './utils/startupProfiler';
 
 // eslint-disable-next-line custom-rules/no-top-level-side-effects
 profileCheckpoint('main_tsx_entry');
-import { startMdmRawRead } from './utils/settings/mdm/rawRead.js';
+import { startMdmRawRead } from './utils/settings/mdm/rawRead';
 
 // eslint-disable-next-line custom-rules/no-top-level-side-effects
 startMdmRawRead();
-import { ensureKeychainPrefetchCompleted, startKeychainPrefetch } from './utils/secureStorage/keychainPrefetch.js';
+import { ensureKeychainPrefetchCompleted, startKeychainPrefetch } from './utils/secureStorage/keychainPrefetch';
 
 // eslint-disable-next-line custom-rules/no-top-level-side-effects
 startKeychainPrefetch();
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import { Command as CommanderCommand, InvalidArgumentError, Option } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import { readFileSync } from 'fs';
@@ -26,116 +26,116 @@ import mapValues from 'lodash-es/mapValues.js';
 import pickBy from 'lodash-es/pickBy.js';
 import uniqBy from 'lodash-es/uniqBy.js';
 import React from 'react';
-import { getOauthConfig } from './constants/oauth.js';
-import { getRemoteSessionUrl } from './constants/product.js';
-import { getSystemContext, getUserContext } from './context.js';
-import { init, initializeTelemetryAfterTrust } from './entrypoints/init.js';
-import { addToHistory } from './history.js';
-import type { Root } from './ink.js';
-import { launchRepl } from './replLauncher.js';
-import { hasGrowthBookEnvOverride, initializeGrowthBook, refreshGrowthBookAfterAuthChange } from './services/analytics/growthbook.js';
-import { fetchBootstrapData } from './services/api/bootstrap.js';
-import { type DownloadResult, downloadSessionFiles, type FilesApiConfig, parseFileSpecs } from './services/api/filesApi.js';
-import { prefetchPassesEligibility } from './services/api/referral.js';
-import { prefetchOfficialMcpUrls } from './services/mcp/officialRegistry.js';
-import type { McpSdkServerConfig, McpServerConfig, ScopedMcpServerConfig } from './services/mcp/types.js';
-import { isPolicyAllowed, loadPolicyLimits, refreshPolicyLimits, waitForPolicyLimitsToLoad } from './services/policyLimits/index.js';
-import { loadRemoteManagedSettings, refreshRemoteManagedSettings } from './services/remoteManagedSettings/index.js';
-import type { ToolInputJSONSchema } from './Tool.js';
-import { createSyntheticOutputTool, isSyntheticOutputToolEnabled } from './tools/SyntheticOutputTool/SyntheticOutputTool.js';
-import { getTools } from './tools.js';
-import { canUserConfigureAdvisor, getInitialAdvisorSetting, isAdvisorEnabled, isValidAdvisorModel, modelSupportsAdvisor } from './utils/advisor.js';
-import { isAgentSwarmsEnabled } from './utils/agentSwarmsEnabled.js';
-import { count, uniq } from './utils/array.js';
-import { installAsciicastRecorder } from './utils/asciicast.js';
-import { getSubscriptionType, isClaudeAISubscriber, prefetchAwsCredentialsAndBedRockInfoIfSafe, prefetchGcpCredentialsIfSafe, validateForceLoginOrg } from './utils/auth.js';
-import { checkHasTrustDialogAccepted, getGlobalConfig, getRemoteControlAtStartup, isAutoUpdaterDisabled, saveGlobalConfig } from './utils/config.js';
-import { seedEarlyInput, stopCapturingEarlyInput } from './utils/earlyInput.js';
-import { getInitialEffortSetting, parseEffortValue } from './utils/effort.js';
-import { getInitialFastModeSetting, isFastModeEnabled, prefetchFastModeStatus, resolveFastModeStatusFromCache } from './utils/fastMode.js';
-import { applyConfigEnvironmentVariables } from './utils/managedEnv.js';
-import { createSystemMessage, createUserMessage } from './utils/messages.js';
-import { getPlatform } from './utils/platform.js';
-import { getBaseRenderOptions } from './utils/renderOptions.js';
-import { getSessionIngressAuthToken } from './utils/sessionIngressAuth.js';
-import { settingsChangeDetector } from './utils/settings/changeDetector.js';
-import { skillChangeDetector } from './utils/skills/skillChangeDetector.js';
-import { jsonParse, writeFileSync_DEPRECATED } from './utils/slowOperations.js';
-import { computeInitialTeamContext } from './utils/swarm/reconnection.js';
-import { initializeWarningHandler } from './utils/warningHandler.js';
-import { isWorktreeModeEnabled } from './utils/worktreeModeEnabled.js';
+import { getOauthConfig } from './constants/oauth';
+import { getRemoteSessionUrl } from './constants/product';
+import { getSystemContext, getUserContext } from './context';
+import { init, initializeTelemetryAfterTrust } from './entrypoints/init';
+import { addToHistory } from './history';
+import type { Root } from './ink';
+import { launchRepl } from './replLauncher';
+import { hasGrowthBookEnvOverride, initializeGrowthBook, refreshGrowthBookAfterAuthChange } from './services/analytics/growthbook';
+import { fetchBootstrapData } from './services/api/bootstrap';
+import { type DownloadResult, downloadSessionFiles, type FilesApiConfig, parseFileSpecs } from './services/api/filesApi';
+import { prefetchPassesEligibility } from './services/api/referral';
+import { prefetchOfficialMcpUrls } from './services/mcp/officialRegistry';
+import type { McpSdkServerConfig, McpServerConfig, ScopedMcpServerConfig } from './services/mcp/types';
+import { isPolicyAllowed, loadPolicyLimits, refreshPolicyLimits, waitForPolicyLimitsToLoad } from './services/policyLimits/index';
+import { loadRemoteManagedSettings, refreshRemoteManagedSettings } from './services/remoteManagedSettings/index';
+import type { ToolInputJSONSchema } from './Tool';
+import { createSyntheticOutputTool, isSyntheticOutputToolEnabled } from './tools/SyntheticOutputTool/SyntheticOutputTool';
+import { getTools } from './tools';
+import { canUserConfigureAdvisor, getInitialAdvisorSetting, isAdvisorEnabled, isValidAdvisorModel, modelSupportsAdvisor } from './utils/advisor';
+import { isAgentSwarmsEnabled } from './utils/agentSwarmsEnabled';
+import { count, uniq } from './utils/array';
+import { installAsciicastRecorder } from './utils/asciicast';
+import { getSubscriptionType, isClaudeAISubscriber, prefetchAwsCredentialsAndBedRockInfoIfSafe, prefetchGcpCredentialsIfSafe, validateForceLoginOrg } from './utils/auth';
+import { checkHasTrustDialogAccepted, getGlobalConfig, getRemoteControlAtStartup, isAutoUpdaterDisabled, saveGlobalConfig } from './utils/config';
+import { seedEarlyInput, stopCapturingEarlyInput } from './utils/earlyInput';
+import { getInitialEffortSetting, parseEffortValue } from './utils/effort';
+import { getInitialFastModeSetting, isFastModeEnabled, prefetchFastModeStatus, resolveFastModeStatusFromCache } from './utils/fastMode';
+import { applyConfigEnvironmentVariables } from './utils/managedEnv';
+import { createSystemMessage, createUserMessage } from './utils/messages';
+import { getPlatform } from './utils/platform';
+import { getBaseRenderOptions } from './utils/renderOptions';
+import { getSessionIngressAuthToken } from './utils/sessionIngressAuth';
+import { settingsChangeDetector } from './utils/settings/changeDetector';
+import { skillChangeDetector } from './utils/skills/skillChangeDetector';
+import { jsonParse, writeFileSync_DEPRECATED } from './utils/slowOperations';
+import { computeInitialTeamContext } from './utils/swarm/reconnection';
+import { initializeWarningHandler } from './utils/warningHandler';
+import { isWorktreeModeEnabled } from './utils/worktreeModeEnabled';
 
 // Lazy require to avoid circular dependency: teammate.ts -> AppState.tsx -> ... -> main.tsx
 /* eslint-disable @typescript-eslint/no-require-imports */
-const getTeammateUtils = () => require('./utils/teammate.js') as typeof import('./utils/teammate.js');
-const getTeammatePromptAddendum = () => require('./utils/swarm/teammatePromptAddendum.js') as typeof import('./utils/swarm/teammatePromptAddendum.js');
-const getTeammateModeSnapshot = () => require('./utils/swarm/backends/teammateModeSnapshot.js') as typeof import('./utils/swarm/backends/teammateModeSnapshot.js');
+const getTeammateUtils = () => require('./utils/teammate') as typeof import('./utils/teammate');
+const getTeammatePromptAddendum = () => require('./utils/swarm/teammatePromptAddendum') as typeof import('./utils/swarm/teammatePromptAddendum');
+const getTeammateModeSnapshot = () => require('./utils/swarm/backends/teammateModeSnapshot') as typeof import('./utils/swarm/backends/teammateModeSnapshot');
 /* eslint-enable @typescript-eslint/no-require-imports */
 // Dead code elimination: conditional import for COORDINATOR_MODE
 /* eslint-disable @typescript-eslint/no-require-imports */
-const coordinatorModeModule = feature('COORDINATOR_MODE') ? require('./coordinator/coordinatorMode.js') as typeof import('./coordinator/coordinatorMode.js') : null;
+const coordinatorModeModule = feature('COORDINATOR_MODE') ? require('./coordinator/coordinatorMode') as typeof import('./coordinator/coordinatorMode') : null;
 /* eslint-enable @typescript-eslint/no-require-imports */
 // Dead code elimination: conditional import for KAIROS (assistant mode)
 /* eslint-disable @typescript-eslint/no-require-imports */
-const assistantModule = feature('KAIROS') ? require('./assistant/index.js') as typeof import('./assistant/index.js') : null;
-const kairosGate = feature('KAIROS') ? require('./assistant/gate.js') as typeof import('./assistant/gate.js') : null;
+const assistantModule = feature('KAIROS') ? require('./assistant/index') as typeof import('./assistant/index') : null;
+const kairosGate = feature('KAIROS') ? require('./assistant/gate') as typeof import('./assistant/gate') : null;
 import { relative, resolve } from 'path';
 import { isAnalyticsDisabled } from 'src/services/analytics/config.js';
 import { getFeatureValue_CACHED_MAY_BE_STALE } from 'src/services/analytics/growthbook.js';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from 'src/services/analytics/index.js';
 import { initializeAnalyticsGates } from 'src/services/analytics/sink.js';
-import { getOriginalCwd, setAdditionalDirectoriesForClaudeMd, setIsRemoteMode, setMainLoopModelOverride, setMainThreadAgentType, setTeleportedSessionInfo } from './bootstrap/state.js';
-import { filterCommandsForRemoteMode, getCommands } from './commands.js';
-import type { StatsStore } from './context/stats.js';
-import { launchAssistantInstallWizard, launchAssistantSessionChooser, launchInvalidSettingsDialog, launchResumeChooser, launchSnapshotUpdateDialog, launchTeleportRepoMismatchDialog, launchTeleportResumeWrapper } from './dialogLaunchers.js';
-import { SHOW_CURSOR } from './ink/termio/dec.js';
-import { exitWithError, exitWithMessage, getRenderContext, renderAndRun, showSetupScreens } from './interactiveHelpers.js';
-import { initBuiltinPlugins } from './plugins/bundled/index.js';
+import { getOriginalCwd, setAdditionalDirectoriesForClaudeMd, setIsRemoteMode, setMainLoopModelOverride, setMainThreadAgentType, setTeleportedSessionInfo } from './bootstrap/state';
+import { filterCommandsForRemoteMode, getCommands } from './commands';
+import type { StatsStore } from './context/stats';
+import { launchAssistantInstallWizard, launchAssistantSessionChooser, launchInvalidSettingsDialog, launchResumeChooser, launchSnapshotUpdateDialog, launchTeleportRepoMismatchDialog, launchTeleportResumeWrapper } from './dialogLaunchers';
+import { SHOW_CURSOR } from './ink/termio/dec';
+import { exitWithError, exitWithMessage, getRenderContext, renderAndRun, showSetupScreens } from './interactiveHelpers';
+import { initBuiltinPlugins } from './plugins/bundled/index';
 /* eslint-enable @typescript-eslint/no-require-imports */
-import { checkQuotaStatus } from './services/claudeAiLimits.js';
-import { getMcpToolsCommandsAndResources, prefetchAllMcpResources } from './services/mcp/client.js';
-import { VALID_INSTALLABLE_SCOPES, VALID_UPDATE_SCOPES } from './services/plugins/pluginCliCommands.js';
-import { initBundledSkills } from './skills/bundled/index.js';
-import type { AgentColorName } from './tools/AgentTool/agentColorManager.js';
-import { getActiveAgentsFromList, getAgentDefinitionsWithOverrides, isBuiltInAgent, isCustomAgent, parseAgentsFromJson } from './tools/AgentTool/loadAgentsDir.js';
-import type { LogOption } from './types/logs.js';
-import type { Message as MessageType } from './types/message.js';
-import { assertMinVersion } from './utils/autoUpdater.js';
-import { CLAUDE_IN_CHROME_SKILL_HINT, CLAUDE_IN_CHROME_SKILL_HINT_WITH_WEBBROWSER } from './utils/claudeInChrome/prompt.js';
-import { setupClaudeInChrome, shouldAutoEnableClaudeInChrome, shouldEnableClaudeInChrome } from './utils/claudeInChrome/setup.js';
-import { getContextWindowForModel } from './utils/context.js';
-import { loadConversationForResume } from './utils/conversationRecovery.js';
-import { buildDeepLinkBanner } from './utils/deepLink/banner.js';
-import { hasNodeOption, isBareMode, isEnvTruthy, isInProtectedNamespace } from './utils/envUtils.js';
-import { refreshExampleCommands } from './utils/exampleCommands.js';
-import type { FpsMetrics } from './utils/fpsTracker.js';
-import { getWorktreePaths } from './utils/getWorktreePaths.js';
-import { findGitRoot, getBranch, getIsGit, getWorktreeCount } from './utils/git.js';
-import { getGhAuthStatus } from './utils/github/ghAuthStatus.js';
-import { safeParseJSON } from './utils/json.js';
-import { logError } from './utils/log.js';
-import { getModelDeprecationWarning } from './utils/model/deprecation.js';
-import { getDefaultMainLoopModel, getUserSpecifiedModelSetting, normalizeModelStringForAPI, parseUserSpecifiedModel } from './utils/model/model.js';
-import { ensureModelStringsInitialized } from './utils/model/modelStrings.js';
-import { PERMISSION_MODES } from './utils/permissions/PermissionMode.js';
-import { checkAndDisableBypassPermissions, getAutoModeEnabledStateIfCached, initializeToolPermissionContext, initialPermissionModeFromCLI, isDefaultPermissionModeAuto, parseToolListFromCLI, removeDangerousPermissions, stripDangerousPermissionsForAutoMode, verifyAutoModeGateAccess } from './utils/permissions/permissionSetup.js';
-import { cleanupOrphanedPluginVersionsInBackground } from './utils/plugins/cacheUtils.js';
-import { initializeVersionedPlugins } from './utils/plugins/installedPluginsManager.js';
-import { getManagedPluginNames } from './utils/plugins/managedPlugins.js';
-import { getGlobExclusionsForPluginCache } from './utils/plugins/orphanedPluginFilter.js';
-import { getPluginSeedDirs } from './utils/plugins/pluginDirectories.js';
-import { countFilesRoundedRg } from './utils/ripgrep.js';
-import { processSessionStartHooks, processSetupHooks } from './utils/sessionStart.js';
-import { cacheSessionTitle, getSessionIdFromLog, loadTranscriptFromFile, saveAgentSetting, saveMode, searchSessionsByCustomTitle, sessionIdExists } from './utils/sessionStorage.js';
-import { ensureMdmSettingsLoaded } from './utils/settings/mdm/settings.js';
-import { getInitialSettings, getManagedSettingsKeysForLogging, getSettingsForSource, getSettingsWithErrors } from './utils/settings/settings.js';
-import { resetSettingsCache } from './utils/settings/settingsCache.js';
-import type { ValidationError } from './utils/settings/validation.js';
-import { DEFAULT_TASKS_MODE_TASK_LIST_ID, TASK_STATUSES } from './utils/tasks.js';
-import { logPluginLoadErrors, logPluginsEnabledForSession } from './utils/telemetry/pluginTelemetry.js';
-import { logSkillsLoaded } from './utils/telemetry/skillLoadedEvent.js';
-import { generateTempFilePath } from './utils/tempfile.js';
-import { validateUuid } from './utils/uuid.js';
+import { checkQuotaStatus } from './services/claudeAiLimits';
+import { getMcpToolsCommandsAndResources, prefetchAllMcpResources } from './services/mcp/client';
+import { VALID_INSTALLABLE_SCOPES, VALID_UPDATE_SCOPES } from './services/plugins/pluginCliCommands';
+import { initBundledSkills } from './skills/bundled/index';
+import type { AgentColorName } from './tools/AgentTool/agentColorManager';
+import { getActiveAgentsFromList, getAgentDefinitionsWithOverrides, isBuiltInAgent, isCustomAgent, parseAgentsFromJson } from './tools/AgentTool/loadAgentsDir';
+import type { LogOption } from './types/logs';
+import type { Message as MessageType } from './types/message';
+import { assertMinVersion } from './utils/autoUpdater';
+import { CLAUDE_IN_CHROME_SKILL_HINT, CLAUDE_IN_CHROME_SKILL_HINT_WITH_WEBBROWSER } from './utils/claudeInChrome/prompt';
+import { setupClaudeInChrome, shouldAutoEnableClaudeInChrome, shouldEnableClaudeInChrome } from './utils/claudeInChrome/setup';
+import { getContextWindowForModel } from './utils/context';
+import { loadConversationForResume } from './utils/conversationRecovery';
+import { buildDeepLinkBanner } from './utils/deepLink/banner';
+import { hasNodeOption, isBareMode, isEnvTruthy, isInProtectedNamespace } from './utils/envUtils';
+import { refreshExampleCommands } from './utils/exampleCommands';
+import type { FpsMetrics } from './utils/fpsTracker';
+import { getWorktreePaths } from './utils/getWorktreePaths';
+import { findGitRoot, getBranch, getIsGit, getWorktreeCount } from './utils/git';
+import { getGhAuthStatus } from './utils/github/ghAuthStatus';
+import { safeParseJSON } from './utils/json';
+import { logError } from './utils/log';
+import { getModelDeprecationWarning } from './utils/model/deprecation';
+import { getDefaultMainLoopModel, getUserSpecifiedModelSetting, normalizeModelStringForAPI, parseUserSpecifiedModel } from './utils/model/model';
+import { ensureModelStringsInitialized } from './utils/model/modelStrings';
+import { PERMISSION_MODES } from './utils/permissions/PermissionMode';
+import { checkAndDisableBypassPermissions, getAutoModeEnabledStateIfCached, initializeToolPermissionContext, initialPermissionModeFromCLI, isDefaultPermissionModeAuto, parseToolListFromCLI, removeDangerousPermissions, stripDangerousPermissionsForAutoMode, verifyAutoModeGateAccess } from './utils/permissions/permissionSetup';
+import { cleanupOrphanedPluginVersionsInBackground } from './utils/plugins/cacheUtils';
+import { initializeVersionedPlugins } from './utils/plugins/installedPluginsManager';
+import { getManagedPluginNames } from './utils/plugins/managedPlugins';
+import { getGlobExclusionsForPluginCache } from './utils/plugins/orphanedPluginFilter';
+import { getPluginSeedDirs } from './utils/plugins/pluginDirectories';
+import { countFilesRoundedRg } from './utils/ripgrep';
+import { processSessionStartHooks, processSetupHooks } from './utils/sessionStart';
+import { cacheSessionTitle, getSessionIdFromLog, loadTranscriptFromFile, saveAgentSetting, saveMode, searchSessionsByCustomTitle, sessionIdExists } from './utils/sessionStorage';
+import { ensureMdmSettingsLoaded } from './utils/settings/mdm/settings';
+import { getInitialSettings, getManagedSettingsKeysForLogging, getSettingsForSource, getSettingsWithErrors } from './utils/settings/settings';
+import { resetSettingsCache } from './utils/settings/settingsCache';
+import type { ValidationError } from './utils/settings/validation';
+import { DEFAULT_TASKS_MODE_TASK_LIST_ID, TASK_STATUSES } from './utils/tasks';
+import { logPluginLoadErrors, logPluginsEnabledForSession } from './utils/telemetry/pluginTelemetry';
+import { logSkillsLoaded } from './utils/telemetry/skillLoadedEvent';
+import { generateTempFilePath } from './utils/tempfile';
+import { validateUuid } from './utils/uuid';
 // Plugin startup checks are now handled non-blockingly in REPL.tsx
 
 import { registerMcpAddCommand } from 'src/commands/mcp/addCommand.js';
@@ -165,45 +165,45 @@ import { setCwd } from 'src/utils/Shell.js';
 import { type ProcessedResume, processResumedConversation } from 'src/utils/sessionRestore.js';
 import { parseSettingSourcesFlag } from 'src/utils/settings/constants.js';
 import { plural } from 'src/utils/stringUtils.js';
-import { type ChannelEntry, getInitialMainLoopModel, getIsNonInteractiveSession, getSdkBetas, getSessionId, getUserMsgOptIn, setAllowedChannels, setAllowedSettingSources, setChromeFlagOverride, setClientType, setCwdState, setDirectConnectServerUrl, setFlagSettingsPath, setInitialMainLoopModel, setInlinePlugins, setIsInteractive, setKairosActive, setOriginalCwd, setQuestionPreviewFormat, setSdkBetas, setSessionBypassPermissionsMode, setSessionPersistenceDisabled, setSessionSource, setUserMsgOptIn, switchSession } from './bootstrap/state.js';
+import { type ChannelEntry, getInitialMainLoopModel, getIsNonInteractiveSession, getSdkBetas, getSessionId, getUserMsgOptIn, setAllowedChannels, setAllowedSettingSources, setChromeFlagOverride, setClientType, setCwdState, setDirectConnectServerUrl, setFlagSettingsPath, setInitialMainLoopModel, setInlinePlugins, setIsInteractive, setKairosActive, setOriginalCwd, setQuestionPreviewFormat, setSdkBetas, setSessionBypassPermissionsMode, setSessionPersistenceDisabled, setSessionSource, setUserMsgOptIn, switchSession } from './bootstrap/state';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const autoModeStateModule = feature('TRANSCRIPT_CLASSIFIER') ? require('./utils/permissions/autoModeState.js') as typeof import('./utils/permissions/autoModeState.js') : null;
+const autoModeStateModule = feature('TRANSCRIPT_CLASSIFIER') ? require('./utils/permissions/autoModeState') as typeof import('./utils/permissions/autoModeState') : null;
 
 // TeleportRepoMismatchDialog, TeleportResumeWrapper dynamically imported at call sites
-import { migrateAutoUpdatesToSettings } from './migrations/migrateAutoUpdatesToSettings.js';
-import { migrateBypassPermissionsAcceptedToSettings } from './migrations/migrateBypassPermissionsAcceptedToSettings.js';
-import { migrateEnableAllProjectMcpServersToSettings } from './migrations/migrateEnableAllProjectMcpServersToSettings.js';
-import { migrateFennecToOpus } from './migrations/migrateFennecToOpus.js';
-import { migrateLegacyOpusToCurrent } from './migrations/migrateLegacyOpusToCurrent.js';
-import { migrateOpusToOpus1m } from './migrations/migrateOpusToOpus1m.js';
-import { migrateReplBridgeEnabledToRemoteControlAtStartup } from './migrations/migrateReplBridgeEnabledToRemoteControlAtStartup.js';
-import { migrateSonnet1mToSonnet45 } from './migrations/migrateSonnet1mToSonnet45.js';
-import { migrateSonnet45ToSonnet46 } from './migrations/migrateSonnet45ToSonnet46.js';
-import { resetAutoModeOptInForDefaultOffer } from './migrations/resetAutoModeOptInForDefaultOffer.js';
-import { resetProToOpusDefault } from './migrations/resetProToOpusDefault.js';
-import { createRemoteSessionConfig } from './remote/RemoteSessionManager.js';
+import { migrateAutoUpdatesToSettings } from './migrations/migrateAutoUpdatesToSettings';
+import { migrateBypassPermissionsAcceptedToSettings } from './migrations/migrateBypassPermissionsAcceptedToSettings';
+import { migrateEnableAllProjectMcpServersToSettings } from './migrations/migrateEnableAllProjectMcpServersToSettings';
+import { migrateFennecToOpus } from './migrations/migrateFennecToOpus';
+import { migrateLegacyOpusToCurrent } from './migrations/migrateLegacyOpusToCurrent';
+import { migrateOpusToOpus1m } from './migrations/migrateOpusToOpus1m';
+import { migrateReplBridgeEnabledToRemoteControlAtStartup } from './migrations/migrateReplBridgeEnabledToRemoteControlAtStartup';
+import { migrateSonnet1mToSonnet45 } from './migrations/migrateSonnet1mToSonnet45';
+import { migrateSonnet45ToSonnet46 } from './migrations/migrateSonnet45ToSonnet46';
+import { resetAutoModeOptInForDefaultOffer } from './migrations/resetAutoModeOptInForDefaultOffer';
+import { resetProToOpusDefault } from './migrations/resetProToOpusDefault';
+import { createRemoteSessionConfig } from './remote/RemoteSessionManager';
 /* eslint-enable @typescript-eslint/no-require-imports */
 // teleportWithProgress dynamically imported at call site
-import { createDirectConnectSession, DirectConnectError } from './server/createDirectConnectSession.js';
-import { initializeLspServerManager } from './services/lsp/manager.js';
-import { shouldEnablePromptSuggestion } from './services/PromptSuggestion/promptSuggestion.js';
-import { type AppState, getDefaultAppState, IDLE_SPECULATION_STATE } from './state/AppStateStore.js';
-import { onChangeAppState } from './state/onChangeAppState.js';
-import { createStore } from './state/store.js';
-import { asSessionId } from './types/ids.js';
-import { filterAllowedSdkBetas } from './utils/betas.js';
-import { isInBundledMode, isRunningWithBun } from './utils/bundledMode.js';
-import { logForDiagnosticsNoPII } from './utils/diagLogs.js';
-import { filterExistingPaths, getKnownPathsForRepo } from './utils/githubRepoPathMapping.js';
-import { clearPluginCache, loadAllPluginsCacheOnly } from './utils/plugins/pluginLoader.js';
-import { migrateChangelogFromConfig } from './utils/releaseNotes.js';
-import { SandboxManager } from './utils/sandbox/sandbox-adapter.js';
-import { fetchSession, prepareApiRequest } from './utils/teleport/api.js';
-import { checkOutTeleportedSessionBranch, processMessagesForTeleportResume, teleportToRemoteWithErrorHandling, validateGitState, validateSessionRepository } from './utils/teleport.js';
-import { shouldEnableThinkingByDefault, type ThinkingConfig } from './utils/thinking.js';
-import { initUser, resetUserCache } from './utils/user.js';
-import { getTmuxInstallInstructions, isTmuxAvailable, parsePRReference } from './utils/worktree.js';
+import { createDirectConnectSession, DirectConnectError } from './server/createDirectConnectSession';
+import { initializeLspServerManager } from './services/lsp/manager';
+import { shouldEnablePromptSuggestion } from './services/PromptSuggestion/promptSuggestion';
+import { type AppState, getDefaultAppState, IDLE_SPECULATION_STATE } from './state/AppStateStore';
+import { onChangeAppState } from './state/onChangeAppState';
+import { createStore } from './state/store';
+import { asSessionId } from './types/ids';
+import { filterAllowedSdkBetas } from './utils/betas';
+import { isInBundledMode, isRunningWithBun } from './utils/bundledMode';
+import { logForDiagnosticsNoPII } from './utils/diagLogs';
+import { filterExistingPaths, getKnownPathsForRepo } from './utils/githubRepoPathMapping';
+import { clearPluginCache, loadAllPluginsCacheOnly } from './utils/plugins/pluginLoader';
+import { migrateChangelogFromConfig } from './utils/releaseNotes';
+import { SandboxManager } from './utils/sandbox/sandbox-adapter';
+import { fetchSession, prepareApiRequest } from './utils/teleport/api';
+import { checkOutTeleportedSessionBranch, processMessagesForTeleportResume, teleportToRemoteWithErrorHandling, validateGitState, validateSessionRepository } from './utils/teleport';
+import { shouldEnableThinkingByDefault, type ThinkingConfig } from './utils/thinking';
+import { initUser, resetUserCache } from './utils/user';
+import { getTmuxInstallInstructions, isTmuxAvailable, parsePRReference } from './utils/worktree';
 
 // eslint-disable-next-line custom-rules/no-top-level-side-effects
 profileCheckpoint('main_tsx_imports_loaded');
@@ -426,7 +426,7 @@ export function startDeferredPrefetches(): void {
 
   // Event loop stall detector — logs when the main thread is blocked >500ms
   if ("external" === 'ant') {
-    void import('./utils/eventLoopStallDetector.js').then(m => m.startEventLoopStallDetector());
+    void import('./utils/eventLoopStallDetector').then(m => m.startEventLoopStallDetector());
   }
 }
 function loadSettingsFromFlag(settingsFile: string): void {
@@ -616,7 +616,7 @@ export async function main() {
       const ccUrl = rawCliArgs[ccIdx]!;
       const {
         parseConnectUrl
-      } = await import('./server/parseConnectUrl.js');
+      } = await import('./server/parseConnectUrl');
       const parsed = parseConnectUrl(ccUrl);
       _pendingConnect.dangerouslySkipPermissions = rawCliArgs.includes('--dangerously-skip-permissions');
       if (rawCliArgs.includes('-p') || rawCliArgs.includes('--print')) {
@@ -649,12 +649,12 @@ export async function main() {
     if (handleUriIdx !== -1 && process.argv[handleUriIdx + 1]) {
       const {
         enableConfigs
-      } = await import('./utils/config.js');
+      } = await import('./utils/config');
       enableConfigs();
       const uri = process.argv[handleUriIdx + 1]!;
       const {
         handleDeepLinkUri
-      } = await import('./utils/deepLink/protocolHandler.js');
+      } = await import('./utils/deepLink/protocolHandler');
       const exitCode = await handleDeepLinkUri(uri);
       process.exit(exitCode);
     }
@@ -666,11 +666,11 @@ export async function main() {
     if (process.platform === 'darwin' && process.env.__CFBundleIdentifier === 'com.anthropic.claude-code-url-handler') {
       const {
         enableConfigs
-      } = await import('./utils/config.js');
+      } = await import('./utils/config');
       enableConfigs();
       const {
         handleUrlSchemeLaunch
-      } = await import('./utils/deepLink/protocolHandler.js');
+      } = await import('./utils/deepLink/protocolHandler');
       const urlSchemeResult = await handleUrlSchemeLaunch();
       process.exit(urlSchemeResult ?? 1);
     }
@@ -930,7 +930,7 @@ async function run(): Promise<CommanderCommand> {
     // silently drop events on process.exit(). Both inits are idempotent.
     const {
       initSinks
-    } = await import('./utils/sinks.js');
+    } = await import('./utils/sinks');
     initSinks();
     profileCheckpoint('preAction_after_sinks');
 
@@ -961,7 +961,7 @@ async function run(): Promise<CommanderCommand> {
     // Load settings sync (non-blocking, fail-open)
     // CLI: uploads local settings to remote (CCR download is handled by print.ts)
     if (feature('UPLOAD_USER_SETTINGS')) {
-      void import('./services/settingsSync/index.js').then(m => m.uploadUserSettingsInBackground());
+      void import('./services/settingsSync/index').then(m => m.uploadUserSettingsInBackground());
     }
     profileCheckpoint('preAction_after_settings_sync');
   });
@@ -1730,10 +1730,10 @@ async function run(): Promise<CommanderCommand> {
       const {
         BRIEF_TOOL_NAME,
         LEGACY_BRIEF_TOOL_NAME
-      } = require('./tools/BriefTool/prompt.js') as typeof import('./tools/BriefTool/prompt.js');
+      } = require('./tools/BriefTool/prompt') as typeof import('./tools/BriefTool/prompt');
       const {
         isBriefEntitled
-      } = require('./tools/BriefTool/BriefTool.js') as typeof import('./tools/BriefTool/BriefTool.js');
+      } = require('./tools/BriefTool/BriefTool') as typeof import('./tools/BriefTool/BriefTool');
       /* eslint-enable @typescript-eslint/no-require-imports */
       const parsed = parseToolListFromCLI(baseTools);
       if ((parsed.includes(BRIEF_TOOL_NAME) || parsed.includes(LEGACY_BRIEF_TOOL_NAME)) && isBriefEntitled()) {
@@ -1872,7 +1872,7 @@ async function run(): Promise<CommanderCommand> {
     if (feature('COORDINATOR_MODE') && isEnvTruthy(process.env.CLAUDE_CODE_COORDINATOR_MODE)) {
       const {
         applyCoordinatorToolFilter
-      } = await import('./utils/toolPool.js');
+      } = await import('./utils/toolPool');
       tools = applyCoordinatorToolFilter(tools);
     }
     profileCheckpoint('action_tools_loaded');
@@ -1906,7 +1906,7 @@ async function run(): Promise<CommanderCommand> {
     const setupStart = Date.now();
     const {
       setup
-    } = await import('./setup.js');
+    } = await import('./setup');
     const messagingSocketPath = feature('UDS_INBOX') ? (options as {
       messagingSocketPath?: string;
     }).messagingSocketPath : undefined;
@@ -2185,7 +2185,7 @@ async function run(): Promise<CommanderCommand> {
       /* eslint-disable @typescript-eslint/no-require-imports */
       const {
         isBriefEntitled
-      } = require('./tools/BriefTool/BriefTool.js') as typeof import('./tools/BriefTool/BriefTool.js');
+      } = require('./tools/BriefTool/BriefTool') as typeof import('./tools/BriefTool/BriefTool');
       /* eslint-enable @typescript-eslint/no-require-imports */
       if (isBriefEntitled()) {
         setUserMsgOptIn(true);
@@ -2198,7 +2198,7 @@ async function run(): Promise<CommanderCommand> {
       proactive?: boolean;
     }).proactive || isEnvTruthy(process.env.CLAUDE_CODE_PROACTIVE)) && !coordinatorModeModule?.isCoordinatorMode()) {
       /* eslint-disable @typescript-eslint/no-require-imports */
-      const briefVisibility = feature('KAIROS') || feature('KAIROS_BRIEF') ? (require('./tools/BriefTool/BriefTool.js') as typeof import('./tools/BriefTool/BriefTool.js')).isBriefEnabled() ? 'Call SendUserMessage at checkpoints to mark where things stand.' : 'The user will see any text you output.' : 'The user will see any text you output.';
+      const briefVisibility = feature('KAIROS') || feature('KAIROS_BRIEF') ? (require('./tools/BriefTool/BriefTool') as typeof import('./tools/BriefTool/BriefTool')).isBriefEnabled() ? 'Call SendUserMessage at checkpoints to mark where things stand.' : 'The user will see any text you output.' : 'The user will see any text you output.';
       /* eslint-enable @typescript-eslint/no-require-imports */
       const proactivePrompt = `\n# Proactive Mode\n\nYou are in proactive mode. Take initiative — explore, act, and make progress without waiting for instructions.\n\nStart by briefly greeting the user.\n\nYou will receive periodic <tick> prompts. These are check-ins. Do whatever seems most useful, or call Sleep if there's nothing to do. ${briefVisibility}`;
       appendSystemPrompt = appendSystemPrompt ? `${appendSystemPrompt}\n\n${proactivePrompt}` : proactivePrompt;
@@ -2225,7 +2225,7 @@ async function run(): Promise<CommanderCommand> {
       }
       const {
         createRoot
-      } = await import('./ink.js');
+      } = await import('./ink');
       root = await createRoot(ctx.renderOptions);
 
       // Log startup time now, before any blocking dialog renders. Logging
@@ -2246,7 +2246,7 @@ async function run(): Promise<CommanderCommand> {
       if (feature('BRIDGE_MODE') && remoteControlOption !== undefined) {
         const {
           getBridgeDisabledReason
-        } = await import('./bridge/bridgeEnabled.js');
+        } = await import('./bridge/bridgeEnabled');
         const disabledReason = await getBridgeDisabledReason();
         remoteControl = disabledReason === null;
         if (disabledReason) {
@@ -2265,7 +2265,7 @@ async function run(): Promise<CommanderCommand> {
         if (choice === 'merge') {
           const {
             buildMergePrompt
-          } = await import('./components/agents/SnapshotUpdateDialog.js');
+          } = await import('./components/agents/SnapshotUpdateDialog');
           const mergePrompt = buildMergePrompt(agentDef.agentType, agentDef.memory!);
           inputPrompt = inputPrompt ? `${mergePrompt}\n\n${inputPrompt}` : mergePrompt;
         }
@@ -2290,7 +2290,7 @@ async function run(): Promise<CommanderCommand> {
         // — enrollTrustedDevice() via checkGate_CACHED_OR_BLOCKING (awaits
         // the GrowthBook reinit above), clearTrustedDeviceToken() via the
         // sync cached check (acceptable since clear is idempotent).
-        void import('./bridge/trustedDevice.js').then(m => {
+        void import('./bridge/trustedDevice').then(m => {
           m.clearTrustedDeviceToken();
           return m.enrollTrustedDevice();
         });
@@ -2487,7 +2487,7 @@ async function run(): Promise<CommanderCommand> {
       }
     }
     logForDiagnosticsNoPII('info', 'started', {
-      version: MACRO.VERSION,
+      version: '2.1.88',
       is_native_binary: isInBundledMode()
     });
     registerCleanup(async () => {
@@ -2815,9 +2815,9 @@ async function run(): Promise<CommanderCommand> {
       // that scripted calls don't need — the next interactive session reconciles.
       if (!isBareMode()) {
         startDeferredPrefetches();
-        void import('./utils/backgroundHousekeeping.js').then(m => m.startBackgroundHousekeeping());
+        void import('./utils/backgroundHousekeeping').then(m => m.startBackgroundHousekeeping());
         if ("external" === 'ant') {
-          void import('./utils/sdkHeapDumpMonitor.js').then(m => m.startSdkMemoryMonitor());
+          void import('./utils/sdkHeapDumpMonitor').then(m => m.startSdkMemoryMonitor());
         }
       }
       logSessionTelemetry();
@@ -2919,7 +2919,7 @@ async function run(): Promise<CommanderCommand> {
       /* eslint-disable @typescript-eslint/no-require-imports */
       const {
         isCcrMirrorEnabled
-      } = require('./bridge/bridgeEnabled.js') as typeof import('./bridge/bridgeEnabled.js');
+      } = require('./bridge/bridgeEnabled') as typeof import('./bridge/bridgeEnabled');
       /* eslint-enable @typescript-eslint/no-require-imports */
       ccrMirrorEnabled = isCcrMirrorEnabled();
     }
@@ -3061,7 +3061,7 @@ async function run(): Promise<CommanderCommand> {
     //   - Runtime: uploader checks github.com/anthropics/* remote + gcloud auth.
     //   - Safety: CLAUDE_CODE_DISABLE_SESSION_DATA_UPLOAD=1 bypasses (tests set this).
     // Import is dynamic + async to avoid adding startup latency.
-    const sessionUploaderPromise = "external" === 'ant' ? import('./utils/sessionDataUploader.js') : null;
+    const sessionUploaderPromise = "external" === 'ant' ? import('./utils/sessionDataUploader') : null;
 
     // Defer session uploader resolution to the onTurnComplete callback to avoid
     // adding a new top-level await in main.tsx (performance-critical path).
@@ -3107,7 +3107,7 @@ async function run(): Promise<CommanderCommand> {
         // Clear stale caches before resuming to ensure fresh file/skill discovery
         const {
           clearSessionCaches
-        } = await import('./commands/clear/caches.js');
+        } = await import('./commands/clear/caches');
         clearSessionCaches();
         const result = await loadConversationForResume(undefined /* sessionId */, undefined /* sourceFile */);
         if (!result) {
@@ -3200,7 +3200,7 @@ async function run(): Promise<CommanderCommand> {
         createSSHSession,
         createLocalSSHSession,
         SSHSessionError
-      } = await import('./ssh/createSSHSession.js');
+      } = await import('./ssh/createSSHSession');
       let sshSession;
       try {
         if (_pendingSSH.local) {
@@ -3220,7 +3220,7 @@ async function run(): Promise<CommanderCommand> {
           sshSession = await createSSHSession({
             host: _pendingSSH.host,
             cwd: _pendingSSH.cwd,
-            localVersion: MACRO.VERSION,
+            localVersion: '2.1.88',
             permissionMode: _pendingSSH.permissionMode,
             dangerouslySkipPermissions: _pendingSSH.dangerouslySkipPermissions,
             extraCliArgs: _pendingSSH.extraCliArgs
@@ -3263,7 +3263,7 @@ async function run(): Promise<CommanderCommand> {
       // loaded by useAssistantHistory on scroll-up (no blocking fetch here).
       const {
         discoverAssistantSessions
-      } = await import('./assistant/sessionDiscovery.js');
+      } = await import('./assistant/sessionDiscovery');
       let targetSessionId = _pendingAssistantChat.sessionId;
 
       // Discovery flow — list bridge environments, filter sessions
@@ -3311,7 +3311,7 @@ async function run(): Promise<CommanderCommand> {
       const {
         checkAndRefreshOAuthTokenIfNeeded,
         getClaudeAIOAuthTokens
-      } = await import('./utils/auth.js');
+      } = await import('./utils/auth');
       await checkAndRefreshOAuthTokenIfNeeded();
       let apiCreds;
       try {
@@ -3358,7 +3358,7 @@ async function run(): Promise<CommanderCommand> {
       // Clear stale caches before resuming to ensure fresh file/skill discovery
       const {
         clearSessionCaches
-      } = await import('./commands/clear/caches.js');
+      } = await import('./commands/clear/caches');
       clearSessionCaches();
       let messages: MessageType[] | null = null;
       let processedResume: ProcessedResume | undefined = undefined;
@@ -3462,7 +3462,7 @@ async function run(): Promise<CommanderCommand> {
         // Create remote session config for the REPL
         const {
           getClaudeAIOAuthTokens: getTokensForRemote
-        } = await import('./utils/auth.js');
+        } = await import('./utils/auth');
         const getAccessTokenForRemote = (): string => getTokensForRemote()?.accessToken ?? apiCreds.accessToken;
         const remoteSessionConfig = createRemoteSessionConfig(createdSession.id, getAccessTokenForRemote, apiCreds.orgUUID, hasInitialPrompt);
 
@@ -3560,7 +3560,7 @@ async function run(): Promise<CommanderCommand> {
             // Use progress UI for teleport
             const {
               teleportWithProgress
-            } = await import('./components/TeleportProgress.js');
+            } = await import('./components/TeleportProgress');
             const result = await teleportWithProgress(root, teleport);
             // Track teleported session for reliability logging
             setTeleportedSessionInfo({
@@ -3584,7 +3584,7 @@ async function run(): Promise<CommanderCommand> {
           const {
             parseCcshareId,
             loadCcshare
-          } = await import('./utils/ccshareResume.js');
+          } = await import('./utils/ccshareResume');
           const ccshareId = parseCcshareId(options.resume);
           if (ccshareId) {
             try {
@@ -3805,7 +3805,7 @@ async function run(): Promise<CommanderCommand> {
         pendingHookMessages
       }, renderAndRun);
     }
-  }).version(`${MACRO.VERSION} (Claude Code)`, '-v, --version', 'Output the version number');
+  }).version(`${'2.1.88'} (Claude Code)`, '-v, --version', 'Output the version number');
 
   // Worktree flags
   program.option('-w, --worktree [name]', 'Create a new git worktree for this session (optionally specify a name)');
@@ -3901,7 +3901,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       mcpServeHandler
-    } = await import('./cli/handlers/mcp.js');
+    } = await import('./cli/handlers/mcp');
     await mcpServeHandler({
       debug,
       verbose
@@ -3918,19 +3918,19 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       mcpRemoveHandler
-    } = await import('./cli/handlers/mcp.js');
+    } = await import('./cli/handlers/mcp');
     await mcpRemoveHandler(name, options);
   });
   mcp.command('list').description('List configured MCP servers. Note: The workspace trust dialog is skipped and stdio servers from .mcp.json are spawned for health checks. Only use this command in directories you trust.').action(async () => {
     const {
       mcpListHandler
-    } = await import('./cli/handlers/mcp.js');
+    } = await import('./cli/handlers/mcp');
     await mcpListHandler();
   });
   mcp.command('get <name>').description('Get details about an MCP server. Note: The workspace trust dialog is skipped and stdio servers from .mcp.json are spawned for health checks. Only use this command in directories you trust.').action(async (name: string) => {
     const {
       mcpGetHandler
-    } = await import('./cli/handlers/mcp.js');
+    } = await import('./cli/handlers/mcp');
     await mcpGetHandler(name);
   });
   mcp.command('add-json <name> <json>').description('Add an MCP server (stdio or SSE) with a JSON string').option('-s, --scope <scope>', 'Configuration scope (local, user, or project)', 'local').option('--client-secret', 'Prompt for OAuth client secret (or set MCP_CLIENT_SECRET env var)').action(async (name: string, json: string, options: {
@@ -3939,7 +3939,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       mcpAddJsonHandler
-    } = await import('./cli/handlers/mcp.js');
+    } = await import('./cli/handlers/mcp');
     await mcpAddJsonHandler(name, json, options);
   });
   mcp.command('add-from-claude-desktop').description('Import MCP servers from Claude Desktop (Mac and WSL only)').option('-s, --scope <scope>', 'Configuration scope (local, user, or project)', 'local').action(async (options: {
@@ -3947,13 +3947,13 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       mcpAddFromDesktopHandler
-    } = await import('./cli/handlers/mcp.js');
+    } = await import('./cli/handlers/mcp');
     await mcpAddFromDesktopHandler(options);
   });
   mcp.command('reset-project-choices').description('Reset all approved and rejected project-scoped (.mcp.json) servers within this project').action(async () => {
     const {
       mcpResetChoicesHandler
-    } = await import('./cli/handlers/mcp.js');
+    } = await import('./cli/handlers/mcp');
     await mcpResetChoicesHandler();
   });
 
@@ -3973,24 +3973,24 @@ async function run(): Promise<CommanderCommand> {
       } = await import('crypto');
       const {
         startServer
-      } = await import('./server/server.js');
+      } = await import('./server/server');
       const {
         SessionManager
-      } = await import('./server/sessionManager.js');
+      } = await import('./server/sessionManager');
       const {
         DangerousBackend
-      } = await import('./server/backends/dangerousBackend.js');
+      } = await import('./server/backends/dangerousBackend');
       const {
         printBanner
-      } = await import('./server/serverBanner.js');
+      } = await import('./server/serverBanner');
       const {
         createServerLogger
-      } = await import('./server/serverLog.js');
+      } = await import('./server/serverLog');
       const {
         writeServerLock,
         removeServerLock,
         probeRunningServer
-      } = await import('./server/lockfile.js');
+      } = await import('./server/lockfile');
       const existing = await probeRunningServer();
       if (existing) {
         process.stderr.write(`A claude server is already running (pid ${existing.pid}) at ${existing.httpUrl}\n`);
@@ -4062,7 +4062,7 @@ async function run(): Promise<CommanderCommand> {
     }) => {
       const {
         parseConnectUrl
-      } = await import('./server/parseConnectUrl.js');
+      } = await import('./server/parseConnectUrl');
       const {
         serverUrl,
         authToken
@@ -4088,7 +4088,7 @@ async function run(): Promise<CommanderCommand> {
       }
       const {
         runConnectHeadless
-      } = await import('./server/connectHeadless.js');
+      } = await import('./server/connectHeadless');
       const prompt = typeof opts.print === 'string' ? opts.print : '';
       const interactive = opts.print === true;
       await runConnectHeadless(connectConfig, prompt, opts.outputFormat, interactive);
@@ -4111,7 +4111,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       authLogin
-    } = await import('./cli/handlers/auth.js');
+    } = await import('./cli/handlers/auth');
     await authLogin({
       email,
       sso,
@@ -4125,13 +4125,13 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       authStatus
-    } = await import('./cli/handlers/auth.js');
+    } = await import('./cli/handlers/auth');
     await authStatus(opts);
   });
   auth.command('logout').description('Log out from your Anthropic account').action(async () => {
     const {
       authLogout
-    } = await import('./cli/handlers/auth.js');
+    } = await import('./cli/handlers/auth');
     await authLogout();
   });
 
@@ -4151,7 +4151,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       pluginValidateHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await pluginValidateHandler(manifestPath, options);
   });
 
@@ -4163,7 +4163,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       pluginListHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await pluginListHandler(options);
   });
 
@@ -4176,7 +4176,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       marketplaceAddHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await marketplaceAddHandler(source, options);
   });
   marketplaceCmd.command('list').description('List all configured marketplaces').option('--json', 'Output as JSON').addOption(coworkOption()).action(async (options: {
@@ -4185,7 +4185,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       marketplaceListHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await marketplaceListHandler(options);
   });
   marketplaceCmd.command('remove <name>').alias('rm').description('Remove a configured marketplace').addOption(coworkOption()).action(async (name: string, options: {
@@ -4193,7 +4193,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       marketplaceRemoveHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await marketplaceRemoveHandler(name, options);
   });
   marketplaceCmd.command('update [name]').description('Update marketplace(s) from their source - updates all if no name specified').addOption(coworkOption()).action(async (name: string | undefined, options: {
@@ -4201,7 +4201,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       marketplaceUpdateHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await marketplaceUpdateHandler(name, options);
   });
 
@@ -4212,7 +4212,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       pluginInstallHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await pluginInstallHandler(plugin, options);
   });
 
@@ -4224,7 +4224,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       pluginUninstallHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await pluginUninstallHandler(plugin, options);
   });
 
@@ -4235,7 +4235,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       pluginEnableHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await pluginEnableHandler(plugin, options);
   });
 
@@ -4247,7 +4247,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       pluginDisableHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await pluginDisableHandler(plugin, options);
   });
 
@@ -4258,7 +4258,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       pluginUpdateHandler
-    } = await import('./cli/handlers/plugins.js');
+    } = await import('./cli/handlers/plugins');
     await pluginUpdateHandler(plugin, options);
   });
   // END ANT-ONLY
@@ -4269,7 +4269,7 @@ async function run(): Promise<CommanderCommand> {
       setupTokenHandler
     }, {
       createRoot
-    }] = await Promise.all([import('./cli/handlers/util.js'), import('./ink.js')]);
+    }] = await Promise.all([import('./cli/handlers/util'), import('./ink')]);
     const root = await createRoot(getBaseRenderOptions(false));
     await setupTokenHandler(root);
   });
@@ -4278,7 +4278,7 @@ async function run(): Promise<CommanderCommand> {
   program.command('agents').description('List configured agents').option('--setting-sources <sources>', 'Comma-separated list of setting sources to load (user, project, local).').action(async () => {
     const {
       agentsHandler
-    } = await import('./cli/handlers/agents.js');
+    } = await import('./cli/handlers/agents');
     await agentsHandler();
     process.exit(0);
   });
@@ -4290,21 +4290,21 @@ async function run(): Promise<CommanderCommand> {
       autoModeCmd.command('defaults').description('Print the default auto mode environment, allow, and deny rules as JSON').action(async () => {
         const {
           autoModeDefaultsHandler
-        } = await import('./cli/handlers/autoMode.js');
+        } = await import('./cli/handlers/autoMode');
         autoModeDefaultsHandler();
         process.exit(0);
       });
       autoModeCmd.command('config').description('Print the effective auto mode config as JSON: your settings where set, defaults otherwise').action(async () => {
         const {
           autoModeConfigHandler
-        } = await import('./cli/handlers/autoMode.js');
+        } = await import('./cli/handlers/autoMode');
         autoModeConfigHandler();
         process.exit(0);
       });
       autoModeCmd.command('critique').description('Get AI feedback on your custom auto mode rules').option('--model <model>', 'Override which model is used').action(async options => {
         const {
           autoModeCritiqueHandler
-        } = await import('./cli/handlers/autoMode.js');
+        } = await import('./cli/handlers/autoMode');
         await autoModeCritiqueHandler(options);
         process.exit();
       });
@@ -4327,7 +4327,7 @@ async function run(): Promise<CommanderCommand> {
       // If somehow reached, delegate to bridgeMain.
       const {
         bridgeMain
-      } = await import('./bridge/bridgeMain.js');
+      } = await import('./bridge/bridgeMain');
       await bridgeMain(process.argv.slice(3));
     });
   }
@@ -4348,7 +4348,7 @@ async function run(): Promise<CommanderCommand> {
       doctorHandler
     }, {
       createRoot
-    }] = await Promise.all([import('./cli/handlers/util.js'), import('./ink.js')]);
+    }] = await Promise.all([import('./cli/handlers/util'), import('./ink')]);
     const root = await createRoot(getBaseRenderOptions(false));
     await doctorHandler(root);
   });
@@ -4397,7 +4397,7 @@ async function run(): Promise<CommanderCommand> {
   }) => {
     const {
       installHandler
-    } = await import('./cli/handlers/util.js');
+    } = await import('./cli/handlers/util');
     await installHandler(target, options);
   });
 
@@ -4412,7 +4412,7 @@ async function run(): Promise<CommanderCommand> {
     program.command('log').description('[ANT-ONLY] Manage conversation logs.').argument('[number|sessionId]', 'A number (0, 1, 2, etc.) to display a specific log, or the sesssion ID (uuid) of a log', validateLogId).action(async (logId: string | number | undefined) => {
       const {
         logHandler
-      } = await import('./cli/handlers/ant.js');
+      } = await import('./cli/handlers/ant');
       await logHandler(logId);
     });
 
@@ -4420,7 +4420,7 @@ async function run(): Promise<CommanderCommand> {
     program.command('error').description('[ANT-ONLY] View error logs. Optionally provide a number (0, -1, -2, etc.) to display a specific log.').argument('[number]', 'A number (0, 1, 2, etc.) to display a specific log', parseInt).action(async (number: number | undefined) => {
       const {
         errorHandler
-      } = await import('./cli/handlers/ant.js');
+      } = await import('./cli/handlers/ant');
       await errorHandler(number);
     });
 
@@ -4433,7 +4433,7 @@ Examples:
   $ claude export <uuid>.jsonl output.txt           Render JSONL session file to text`).action(async (source: string, outputFile: string) => {
       const {
         exportHandler
-      } = await import('./cli/handlers/ant.js');
+      } = await import('./cli/handlers/ant');
       await exportHandler(source, outputFile);
     });
     if ("external" === 'ant') {
@@ -4444,7 +4444,7 @@ Examples:
       }) => {
         const {
           taskCreateHandler
-        } = await import('./cli/handlers/ant.js');
+        } = await import('./cli/handlers/ant');
         await taskCreateHandler(subject, opts);
       });
       taskCmd.command('list').description('List all tasks').option('-l, --list <id>', 'Task list ID (defaults to "tasklist")').option('--pending', 'Show only pending tasks').option('--json', 'Output as JSON').action(async (opts: {
@@ -4454,7 +4454,7 @@ Examples:
       }) => {
         const {
           taskListHandler
-        } = await import('./cli/handlers/ant.js');
+        } = await import('./cli/handlers/ant');
         await taskListHandler(opts);
       });
       taskCmd.command('get <id>').description('Get details of a task').option('-l, --list <id>', 'Task list ID (defaults to "tasklist")').action(async (id: string, opts: {
@@ -4462,7 +4462,7 @@ Examples:
       }) => {
         const {
           taskGetHandler
-        } = await import('./cli/handlers/ant.js');
+        } = await import('./cli/handlers/ant');
         await taskGetHandler(id, opts);
       });
       taskCmd.command('update <id>').description('Update a task').option('-l, --list <id>', 'Task list ID (defaults to "tasklist")').option('-s, --status <status>', `Set status (${TASK_STATUSES.join(', ')})`).option('--subject <text>', 'Update subject').option('-d, --description <text>', 'Update description').option('--owner <agentId>', 'Set owner').option('--clear-owner', 'Clear owner').action(async (id: string, opts: {
@@ -4475,7 +4475,7 @@ Examples:
       }) => {
         const {
           taskUpdateHandler
-        } = await import('./cli/handlers/ant.js');
+        } = await import('./cli/handlers/ant');
         await taskUpdateHandler(id, opts);
       });
       taskCmd.command('dir').description('Show the tasks directory path').option('-l, --list <id>', 'Task list ID (defaults to "tasklist")').action(async (opts: {
@@ -4483,7 +4483,7 @@ Examples:
       }) => {
         const {
           taskDirHandler
-        } = await import('./cli/handlers/ant.js');
+        } = await import('./cli/handlers/ant');
         await taskDirHandler(opts);
       });
     }
@@ -4496,7 +4496,7 @@ Examples:
     }) => {
       const {
         completionHandler
-      } = await import('./cli/handlers/ant.js');
+      } = await import('./cli/handlers/ant');
       await completionHandler(shell, opts, program);
     });
   }
@@ -4613,7 +4613,7 @@ function maybeActivateProactive(options: unknown): void {
     proactive?: boolean;
   }).proactive || isEnvTruthy(process.env.CLAUDE_CODE_PROACTIVE))) {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const proactiveModule = require('./proactive/index.js');
+    const proactiveModule = require('./proactive/index');
     if (!proactiveModule.isProactiveActive()) {
       proactiveModule.activateProactive('command');
     }
@@ -4636,7 +4636,7 @@ function maybeActivateBrief(options: unknown): void {
   /* eslint-disable @typescript-eslint/no-require-imports */
   const {
     isBriefEntitled
-  } = require('./tools/BriefTool/BriefTool.js') as typeof import('./tools/BriefTool/BriefTool.js');
+  } = require('./tools/BriefTool/BriefTool') as typeof import('./tools/BriefTool/BriefTool');
   /* eslint-enable @typescript-eslint/no-require-imports */
   const entitled = isBriefEntitled();
   if (entitled) {

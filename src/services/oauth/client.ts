@@ -9,18 +9,18 @@ import {
   CLAUDE_AI_INFERENCE_SCOPE,
   CLAUDE_AI_OAUTH_SCOPES,
   getOauthConfig,
-} from '../../constants/oauth.js'
+} from '../../constants/oauth'
 import {
   checkAndRefreshOAuthTokenIfNeeded,
   getClaudeAIOAuthTokens,
   hasProfileScope,
   isClaudeAISubscriber,
   saveApiKey,
-} from '../../utils/auth.js'
-import type { AccountInfo } from '../../utils/config.js'
-import { getGlobalConfig, saveGlobalConfig } from '../../utils/config.js'
-import { logForDebugging } from '../../utils/debug.js'
-import { getOauthProfileFromOauthToken } from './getOauthProfile.js'
+} from '../../utils/auth'
+import type { AccountInfo } from '../../utils/config'
+import { getGlobalConfig, saveGlobalConfig } from '../../utils/config'
+import { logForDebugging } from '../../utils/debug'
+import { getOauthProfileFromOauthToken } from './getOauthProfile'
 import type {
   BillingType,
   OAuthProfileResponse,
@@ -29,7 +29,7 @@ import type {
   RateLimitTier,
   SubscriptionType,
   UserRolesResponse,
-} from './types.js'
+} from './types'
 
 /**
  * Check if the user has Claude.ai authentication scope

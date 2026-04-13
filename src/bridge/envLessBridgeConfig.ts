@@ -1,8 +1,8 @@
 import { z } from 'zod/v4'
-import { getFeatureValue_DEPRECATED } from '../services/analytics/growthbook.js'
-import { lazySchema } from '../utils/lazySchema.js'
-import { lt } from '../utils/semver.js'
-import { isEnvLessBridgeEnabled } from './bridgeEnabled.js'
+import { getFeatureValue_DEPRECATED } from '../services/analytics/growthbook'
+import { lazySchema } from '../utils/lazySchema'
+import { lt } from '../utils/semver'
+import { isEnvLessBridgeEnabled } from './bridgeEnabled'
 
 export type EnvLessBridgeConfig = {
   // withRetry — init-phase backoff (createSession, POST /bridge, recovery /bridge)
@@ -146,8 +146,8 @@ export async function getEnvLessBridgeConfig(): Promise<EnvLessBridgeConfig> {
  */
 export async function checkEnvLessBridgeMinVersion(): Promise<string | null> {
   const cfg = await getEnvLessBridgeConfig()
-  if (cfg.min_version && lt(MACRO.VERSION, cfg.min_version)) {
-    return `Your version of Claude Code (${MACRO.VERSION}) is too old for Remote Control.\nVersion ${cfg.min_version} or higher is required. Run \`claude update\` to update.`
+  if (cfg.min_version && lt('2.1.88', cfg.min_version)) {
+    return `Your version of Claude Code (${'2.1.88'}) is too old for Remote Control.\nVersion ${cfg.min_version} or higher is required. Run \`claude update\` to update.`
   }
   return null
 }

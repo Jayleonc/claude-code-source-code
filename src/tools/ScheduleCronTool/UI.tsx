@@ -1,10 +1,10 @@
 import React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { Text } from '../../ink.js';
-import { truncate } from '../../utils/format.js';
-import type { CreateOutput } from './CronCreateTool.js';
-import type { DeleteOutput } from './CronDeleteTool.js';
-import type { ListOutput } from './CronListTool.js';
+import { MessageResponse } from '../../components/MessageResponse';
+import { Text } from '../../ink';
+import { truncate } from '../../utils/format';
+import type { CreateOutput } from './CronCreateTool';
+import type { DeleteOutput } from './CronDeleteTool';
+import type { ListOutput } from './CronListTool';
 
 // --- CronCreate -------------------------------------------------------------
 

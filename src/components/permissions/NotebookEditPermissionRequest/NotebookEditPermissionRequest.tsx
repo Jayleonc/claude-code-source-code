@@ -2,12 +2,12 @@ import { c as _c } from "react/compiler-runtime";
 import { basename } from 'path';
 import React from 'react';
 import type { z } from 'zod/v4';
-import { Text } from '../../../ink.js';
-import { NotebookEditTool } from '../../../tools/NotebookEditTool/NotebookEditTool.js';
-import { logError } from '../../../utils/log.js';
-import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.js';
-import type { PermissionRequestProps } from '../PermissionRequest.js';
-import { NotebookEditToolDiff } from './NotebookEditToolDiff.js';
+import { Text } from '../../../ink';
+import { NotebookEditTool } from '../../../tools/NotebookEditTool/NotebookEditTool';
+import { logError } from '../../../utils/log';
+import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog';
+import type { PermissionRequestProps } from '../PermissionRequest';
+import { NotebookEditToolDiff } from './NotebookEditToolDiff';
 type NotebookEditInput = z.infer<typeof NotebookEditTool.inputSchema>;
 export function NotebookEditPermissionRequest(props) {
   const $ = _c(52);

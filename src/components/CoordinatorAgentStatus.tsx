@@ -9,16 +9,16 @@ import { c as _c } from "react/compiler-runtime";
 
 import figures from 'figures';
 import * as React from 'react';
-import { BLACK_CIRCLE, PAUSE_ICON, PLAY_ICON } from '../constants/figures.js';
-import { useTerminalSize } from '../hooks/useTerminalSize.js';
-import { stringWidth } from '../ink/stringWidth.js';
-import { Box, Text, wrapText } from '../ink.js';
-import { type AppState, useAppState, useSetAppState } from '../state/AppState.js';
-import { enterTeammateView, exitTeammateView } from '../state/teammateViewHelpers.js';
-import { isPanelAgentTask, type LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.js';
-import { formatDuration, formatNumber } from '../utils/format.js';
-import { evictTerminalTask } from '../utils/task/framework.js';
-import { isTerminalStatus } from './tasks/taskStatusUtils.js';
+import { BLACK_CIRCLE, PAUSE_ICON, PLAY_ICON } from '../constants/figures';
+import { useTerminalSize } from '../hooks/useTerminalSize';
+import { stringWidth } from '../ink/stringWidth';
+import { Box, Text, wrapText } from '../ink';
+import { type AppState, useAppState, useSetAppState } from '../state/AppState';
+import { enterTeammateView, exitTeammateView } from '../state/teammateViewHelpers';
+import { isPanelAgentTask, type LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask';
+import { formatDuration, formatNumber } from '../utils/format';
+import { evictTerminalTask } from '../utils/task/framework';
+import { isTerminalStatus } from './tasks/taskStatusUtils';
 
 /**
  * Which panel-managed tasks currently have a visible row.

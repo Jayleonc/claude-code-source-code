@@ -30,26 +30,26 @@ import {
 } from 'src/utils/model/model.js'
 import { getModelStrings } from 'src/utils/model/modelStrings.js'
 import { getAPIProvider } from 'src/utils/model/providers.js'
-import { getIsNonInteractiveSession } from '../../bootstrap/state.js'
+import { getIsNonInteractiveSession } from '../../bootstrap/state'
 import {
   API_PDF_MAX_PAGES,
   PDF_TARGET_RAW_SIZE,
-} from '../../constants/apiLimits.js'
-import { isEnvTruthy } from '../../utils/envUtils.js'
-import { formatFileSize } from '../../utils/format.js'
-import { ImageResizeError } from '../../utils/imageResizer.js'
-import { ImageSizeError } from '../../utils/imageValidation.js'
+} from '../../constants/apiLimits'
+import { isEnvTruthy } from '../../utils/envUtils'
+import { formatFileSize } from '../../utils/format'
+import { ImageResizeError } from '../../utils/imageResizer'
+import { ImageSizeError } from '../../utils/imageValidation'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
-} from '../analytics/index.js'
+} from '../analytics/index'
 import {
   type ClaudeAILimits,
   getRateLimitErrorMessage,
   type OverageDisabledReason,
-} from '../claudeAiLimits.js'
-import { shouldProcessRateLimits } from '../rateLimitMocking.js' // Used for /mock-limits command
-import { extractConnectionErrorDetails, formatAPIError } from './errorUtils.js'
+} from '../claudeAiLimits'
+import { shouldProcessRateLimits } from '../rateLimitMocking' // Used for /mock-limits command
+import { extractConnectionErrorDetails, formatAPIError } from './errorUtils'
 
 export const API_ERROR_MESSAGE_PREFIX = 'API Error'
 
@@ -685,7 +685,7 @@ export function getAssistantMessageFromError(
     }
 
     if (process.env.USER_TYPE === 'ant') {
-      const baseMessage = `API Error: 400 ${error.message}\n\nRun /share and post the JSON file to ${MACRO.FEEDBACK_CHANNEL}.`
+      const baseMessage = `API Error: 400 ${error.message}\n\nRun /share and post the JSON file to ${'https://github.com/anthropics/claude-code/issues'}.`
       const rewindInstruction = getIsNonInteractiveSession()
         ? ''
         : ' Then, use /rewind to recover the conversation.'
@@ -760,8 +760,8 @@ export function getAssistantMessageFromError(
     const orgId = getOauthAccountInfo()?.organizationUuid
     const baseMsg = `[ANT-ONLY] Your org isn't gated into the \`${model}\` model. Either run \`claude\` with \`ANTHROPIC_MODEL=${getDefaultMainLoopModelSetting()}\``
     const msg = orgId
-      ? `${baseMsg} or share your orgId (${orgId}) in ${MACRO.FEEDBACK_CHANNEL} for help getting access.`
-      : `${baseMsg} or reach out in ${MACRO.FEEDBACK_CHANNEL} for help getting access.`
+      ? `${baseMsg} or share your orgId (${orgId}) in ${'https://github.com/anthropics/claude-code/issues'} for help getting access.`
+      : `${baseMsg} or reach out in ${'https://github.com/anthropics/claude-code/issues'} for help getting access.`
 
     return createAssistantAPIErrorMessage({
       content: msg,

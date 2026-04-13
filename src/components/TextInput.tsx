@@ -1,16 +1,16 @@
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import chalk from 'chalk';
 import React, { useMemo, useRef } from 'react';
-import { useVoiceState } from '../context/voice.js';
-import { useClipboardImageHint } from '../hooks/useClipboardImageHint.js';
-import { useSettings } from '../hooks/useSettings.js';
-import { useTextInput } from '../hooks/useTextInput.js';
-import { Box, color, useAnimationFrame, useTerminalFocus, useTheme } from '../ink.js';
-import type { BaseTextInputProps } from '../types/textInputTypes.js';
-import { isEnvTruthy } from '../utils/envUtils.js';
-import type { TextHighlight } from '../utils/textHighlighting.js';
-import { BaseTextInput } from './BaseTextInput.js';
-import { hueToRgb } from './Spinner/utils.js';
+import { useVoiceState } from '../context/voice';
+import { useClipboardImageHint } from '../hooks/useClipboardImageHint';
+import { useSettings } from '../hooks/useSettings';
+import { useTextInput } from '../hooks/useTextInput';
+import { Box, color, useAnimationFrame, useTerminalFocus, useTheme } from '../ink';
+import type { BaseTextInputProps } from '../types/textInputTypes';
+import { isEnvTruthy } from '../utils/envUtils';
+import type { TextHighlight } from '../utils/textHighlighting';
+import { BaseTextInput } from './BaseTextInput';
+import { hueToRgb } from './Spinner/utils';
 
 // Block characters for waveform bars: space (silent) + 8 rising block elements.
 const BARS = ' \u2581\u2582\u2583\u2584\u2585\u2586\u2587\u2588';

@@ -2,15 +2,15 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useExitOnCtrlCDWithKeybindings } from 'src/hooks/useExitOnCtrlCDWithKeybindings.js';
 import { useShortcutDisplay } from 'src/keybindings/useShortcutDisplay.js';
-import { builtInCommandNames, type Command, type CommandResultDisplay, INTERNAL_ONLY_COMMANDS } from '../../commands.js';
-import { useIsInsideModal } from '../../context/modalContext.js';
-import { useTerminalSize } from '../../hooks/useTerminalSize.js';
-import { Box, Link, Text } from '../../ink.js';
-import { useKeybinding } from '../../keybindings/useKeybinding.js';
-import { Pane } from '../design-system/Pane.js';
-import { Tab, Tabs } from '../design-system/Tabs.js';
-import { Commands } from './Commands.js';
-import { General } from './General.js';
+import { builtInCommandNames, type Command, type CommandResultDisplay, INTERNAL_ONLY_COMMANDS } from '../../commands';
+import { useIsInsideModal } from '../../context/modalContext';
+import { useTerminalSize } from '../../hooks/useTerminalSize';
+import { Box, Link, Text } from '../../ink';
+import { useKeybinding } from '../../keybindings/useKeybinding';
+import { Pane } from '../design-system/Pane';
+import { Tab, Tabs } from '../design-system/Tabs';
+import { Commands } from './Commands';
+import { General } from './General';
 type Props = {
   onClose: (result?: string, options?: {
     display?: CommandResultDisplay;
@@ -138,7 +138,7 @@ export function HelpV2(t0) {
   const t5 = insideModal ? undefined : maxHeight;
   let t6;
   if ($[31] !== tabs) {
-    t6 = <Tabs title={false ? "/help" : `Claude Code v${MACRO.VERSION}`} color="professionalBlue" defaultTab="general">{tabs}</Tabs>;
+    t6 = <Tabs title={false ? "/help" : `Claude Code v${'2.1.88'}`} color="professionalBlue" defaultTab="general">{tabs}</Tabs>;
     $[31] = tabs;
     $[32] = t6;
   } else {

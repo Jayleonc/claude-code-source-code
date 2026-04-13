@@ -1,16 +1,16 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { useSearchInput } from '../../hooks/useSearchInput.js';
-import { useTerminalSize } from '../../hooks/useTerminalSize.js';
-import type { KeyboardEvent } from '../../ink/events/keyboard-event.js';
-import { clamp } from '../../ink/layout/geometry.js';
-import { Box, Text, useTerminalFocus } from '../../ink.js';
-import { SearchBox } from '../SearchBox.js';
-import { Byline } from './Byline.js';
-import { KeyboardShortcutHint } from './KeyboardShortcutHint.js';
-import { ListItem } from './ListItem.js';
-import { Pane } from './Pane.js';
+import { useSearchInput } from '../../hooks/useSearchInput';
+import { useTerminalSize } from '../../hooks/useTerminalSize';
+import type { KeyboardEvent } from '../../ink/events/keyboard-event';
+import { clamp } from '../../ink/layout/geometry';
+import { Box, Text, useTerminalFocus } from '../../ink';
+import { SearchBox } from '../SearchBox';
+import { Byline } from './Byline';
+import { KeyboardShortcutHint } from './KeyboardShortcutHint';
+import { ListItem } from './ListItem';
+import { Pane } from './Pane';
 type PickerAction<T> = {
   /** Hint label shown in the byline, e.g. "mention" → "Tab to mention". */
   action: string;

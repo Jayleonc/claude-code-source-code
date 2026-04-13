@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { Box, Text } from '../../ink.js';
-import { useDebouncedDigitInput } from './useDebouncedDigitInput.js';
-import type { FeedbackSurveyResponse } from './utils.js';
+import { Box, Text } from '../../ink';
+import { useDebouncedDigitInput } from './useDebouncedDigitInput';
+import type { FeedbackSurveyResponse } from './utils';
 type Props = {
   onSelect: (option: FeedbackSurveyResponse) => void;
   inputValue: string;

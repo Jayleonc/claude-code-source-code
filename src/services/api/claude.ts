@@ -27,7 +27,7 @@ import {
 import {
   getAttributionHeader,
   getCLISyspromptPrefix,
-} from '../../constants/system.js'
+} from '../../constants/system'
 import {
   getEmptyToolPermissionContext,
   type QueryChainTracking,
@@ -35,43 +35,43 @@ import {
   type ToolPermissionContext,
   type Tools,
   toolMatchesName,
-} from '../../Tool.js'
-import type { AgentDefinition } from '../../tools/AgentTool/loadAgentsDir.js'
+} from '../../Tool'
+import type { AgentDefinition } from '../../tools/AgentTool/loadAgentsDir'
 import {
   type ConnectorTextBlock,
   type ConnectorTextDelta,
   isConnectorTextBlock,
-} from '../../types/connectorText.js'
+} from '../../types/connectorText'
 import type {
   AssistantMessage,
   Message,
   StreamEvent,
   SystemAPIErrorMessage,
   UserMessage,
-} from '../../types/message.js'
+} from '../../types/message'
 import {
   type CacheScope,
   logAPIPrefix,
   splitSysPromptPrefix,
   toolToAPISchema,
-} from '../../utils/api.js'
-import { getOauthAccountInfo } from '../../utils/auth.js'
+} from '../../utils/api'
+import { getOauthAccountInfo } from '../../utils/auth'
 import {
   getBedrockExtraBodyParamsBetas,
   getMergedBetas,
   getModelBetas,
-} from '../../utils/betas.js'
-import { getOrCreateUserID } from '../../utils/config.js'
+} from '../../utils/betas'
+import { getOrCreateUserID } from '../../utils/config'
 import {
   CAPPED_DEFAULT_MAX_TOKENS,
   getModelMaxOutputTokens,
   getSonnet1mExpTreatmentEnabled,
-} from '../../utils/context.js'
-import { resolveAppliedEffort } from '../../utils/effort.js'
-import { isEnvTruthy } from '../../utils/envUtils.js'
-import { errorMessage } from '../../utils/errors.js'
-import { computeFingerprintFromMessages } from '../../utils/fingerprint.js'
-import { captureAPIRequest, logError } from '../../utils/log.js'
+} from '../../utils/context'
+import { resolveAppliedEffort } from '../../utils/effort'
+import { isEnvTruthy } from '../../utils/envUtils'
+import { errorMessage } from '../../utils/errors'
+import { computeFingerprintFromMessages } from '../../utils/fingerprint'
+import { captureAPIRequest, logError } from '../../utils/log'
 import {
   createAssistantAPIErrorMessage,
   createUserMessage,
@@ -81,32 +81,32 @@ import {
   stripAdvisorBlocks,
   stripCallerFieldFromAssistantMessage,
   stripToolReferenceBlocksFromUserMessage,
-} from '../../utils/messages.js'
+} from '../../utils/messages'
 import {
   getDefaultOpusModel,
   getDefaultSonnetModel,
   getSmallFastModel,
   isNonCustomOpusModel,
-} from '../../utils/model/model.js'
+} from '../../utils/model/model'
 import {
   asSystemPrompt,
   type SystemPrompt,
-} from '../../utils/systemPromptType.js'
-import { tokenCountFromLastAPIResponse } from '../../utils/tokens.js'
-import { getDynamicConfig_BLOCKS_ON_INIT } from '../analytics/growthbook.js'
+} from '../../utils/systemPromptType'
+import { tokenCountFromLastAPIResponse } from '../../utils/tokens'
+import { getDynamicConfig_BLOCKS_ON_INIT } from '../analytics/growthbook'
 import {
   currentLimits,
   extractQuotaStatusFromError,
   extractQuotaStatusFromHeaders,
-} from '../claudeAiLimits.js'
-import { getAPIContextManagement } from '../compact/apiMicrocompact.js'
+} from '../claudeAiLimits'
+import { getAPIContextManagement } from '../compact/apiMicrocompact'
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const autoModeStateModule = feature('TRANSCRIPT_CLASSIFIER')
-  ? (require('../../utils/permissions/autoModeState.js') as typeof import('../../utils/permissions/autoModeState.js'))
+  ? (require('../../utils/permissions/autoModeState') as typeof import('../../utils/permissions/autoModeState'))
   : null
 
-import { feature } from 'bun:bundle'
+import { feature } from '../../stubs/bun-bundle'
 import type { ClientOptions } from '@anthropic-ai/sdk'
 import {
   APIConnectionTimeoutError,
@@ -188,53 +188,53 @@ import {
   isDeferredToolsDeltaEnabled,
   isToolSearchEnabled,
 } from 'src/utils/toolSearch.js'
-import { API_MAX_MEDIA_PER_REQUEST } from '../../constants/apiLimits.js'
-import { ADVISOR_BETA_HEADER } from '../../constants/betas.js'
+import { API_MAX_MEDIA_PER_REQUEST } from '../../constants/apiLimits'
+import { ADVISOR_BETA_HEADER } from '../../constants/betas'
 import {
   formatDeferredToolLine,
   isDeferredTool,
   TOOL_SEARCH_TOOL_NAME,
-} from '../../tools/ToolSearchTool/prompt.js'
-import { count } from '../../utils/array.js'
-import { insertBlockAfterToolResults } from '../../utils/contentArray.js'
-import { validateBoundedIntEnvVar } from '../../utils/envValidation.js'
-import { safeParseJSON } from '../../utils/json.js'
-import { getInferenceProfileBackingModel } from '../../utils/model/bedrock.js'
+} from '../../tools/ToolSearchTool/prompt'
+import { count } from '../../utils/array'
+import { insertBlockAfterToolResults } from '../../utils/contentArray'
+import { validateBoundedIntEnvVar } from '../../utils/envValidation'
+import { safeParseJSON } from '../../utils/json'
+import { getInferenceProfileBackingModel } from '../../utils/model/bedrock'
 import {
   normalizeModelStringForAPI,
   parseUserSpecifiedModel,
-} from '../../utils/model/model.js'
+} from '../../utils/model/model'
 import {
   startSessionActivity,
   stopSessionActivity,
-} from '../../utils/sessionActivity.js'
-import { jsonStringify } from '../../utils/slowOperations.js'
+} from '../../utils/sessionActivity'
+import { jsonStringify } from '../../utils/slowOperations'
 import {
   isBetaTracingEnabled,
   type LLMRequestNewContext,
   startLLMRequestSpan,
-} from '../../utils/telemetry/sessionTracing.js'
+} from '../../utils/telemetry/sessionTracing'
 /* eslint-enable @typescript-eslint/no-require-imports */
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
-} from '../analytics/index.js'
+} from '../analytics/index'
 import {
   consumePendingCacheEdits,
   getPinnedCacheEdits,
   markToolsSentToAPIState,
   pinCacheEdits,
-} from '../compact/microCompact.js'
-import { getInitializationStatus } from '../lsp/manager.js'
-import { isToolFromMcpServer } from '../mcp/utils.js'
-import { withStreamingVCR, withVCR } from '../vcr.js'
-import { CLIENT_REQUEST_ID_HEADER, getAnthropicClient } from './client.js'
+} from '../compact/microCompact'
+import { getInitializationStatus } from '../lsp/manager'
+import { isToolFromMcpServer } from '../mcp/utils'
+import { withStreamingVCR, withVCR } from '../vcr'
+import { CLIENT_REQUEST_ID_HEADER, getAnthropicClient } from './client'
 import {
   API_ERROR_MESSAGE_PREFIX,
   CUSTOM_OFF_SWITCH_MESSAGE,
   getAssistantMessageFromError,
   getErrorMessageIfRefusal,
-} from './errors.js'
+} from './errors'
 import {
   EMPTY_USAGE,
   type GlobalCacheStrategy,
@@ -242,19 +242,19 @@ import {
   logAPIQuery,
   logAPISuccessAndDuration,
   type NonNullableUsage,
-} from './logging.js'
+} from './logging'
 import {
   CACHE_TTL_1HOUR_MS,
   checkResponseForCacheBreak,
   recordPromptState,
-} from './promptCacheBreakDetection.js'
+} from './promptCacheBreakDetection'
 import {
   CannotRetryError,
   FallbackTriggeredError,
   is529Error,
   type RetryContext,
   withRetry,
-} from './withRetry.js'
+} from './withRetry'
 
 // Define a type that represents valid JSON values
 type JsonValue = string | number | boolean | null | JsonObject | JsonArray
@@ -1192,7 +1192,7 @@ async function* queryModel(
       isCachedMicrocompactEnabled,
       isModelSupportedForCacheEditing,
       getCachedMCConfig,
-    } = await import('../compact/cachedMicrocompact.js')
+    } = await import('../compact/cachedMicrocompact')
     const betas = await import('src/constants/betas.js')
     cacheEditingBetaHeader = betas.CACHE_EDITING_BETA_HEADER
     const featureEnabled = isCachedMicrocompactEnabled()

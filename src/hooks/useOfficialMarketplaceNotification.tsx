@@ -1,9 +1,9 @@
 import * as React from 'react';
-import type { Notification } from '../context/notifications.js';
-import { Text } from '../ink.js';
-import { logForDebugging } from '../utils/debug.js';
-import { checkAndInstallOfficialMarketplace } from '../utils/plugins/officialMarketplaceStartupCheck.js';
-import { useStartupNotification } from './notifs/useStartupNotification.js';
+import type { Notification } from '../context/notifications';
+import { Text } from '../ink';
+import { logForDebugging } from '../utils/debug';
+import { checkAndInstallOfficialMarketplace } from '../utils/plugins/officialMarketplaceStartupCheck';
+import { useStartupNotification } from './notifs/useStartupNotification';
 
 /**
  * Hook that handles official marketplace auto-installation and shows

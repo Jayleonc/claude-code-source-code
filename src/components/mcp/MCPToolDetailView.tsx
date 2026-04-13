@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { Box, Text } from '../../ink.js';
-import { extractMcpToolDisplayName, getMcpDisplayName } from '../../services/mcp/mcpStringUtils.js';
-import type { Tool } from '../../Tool.js';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.js';
-import { Dialog } from '../design-system/Dialog.js';
-import type { ServerInfo } from './types.js';
+import { Box, Text } from '../../ink';
+import { extractMcpToolDisplayName, getMcpDisplayName } from '../../services/mcp/mcpStringUtils';
+import type { Tool } from '../../Tool';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint';
+import { Dialog } from '../design-system/Dialog';
+import type { ServerInfo } from './types';
 type Props = {
   tool: Tool;
   server: ServerInfo;

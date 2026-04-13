@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import type { StructuredPatchHunk } from 'diff';
 import * as React from 'react';
-import { useTerminalSize } from '../hooks/useTerminalSize.js';
-import { Box, Text } from '../ink.js';
-import { count } from '../utils/array.js';
-import { MessageResponse } from './MessageResponse.js';
-import { StructuredDiffList } from './StructuredDiffList.js';
+import { useTerminalSize } from '../hooks/useTerminalSize';
+import { Box, Text } from '../ink';
+import { count } from '../utils/array';
+import { MessageResponse } from './MessageResponse';
+import { StructuredDiffList } from './StructuredDiffList';
 type Props = {
   filePath: string;
   structuredPatch: StructuredPatchHunk[];

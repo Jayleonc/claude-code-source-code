@@ -1,17 +1,17 @@
 // biome-ignore-all assist/source/organizeImports: ANT-ONLY import markers must not be reordered
-import { Box, Text } from '../ink.js';
+import { Box, Text } from '../ink';
 import * as React from 'react';
-import { getLargeMemoryFiles, MAX_MEMORY_CHARACTER_COUNT, type MemoryFileInfo } from './claudemd.js';
+import { getLargeMemoryFiles, MAX_MEMORY_CHARACTER_COUNT, type MemoryFileInfo } from './claudemd';
 import figures from 'figures';
-import { getCwd } from './cwd.js';
+import { getCwd } from './cwd';
 import { relative } from 'path';
-import { formatNumber } from './format.js';
-import type { getGlobalConfig } from './config.js';
-import { getAnthropicApiKeyWithSource, getApiKeyFromConfigOrMacOSKeychain, getAuthTokenSource, isClaudeAISubscriber } from './auth.js';
-import type { AgentDefinitionsResult } from '../tools/AgentTool/loadAgentsDir.js';
-import { getAgentDescriptionsTotalTokens, AGENT_DESCRIPTIONS_THRESHOLD } from './statusNoticeHelpers.js';
-import { isSupportedJetBrainsTerminal, toIDEDisplayName, getTerminalIdeType } from './ide.js';
-import { isJetBrainsPluginInstalledCachedSync } from './jetbrains.js';
+import { formatNumber } from './format';
+import type { getGlobalConfig } from './config';
+import { getAnthropicApiKeyWithSource, getApiKeyFromConfigOrMacOSKeychain, getAuthTokenSource, isClaudeAISubscriber } from './auth';
+import type { AgentDefinitionsResult } from '../tools/AgentTool/loadAgentsDir';
+import { getAgentDescriptionsTotalTokens, AGENT_DESCRIPTIONS_THRESHOLD } from './statusNoticeHelpers';
+import { isSupportedJetBrainsTerminal, toIDEDisplayName, getTerminalIdeType } from './ide';
+import { isJetBrainsPluginInstalledCachedSync } from './jetbrains';
 
 // Types
 export type StatusNoticeType = 'warning' | 'info';

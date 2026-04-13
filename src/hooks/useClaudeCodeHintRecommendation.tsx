@@ -10,13 +10,13 @@ import { c as _c } from "react/compiler-runtime";
  */
 
 import * as React from 'react';
-import { useNotifications } from '../context/notifications.js';
-import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, type AnalyticsMetadata_I_VERIFIED_THIS_IS_PII_TAGGED, logEvent } from '../services/analytics/index.js';
-import { clearPendingHint, getPendingHintSnapshot, markShownThisSession, subscribeToPendingHint } from '../utils/claudeCodeHints.js';
-import { logForDebugging } from '../utils/debug.js';
-import { disableHintRecommendations, markHintPluginShown, type PluginHintRecommendation, resolvePluginHint } from '../utils/plugins/hintRecommendation.js';
-import { installPluginFromMarketplace } from '../utils/plugins/pluginInstallationHelpers.js';
-import { installPluginAndNotify, usePluginRecommendationBase } from './usePluginRecommendationBase.js';
+import { useNotifications } from '../context/notifications';
+import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, type AnalyticsMetadata_I_VERIFIED_THIS_IS_PII_TAGGED, logEvent } from '../services/analytics/index';
+import { clearPendingHint, getPendingHintSnapshot, markShownThisSession, subscribeToPendingHint } from '../utils/claudeCodeHints';
+import { logForDebugging } from '../utils/debug';
+import { disableHintRecommendations, markHintPluginShown, type PluginHintRecommendation, resolvePluginHint } from '../utils/plugins/hintRecommendation';
+import { installPluginFromMarketplace } from '../utils/plugins/pluginInstallationHelpers';
+import { installPluginAndNotify, usePluginRecommendationBase } from './usePluginRecommendationBase';
 type UseClaudeCodeHintRecommendationResult = {
   recommendation: PluginHintRecommendation | null;
   handleResponse: (response: 'yes' | 'no' | 'disable') => void;

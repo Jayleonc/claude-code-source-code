@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import type { ReactNode } from 'react';
 import React from 'react';
-import { supportsHyperlinks } from '../supports-hyperlinks.js';
-import Text from './Text.js';
+import { supportsHyperlinks } from '../supports-hyperlinks';
+import Text from './Text';
 export type Props = {
   readonly children?: ReactNode;
   readonly url: string;

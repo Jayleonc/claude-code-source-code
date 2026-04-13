@@ -6,10 +6,10 @@ import type { DeepImmutable } from 'src/types/utils.js';
 import { truncate } from 'src/utils/format.js';
 import { toInkColor } from 'src/utils/ink.js';
 import { plural } from 'src/utils/stringUtils.js';
-import { DIAMOND_FILLED, DIAMOND_OPEN } from '../../constants/figures.js';
-import { RemoteSessionProgress } from './RemoteSessionProgress.js';
-import { ShellProgress, TaskStatusText } from './ShellProgress.js';
-import { describeTeammateActivity } from './taskStatusUtils.js';
+import { DIAMOND_FILLED, DIAMOND_OPEN } from '../../constants/figures';
+import { RemoteSessionProgress } from './RemoteSessionProgress';
+import { ShellProgress, TaskStatusText } from './ShellProgress';
+import { describeTeammateActivity } from './taskStatusUtils';
 type Props = {
   task: DeepImmutable<BackgroundTaskState>;
   maxActivityWidth?: number;

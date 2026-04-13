@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import type { CommandResultDisplay } from 'src/commands.js';
 import { logEvent } from 'src/services/analytics/index.js';
 import { logForDebugging } from 'src/utils/debug.js';
-import { Box, Text } from '../ink.js';
-import { execFileNoThrow } from '../utils/execFileNoThrow.js';
-import { getPlansDirectory } from '../utils/plans.js';
-import { setCwd } from '../utils/Shell.js';
-import { cleanupWorktree, getCurrentWorktreeSession, keepWorktree, killTmuxSession } from '../utils/worktree.js';
-import { Select } from './CustomSelect/select.js';
-import { Dialog } from './design-system/Dialog.js';
-import { Spinner } from './Spinner.js';
+import { Box, Text } from '../ink';
+import { execFileNoThrow } from '../utils/execFileNoThrow';
+import { getPlansDirectory } from '../utils/plans';
+import { setCwd } from '../utils/Shell';
+import { cleanupWorktree, getCurrentWorktreeSession, keepWorktree, killTmuxSession } from '../utils/worktree';
+import { Select } from './CustomSelect/select';
+import { Dialog } from './design-system/Dialog';
+import { Spinner } from './Spinner';
 
 // Inline require breaks the cycle this file would otherwise close:
 // sessionStorage → commands → exit → ExitFlow → here. All call sites
@@ -17,7 +17,7 @@ import { Spinner } from './Spinner.js';
 function recordWorktreeExit(): void {
   /* eslint-disable @typescript-eslint/no-require-imports */
   ;
-  (require('../utils/sessionStorage.js') as typeof import('../utils/sessionStorage.js')).saveWorktreeState(null);
+  (require('../utils/sessionStorage') as typeof import('../utils/sessionStorage')).saveWorktreeState(null);
   /* eslint-enable @typescript-eslint/no-require-imports */
 }
 type Props = {

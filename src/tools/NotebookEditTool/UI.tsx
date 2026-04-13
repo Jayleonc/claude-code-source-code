@@ -4,15 +4,15 @@ import type { Message, ProgressMessage } from 'src/types/message.js';
 import { extractTag } from 'src/utils/messages.js';
 import type { ThemeName } from 'src/utils/theme.js';
 import type { z } from 'zod/v4';
-import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.js';
-import { FilePathLink } from '../../components/FilePathLink.js';
-import { HighlightedCode } from '../../components/HighlightedCode.js';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { NotebookEditToolUseRejectedMessage } from '../../components/NotebookEditToolUseRejectedMessage.js';
-import { Box, Text } from '../../ink.js';
-import type { Tools } from '../../Tool.js';
-import { getDisplayPath } from '../../utils/file.js';
-import type { inputSchema, Output } from './NotebookEditTool.js';
+import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage';
+import { FilePathLink } from '../../components/FilePathLink';
+import { HighlightedCode } from '../../components/HighlightedCode';
+import { MessageResponse } from '../../components/MessageResponse';
+import { NotebookEditToolUseRejectedMessage } from '../../components/NotebookEditToolUseRejectedMessage';
+import { Box, Text } from '../../ink';
+import type { Tools } from '../../Tool';
+import { getDisplayPath } from '../../utils/file';
+import type { inputSchema, Output } from './NotebookEditTool';
 export function getToolUseSummary(input: Partial<z.infer<ReturnType<typeof inputSchema>>> | undefined): string | null {
   if (!input?.notebook_path) {
     return null;

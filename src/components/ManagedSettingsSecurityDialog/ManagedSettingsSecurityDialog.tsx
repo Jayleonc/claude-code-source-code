@@ -1,12 +1,12 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings.js';
-import { Box, Text } from '../../ink.js';
-import { useKeybinding } from '../../keybindings/useKeybinding.js';
-import type { SettingsJson } from '../../utils/settings/types.js';
-import { Select } from '../CustomSelect/index.js';
-import { PermissionDialog } from '../permissions/PermissionDialog.js';
-import { extractDangerousSettings, formatDangerousSettingsList } from './utils.js';
+import { useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings';
+import { Box, Text } from '../../ink';
+import { useKeybinding } from '../../keybindings/useKeybinding';
+import type { SettingsJson } from '../../utils/settings/types';
+import { Select } from '../CustomSelect/index';
+import { PermissionDialog } from '../permissions/PermissionDialog';
+import { extractDangerousSettings, formatDangerousSettingsList } from './utils';
 type Props = {
   settings: SettingsJson;
   onAccept: () => void;

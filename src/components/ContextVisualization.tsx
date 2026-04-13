@@ -1,14 +1,14 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import * as React from 'react';
-import { Box, Text } from '../ink.js';
-import type { ContextData } from '../utils/analyzeContext.js';
-import { generateContextSuggestions } from '../utils/contextSuggestions.js';
-import { getDisplayPath } from '../utils/file.js';
-import { formatTokens } from '../utils/format.js';
-import { getSourceDisplayName, type SettingSource } from '../utils/settings/constants.js';
-import { plural } from '../utils/stringUtils.js';
-import { ContextSuggestions } from './ContextSuggestions.js';
+import { Box, Text } from '../ink';
+import type { ContextData } from '../utils/analyzeContext';
+import { generateContextSuggestions } from '../utils/contextSuggestions';
+import { getDisplayPath } from '../utils/file';
+import { formatTokens } from '../utils/format';
+import { getSourceDisplayName, type SettingSource } from '../utils/settings/constants';
+import { plural } from '../utils/stringUtils';
+import { ContextSuggestions } from './ContextSuggestions';
 const RESERVED_CATEGORY_NAME = 'Autocompact buffer';
 
 /**
@@ -29,7 +29,7 @@ function CollapseStatus() {
         const {
           getStats,
           isContextCollapseEnabled
-        } = require("../services/contextCollapse/index.js") as typeof import('../services/contextCollapse/index.js');
+        } = require("../services/contextCollapse/index") as typeof import('../services/contextCollapse/index');
         if (!isContextCollapseEnabled()) {
           t1 = null;
           break bb0;

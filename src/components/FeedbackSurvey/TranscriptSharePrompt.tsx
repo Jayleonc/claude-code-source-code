@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { BLACK_CIRCLE } from '../../constants/figures.js';
-import { Box, Text } from '../../ink.js';
-import { useDebouncedDigitInput } from './useDebouncedDigitInput.js';
+import { BLACK_CIRCLE } from '../../constants/figures';
+import { Box, Text } from '../../ink';
+import { useDebouncedDigitInput } from './useDebouncedDigitInput';
 export type TranscriptShareResponse = 'yes' | 'no' | 'dont_ask_again';
 type Props = {
   onSelect: (option: TranscriptShareResponse) => void;

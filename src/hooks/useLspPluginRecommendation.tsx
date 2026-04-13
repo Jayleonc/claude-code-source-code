@@ -13,16 +13,16 @@ import { c as _c } from "react/compiler-runtime";
 
 import { extname, join } from 'path';
 import * as React from 'react';
-import { hasShownLspRecommendationThisSession, setLspRecommendationShownThisSession } from '../bootstrap/state.js';
-import { useNotifications } from '../context/notifications.js';
-import { useAppState } from '../state/AppState.js';
-import { saveGlobalConfig } from '../utils/config.js';
-import { logForDebugging } from '../utils/debug.js';
-import { logError } from '../utils/log.js';
-import { addToNeverSuggest, getMatchingLspPlugins, incrementIgnoredCount } from '../utils/plugins/lspRecommendation.js';
-import { cacheAndRegisterPlugin } from '../utils/plugins/pluginInstallationHelpers.js';
-import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.js';
-import { installPluginAndNotify, usePluginRecommendationBase } from './usePluginRecommendationBase.js';
+import { hasShownLspRecommendationThisSession, setLspRecommendationShownThisSession } from '../bootstrap/state';
+import { useNotifications } from '../context/notifications';
+import { useAppState } from '../state/AppState';
+import { saveGlobalConfig } from '../utils/config';
+import { logForDebugging } from '../utils/debug';
+import { logError } from '../utils/log';
+import { addToNeverSuggest, getMatchingLspPlugins, incrementIgnoredCount } from '../utils/plugins/lspRecommendation';
+import { cacheAndRegisterPlugin } from '../utils/plugins/pluginInstallationHelpers';
+import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings';
+import { installPluginAndNotify, usePluginRecommendationBase } from './usePluginRecommendationBase';
 
 // Threshold for detecting timeout vs explicit dismiss (ms)
 // Menu auto-dismisses at 30s, so anything over 28s is likely timeout

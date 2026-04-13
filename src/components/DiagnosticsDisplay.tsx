@@ -1,12 +1,12 @@
 import { c as _c } from "react/compiler-runtime";
 import { relative } from 'path';
 import React from 'react';
-import { Box, Text } from '../ink.js';
-import { DiagnosticTrackingService } from '../services/diagnosticTracking.js';
-import type { Attachment } from '../utils/attachments.js';
-import { getCwd } from '../utils/cwd.js';
-import { CtrlOToExpand } from './CtrlOToExpand.js';
-import { MessageResponse } from './MessageResponse.js';
+import { Box, Text } from '../ink';
+import { DiagnosticTrackingService } from '../services/diagnosticTracking';
+import type { Attachment } from '../utils/attachments';
+import { getCwd } from '../utils/cwd';
+import { CtrlOToExpand } from './CtrlOToExpand';
+import { MessageResponse } from './MessageResponse';
 type DiagnosticsAttachment = Extract<Attachment, {
   type: 'diagnostics';
 }>;

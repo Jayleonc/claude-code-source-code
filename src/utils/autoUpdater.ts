@@ -8,24 +8,24 @@ import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
 } from 'src/services/analytics/index.js'
-import { type ReleaseChannel, saveGlobalConfig } from './config.js'
-import { logForDebugging } from './debug.js'
-import { env } from './env.js'
-import { getClaudeConfigHomeDir } from './envUtils.js'
-import { ClaudeError, getErrnoCode, isENOENT } from './errors.js'
-import { execFileNoThrowWithCwd } from './execFileNoThrow.js'
-import { getFsImplementation } from './fsOperations.js'
-import { gracefulShutdownSync } from './gracefulShutdown.js'
-import { logError } from './log.js'
-import { gte, lt } from './semver.js'
-import { getInitialSettings } from './settings/settings.js'
+import { type ReleaseChannel, saveGlobalConfig } from './config'
+import { logForDebugging } from './debug'
+import { env } from './env'
+import { getClaudeConfigHomeDir } from './envUtils'
+import { ClaudeError, getErrnoCode, isENOENT } from './errors'
+import { execFileNoThrowWithCwd } from './execFileNoThrow'
+import { getFsImplementation } from './fsOperations'
+import { gracefulShutdownSync } from './gracefulShutdown'
+import { logError } from './log'
+import { gte, lt } from './semver'
+import { getInitialSettings } from './settings/settings'
 import {
   filterClaudeAliases,
   getShellConfigPaths,
   readFileLines,
   writeFileLines,
-} from './shellConfig.js'
-import { jsonParse } from './slowOperations.js'
+} from './shellConfig'
+import { jsonParse } from './slowOperations'
 
 const GCS_BUCKET_URL =
   'https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases'
@@ -79,11 +79,11 @@ export async function assertMinVersion(): Promise<void> {
 
     if (
       versionConfig.minVersion &&
-      lt(MACRO.VERSION, versionConfig.minVersion)
+      lt('2.1.88', versionConfig.minVersion)
     ) {
       // biome-ignore lint/suspicious/noConsole:: intentional console output
       console.error(`
-It looks like your version of Claude Code (${MACRO.VERSION}) needs an update.
+It looks like your version of Claude Code (${'2.1.88'}) needs an update.
 A newer version (${versionConfig.minVersion} or higher) is required to continue.
 
 To update, please run:
@@ -325,7 +325,7 @@ export async function getLatestVersion(
   // which could be maliciously crafted to redirect to an attacker's registry
   const result = await execFileNoThrowWithCwd(
     'npm',
-    ['view', `${MACRO.PACKAGE_URL}@${npmTag}`, 'version', '--prefer-online'],
+    ['view', `${'@anthropic-ai/claude-code'}@${npmTag}`, 'version', '--prefer-online'],
     { abortSignal: AbortSignal.timeout(5000), cwd: homedir() },
   )
   if (result.code !== 0) {
@@ -356,7 +356,7 @@ export async function getNpmDistTags(): Promise<NpmDistTags> {
   // Run from home directory to avoid reading project-level .npmrc
   const result = await execFileNoThrowWithCwd(
     'npm',
-    ['view', MACRO.PACKAGE_URL, 'dist-tags', '--json', '--prefer-online'],
+    ['view', '@anthropic-ai/claude-code', 'dist-tags', '--json', '--prefer-online'],
     { abortSignal: AbortSignal.timeout(5000), cwd: homedir() },
   )
 
@@ -425,7 +425,7 @@ export async function getVersionHistory(limit: number): Promise<string[]> {
 
   // Use native package URL when available to ensure we only show versions
   // that have native binaries (not all JS package versions have native builds)
-  const packageUrl = MACRO.NATIVE_PACKAGE_URL ?? MACRO.PACKAGE_URL
+  const packageUrl = MACRO.NATIVE_PACKAGE_URL ?? '@anthropic-ai/claude-code'
 
   // Run from home directory to avoid reading project-level .npmrc
   const result = await execFileNoThrowWithCwd(
@@ -500,8 +500,8 @@ To fix this issue:
 
     // Use specific version if provided, otherwise use latest
     const packageSpec = specificVersion
-      ? `${MACRO.PACKAGE_URL}@${specificVersion}`
-      : MACRO.PACKAGE_URL
+      ? `${'@anthropic-ai/claude-code'}@${specificVersion}`
+      : '@anthropic-ai/claude-code'
 
     // Run from home directory to avoid reading project-level .npmrc/.bunfig.toml
     // which could be maliciously crafted to redirect to an attacker's registry

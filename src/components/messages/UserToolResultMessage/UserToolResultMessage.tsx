@@ -1,14 +1,14 @@
 import { c as _c } from "react/compiler-runtime";
 import type { ToolResultBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import * as React from 'react';
-import type { Tools } from '../../../Tool.js';
-import type { NormalizedUserMessage, ProgressMessage } from '../../../types/message.js';
-import { type buildMessageLookups, CANCEL_MESSAGE, INTERRUPT_MESSAGE_FOR_TOOL_USE, REJECT_MESSAGE } from '../../../utils/messages.js';
-import { UserToolCanceledMessage } from './UserToolCanceledMessage.js';
-import { UserToolErrorMessage } from './UserToolErrorMessage.js';
-import { UserToolRejectMessage } from './UserToolRejectMessage.js';
-import { UserToolSuccessMessage } from './UserToolSuccessMessage.js';
-import { useGetToolFromMessages } from './utils.js';
+import type { Tools } from '../../../Tool';
+import type { NormalizedUserMessage, ProgressMessage } from '../../../types/message';
+import { type buildMessageLookups, CANCEL_MESSAGE, INTERRUPT_MESSAGE_FOR_TOOL_USE, REJECT_MESSAGE } from '../../../utils/messages';
+import { UserToolCanceledMessage } from './UserToolCanceledMessage';
+import { UserToolErrorMessage } from './UserToolErrorMessage';
+import { UserToolRejectMessage } from './UserToolRejectMessage';
+import { UserToolSuccessMessage } from './UserToolSuccessMessage';
+import { useGetToolFromMessages } from './utils';
 type Props = {
   param: ToolResultBlockParam;
   message: NormalizedUserMessage;

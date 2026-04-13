@@ -9,14 +9,14 @@
  * 4. Can be idle (waiting for work) or active (processing)
  */
 
-import { isTerminalTaskStatus, type SetAppState, type Task, type TaskStateBase } from '../../Task.js';
-import type { Message } from '../../types/message.js';
-import { logForDebugging } from '../../utils/debug.js';
-import { createUserMessage } from '../../utils/messages.js';
-import { killInProcessTeammate } from '../../utils/swarm/spawnInProcess.js';
-import { updateTaskState } from '../../utils/task/framework.js';
-import type { InProcessTeammateTaskState } from './types.js';
-import { appendCappedMessage, isInProcessTeammateTask } from './types.js';
+import { isTerminalTaskStatus, type SetAppState, type Task, type TaskStateBase } from '../../Task';
+import type { Message } from '../../types/message';
+import { logForDebugging } from '../../utils/debug';
+import { createUserMessage } from '../../utils/messages';
+import { killInProcessTeammate } from '../../utils/swarm/spawnInProcess';
+import { updateTaskState } from '../../utils/task/framework';
+import type { InProcessTeammateTaskState } from './types';
+import { appendCappedMessage, isInProcessTeammateTask } from './types';
 
 /**
  * InProcessTeammateTask - Handles in-process teammate execution.

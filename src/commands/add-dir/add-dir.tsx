@@ -2,16 +2,16 @@ import { c as _c } from "react/compiler-runtime";
 import chalk from 'chalk';
 import figures from 'figures';
 import React, { useEffect } from 'react';
-import { getAdditionalDirectoriesForClaudeMd, setAdditionalDirectoriesForClaudeMd } from '../../bootstrap/state.js';
-import type { LocalJSXCommandContext } from '../../commands.js';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { AddWorkspaceDirectory } from '../../components/permissions/rules/AddWorkspaceDirectory.js';
-import { Box, Text } from '../../ink.js';
-import type { LocalJSXCommandOnDone } from '../../types/command.js';
-import { applyPermissionUpdate, persistPermissionUpdate } from '../../utils/permissions/PermissionUpdate.js';
-import type { PermissionUpdateDestination } from '../../utils/permissions/PermissionUpdateSchema.js';
-import { SandboxManager } from '../../utils/sandbox/sandbox-adapter.js';
-import { addDirHelpMessage, validateDirectoryForWorkspace } from './validation.js';
+import { getAdditionalDirectoriesForClaudeMd, setAdditionalDirectoriesForClaudeMd } from '../../bootstrap/state';
+import type { LocalJSXCommandContext } from '../../commands';
+import { MessageResponse } from '../../components/MessageResponse';
+import { AddWorkspaceDirectory } from '../../components/permissions/rules/AddWorkspaceDirectory';
+import { Box, Text } from '../../ink';
+import type { LocalJSXCommandOnDone } from '../../types/command';
+import { applyPermissionUpdate, persistPermissionUpdate } from '../../utils/permissions/PermissionUpdate';
+import type { PermissionUpdateDestination } from '../../utils/permissions/PermissionUpdateSchema';
+import { SandboxManager } from '../../utils/sandbox/sandbox-adapter';
+import { addDirHelpMessage, validateDirectoryForWorkspace } from './validation';
 function AddDirError(t0) {
   const $ = _c(10);
   const {

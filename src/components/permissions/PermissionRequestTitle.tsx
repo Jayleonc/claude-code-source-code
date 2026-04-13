@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { Box, Text } from '../../ink.js';
-import type { Theme } from '../../utils/theme.js';
-import type { WorkerBadgeProps } from './WorkerBadge.js';
+import { Box, Text } from '../../ink';
+import type { Theme } from '../../utils/theme';
+import type { WorkerBadgeProps } from './WorkerBadge';
 type Props = {
   title: string;
   subtitle?: React.ReactNode;

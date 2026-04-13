@@ -1,32 +1,32 @@
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import * as React from 'react';
 import { memo, useCallback, useEffect, useRef } from 'react';
 import { logEvent } from 'src/services/analytics/index.js';
 import { useAppState, useSetAppState } from 'src/state/AppState.js';
 import type { PermissionMode } from 'src/utils/permissions/PermissionMode.js';
-import { getIsRemoteMode, getKairosActive, getMainThreadAgentType, getOriginalCwd, getSdkBetas, getSessionId } from '../bootstrap/state.js';
-import { DEFAULT_OUTPUT_STYLE_NAME } from '../constants/outputStyles.js';
-import { useNotifications } from '../context/notifications.js';
-import { getTotalAPIDuration, getTotalCost, getTotalDuration, getTotalInputTokens, getTotalLinesAdded, getTotalLinesRemoved, getTotalOutputTokens } from '../cost-tracker.js';
-import { useMainLoopModel } from '../hooks/useMainLoopModel.js';
-import { type ReadonlySettings, useSettings } from '../hooks/useSettings.js';
-import { Ansi, Box, Text } from '../ink.js';
-import { getRawUtilization } from '../services/claudeAiLimits.js';
-import type { Message } from '../types/message.js';
-import type { StatusLineCommandInput } from '../types/statusLine.js';
-import type { VimMode } from '../types/textInputTypes.js';
-import { checkHasTrustDialogAccepted } from '../utils/config.js';
-import { calculateContextPercentages, getContextWindowForModel } from '../utils/context.js';
-import { getCwd } from '../utils/cwd.js';
-import { logForDebugging } from '../utils/debug.js';
-import { isFullscreenEnvEnabled } from '../utils/fullscreen.js';
-import { createBaseHookInput, executeStatusLineCommand } from '../utils/hooks.js';
-import { getLastAssistantMessage } from '../utils/messages.js';
-import { getRuntimeMainLoopModel, type ModelName, renderModelName } from '../utils/model/model.js';
-import { getCurrentSessionTitle } from '../utils/sessionStorage.js';
-import { doesMostRecentAssistantMessageExceed200k, getCurrentUsage } from '../utils/tokens.js';
-import { getCurrentWorktreeSession } from '../utils/worktree.js';
-import { isVimModeEnabled } from './PromptInput/utils.js';
+import { getIsRemoteMode, getKairosActive, getMainThreadAgentType, getOriginalCwd, getSdkBetas, getSessionId } from '../bootstrap/state';
+import { DEFAULT_OUTPUT_STYLE_NAME } from '../constants/outputStyles';
+import { useNotifications } from '../context/notifications';
+import { getTotalAPIDuration, getTotalCost, getTotalDuration, getTotalInputTokens, getTotalLinesAdded, getTotalLinesRemoved, getTotalOutputTokens } from '../cost-tracker';
+import { useMainLoopModel } from '../hooks/useMainLoopModel';
+import { type ReadonlySettings, useSettings } from '../hooks/useSettings';
+import { Ansi, Box, Text } from '../ink';
+import { getRawUtilization } from '../services/claudeAiLimits';
+import type { Message } from '../types/message';
+import type { StatusLineCommandInput } from '../types/statusLine';
+import type { VimMode } from '../types/textInputTypes';
+import { checkHasTrustDialogAccepted } from '../utils/config';
+import { calculateContextPercentages, getContextWindowForModel } from '../utils/context';
+import { getCwd } from '../utils/cwd';
+import { logForDebugging } from '../utils/debug';
+import { isFullscreenEnvEnabled } from '../utils/fullscreen';
+import { createBaseHookInput, executeStatusLineCommand } from '../utils/hooks';
+import { getLastAssistantMessage } from '../utils/messages';
+import { getRuntimeMainLoopModel, type ModelName, renderModelName } from '../utils/model/model';
+import { getCurrentSessionTitle } from '../utils/sessionStorage';
+import { doesMostRecentAssistantMessageExceed200k, getCurrentUsage } from '../utils/tokens';
+import { getCurrentWorktreeSession } from '../utils/worktree';
+import { isVimModeEnabled } from './PromptInput/utils';
 export function statusLineShouldDisplay(settings: ReadonlySettings): boolean {
   // Assistant mode: statusline fields (model, permission mode, cwd) reflect the
   // REPL/daemon process, not what the agent child is actually running. Hide it.
@@ -76,7 +76,7 @@ function buildStatusLineCommandInput(permissionMode: PermissionMode, exceeds200k
       project_dir: getOriginalCwd(),
       added_dirs: addedDirs
     },
-    version: MACRO.VERSION,
+    version: '2.1.88',
     output_style: {
       name: outputStyleName
     },

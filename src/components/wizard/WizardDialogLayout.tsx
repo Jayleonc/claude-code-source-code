@@ -1,9 +1,9 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { type ReactNode } from 'react';
-import type { Theme } from '../../utils/theme.js';
-import { Dialog } from '../design-system/Dialog.js';
-import { useWizard } from './useWizard.js';
-import { WizardNavigationFooter } from './WizardNavigationFooter.js';
+import type { Theme } from '../../utils/theme';
+import { Dialog } from '../design-system/Dialog';
+import { useWizard } from './useWizard';
+import { WizardNavigationFooter } from './WizardNavigationFooter';
 type Props = {
   title?: string;
   color?: keyof Theme;

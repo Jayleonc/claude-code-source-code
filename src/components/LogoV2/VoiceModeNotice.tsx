@@ -1,13 +1,13 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../../stubs/bun-bundle';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Box, Text } from '../../ink.js';
-import { getGlobalConfig, saveGlobalConfig } from '../../utils/config.js';
-import { getInitialSettings } from '../../utils/settings/settings.js';
-import { isVoiceModeEnabled } from '../../voice/voiceModeEnabled.js';
-import { AnimatedAsterisk } from './AnimatedAsterisk.js';
-import { shouldShowOpus1mMergeNotice } from './Opus1mMergeNotice.js';
+import { Box, Text } from '../../ink';
+import { getGlobalConfig, saveGlobalConfig } from '../../utils/config';
+import { getInitialSettings } from '../../utils/settings/settings';
+import { isVoiceModeEnabled } from '../../voice/voiceModeEnabled';
+import { AnimatedAsterisk } from './AnimatedAsterisk';
+import { shouldShowOpus1mMergeNotice } from './Opus1mMergeNotice';
 const MAX_SHOW_COUNT = 3;
 export function VoiceModeNotice() {
   const $ = _c(1);

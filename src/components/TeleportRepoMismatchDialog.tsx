@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useCallback, useState } from 'react';
-import { Box, Text } from '../ink.js';
-import { getDisplayPath } from '../utils/file.js';
-import { removePathFromRepo, validateRepoAtPath } from '../utils/githubRepoPathMapping.js';
-import { Select } from './CustomSelect/index.js';
-import { Dialog } from './design-system/Dialog.js';
-import { Spinner } from './Spinner.js';
+import { Box, Text } from '../ink';
+import { getDisplayPath } from '../utils/file';
+import { removePathFromRepo, validateRepoAtPath } from '../utils/githubRepoPathMapping';
+import { Select } from './CustomSelect/index';
+import { Dialog } from './design-system/Dialog';
+import { Spinner } from './Spinner';
 type Props = {
   targetRepo: string;
   initialPaths: string[];

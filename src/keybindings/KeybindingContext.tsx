@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { createContext, type RefObject, useContext, useLayoutEffect, useMemo } from 'react';
-import type { Key } from '../ink.js';
-import { type ChordResolveResult, getBindingDisplayText, resolveKeyWithChordState } from './resolver.js';
-import type { KeybindingContextName, ParsedBinding, ParsedKeystroke } from './types.js';
+import type { Key } from '../ink';
+import { type ChordResolveResult, getBindingDisplayText, resolveKeyWithChordState } from './resolver';
+import type { KeybindingContextName, ParsedBinding, ParsedKeystroke } from './types';
 
 /** Handler registration for action callbacks */
 type HandlerRegistration = {

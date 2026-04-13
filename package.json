@@ -14,7 +14,27 @@
     "node": ">=18.0.0"
   },
   "devDependencies": {
+    "@types/node": "^25.5.0",
     "esbuild": "^0.27.4",
     "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "execa": "^9.6.1",
+    "ink": "^6.8.0",
+    "lodash-es": "^4.17.23",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "stack-utils": "^2.0.6",
+    "strip-ansi": "^7.2.0",
+    "supports-hyperlinks": "^4.4.0",
+    "tree-kill": "^1.2.2",
+    "type-fest": "^5.5.0",
+    "undici": "^7.24.6",
+    "usehooks-ts": "^3.1.1",
+    "wrap-ansi": "^10.0.0",
+    "ws": "^8.20.0",
+    "xss": "^1.0.15",
+    "zod": "^4.3.6"
   }
 }

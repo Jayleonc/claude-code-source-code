@@ -4,9 +4,9 @@ import {
   BRIDGE_FAILED_INDICATOR,
   BRIDGE_READY_INDICATOR,
   BRIDGE_SPINNER_FRAMES,
-} from '../constants/figures.js'
-import { stringWidth } from '../ink/stringWidth.js'
-import { logForDebugging } from '../utils/debug.js'
+} from '../constants/figures'
+import { stringWidth } from '../ink/stringWidth'
+import { logForDebugging } from '../utils/debug'
 import {
   buildActiveFooterText,
   buildBridgeConnectUrl,
@@ -19,13 +19,13 @@ import {
   timestamp,
   truncatePrompt,
   wrapWithOsc8Link,
-} from './bridgeStatusUtil.js'
+} from './bridgeStatusUtil'
 import type {
   BridgeConfig,
   BridgeLogger,
   SessionActivity,
   SpawnMode,
-} from './types.js'
+} from './types'
 
 const QR_OPTIONS = {
   type: 'utf8' as const,
@@ -299,7 +299,7 @@ export function createBridgeLogger(options: {
       regenerateQr(connectUrl)
 
       if (verbose) {
-        write(chalk.dim(`Remote Control`) + ` v${MACRO.VERSION}\n`)
+        write(chalk.dim(`Remote Control`) + ` v${'2.1.88'}\n`)
       }
       if (verbose) {
         if (config.spawnMode !== 'single-session') {

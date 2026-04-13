@@ -1,12 +1,12 @@
 import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import * as React from 'react';
-import { Box, Text, type TextProps } from '../../ink.js';
-import { useAppState } from '../../state/AppState.js';
-import { getRunningTeammatesSorted } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask.js';
-import { formatNumber } from '../../utils/format.js';
-import { TeammateSpinnerLine } from './TeammateSpinnerLine.js';
-import { TEAMMATE_SELECT_HINT } from './teammateSelectHint.js';
+import { Box, Text, type TextProps } from '../../ink';
+import { useAppState } from '../../state/AppState';
+import { getRunningTeammatesSorted } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask';
+import { formatNumber } from '../../utils/format';
+import { TeammateSpinnerLine } from './TeammateSpinnerLine';
+import { TEAMMATE_SELECT_HINT } from './teammateSelectHint';
 type Props = {
   selectedIndex?: number;
   isInSelectionMode?: boolean;

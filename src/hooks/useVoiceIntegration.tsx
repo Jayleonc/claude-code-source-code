@@ -1,17 +1,17 @@
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useNotifications } from '../context/notifications.js';
-import { useIsModalOverlayActive } from '../context/overlayContext.js';
-import { useGetVoiceState, useSetVoiceState, useVoiceState } from '../context/voice.js';
-import { KeyboardEvent } from '../ink/events/keyboard-event.js';
+import { useNotifications } from '../context/notifications';
+import { useIsModalOverlayActive } from '../context/overlayContext';
+import { useGetVoiceState, useSetVoiceState, useVoiceState } from '../context/voice';
+import { KeyboardEvent } from '../ink/events/keyboard-event';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- backward-compat bridge until REPL wires handleKeyDown to <Box onKeyDown>
-import { useInput } from '../ink.js';
-import { useOptionalKeybindingContext } from '../keybindings/KeybindingContext.js';
-import { keystrokesEqual } from '../keybindings/resolver.js';
-import type { ParsedKeystroke } from '../keybindings/types.js';
-import { normalizeFullWidthSpace } from '../utils/stringUtils.js';
-import { useVoiceEnabled } from './useVoiceEnabled.js';
+import { useInput } from '../ink';
+import { useOptionalKeybindingContext } from '../keybindings/KeybindingContext';
+import { keystrokesEqual } from '../keybindings/resolver';
+import type { ParsedKeystroke } from '../keybindings/types';
+import { normalizeFullWidthSpace } from '../utils/stringUtils';
+import { useVoiceEnabled } from './useVoiceEnabled';
 
 // Dead code elimination: conditional import for voice input hook.
 /* eslint-disable @typescript-eslint/no-require-imports */
@@ -19,8 +19,8 @@ import { useVoiceEnabled } from './useVoiceEnabled.js';
 // object, so `voiceNs.useVoice(...)` resolves to the spy even if this module
 // was loaded before the spy was installed (test ordering independence).
 const voiceNs: {
-  useVoice: typeof import('./useVoice.js').useVoice;
-} = feature('VOICE_MODE') ? require('./useVoice.js') : {
+  useVoice: typeof import('./useVoice').useVoice;
+} = feature('VOICE_MODE') ? require('./useVoice') : {
   useVoice: ({
     enabled: _e
   }: {

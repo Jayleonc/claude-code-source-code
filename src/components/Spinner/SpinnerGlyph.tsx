@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { Box, Text, useTheme } from '../../ink.js';
-import { getTheme, type Theme } from '../../utils/theme.js';
-import { getDefaultCharacters, interpolateColor, parseRGB, toRGBColor } from './utils.js';
+import { Box, Text, useTheme } from '../../ink';
+import { getTheme, type Theme } from '../../utils/theme';
+import { getDefaultCharacters, interpolateColor, parseRGB, toRGBColor } from './utils';
 const DEFAULT_CHARACTERS = getDefaultCharacters();
 const SPINNER_FRAMES = [...DEFAULT_CHARACTERS, ...[...DEFAULT_CHARACTERS].reverse()];
 const REDUCED_MOTION_DOT = '●';

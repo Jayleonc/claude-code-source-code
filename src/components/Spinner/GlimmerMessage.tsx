@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { stringWidth } from '../../ink/stringWidth.js';
-import { Text, useTheme } from '../../ink.js';
-import { getGraphemeSegmenter } from '../../utils/intl.js';
-import { getTheme, type Theme } from '../../utils/theme.js';
-import type { SpinnerMode } from './types.js';
-import { interpolateColor, parseRGB, toRGBColor } from './utils.js';
+import { stringWidth } from '../../ink/stringWidth';
+import { Text, useTheme } from '../../ink';
+import { getGraphemeSegmenter } from '../../utils/intl';
+import { getTheme, type Theme } from '../../utils/theme';
+import type { SpinnerMode } from './types';
+import { interpolateColor, parseRGB, toRGBColor } from './utils';
 type Props = {
   message: string;
   mode: SpinnerMode;

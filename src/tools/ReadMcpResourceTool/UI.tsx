@@ -1,12 +1,12 @@
 import * as React from 'react';
 import type { z } from 'zod/v4';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { OutputLine } from '../../components/shell/OutputLine.js';
-import { Box, Text } from '../../ink.js';
-import type { ToolProgressData } from '../../Tool.js';
-import type { ProgressMessage } from '../../types/message.js';
-import { jsonStringify } from '../../utils/slowOperations.js';
-import type { inputSchema, Output } from './ReadMcpResourceTool.js';
+import { MessageResponse } from '../../components/MessageResponse';
+import { OutputLine } from '../../components/shell/OutputLine';
+import { Box, Text } from '../../ink';
+import type { ToolProgressData } from '../../Tool';
+import type { ProgressMessage } from '../../types/message';
+import { jsonStringify } from '../../utils/slowOperations';
+import type { inputSchema, Output } from './ReadMcpResourceTool';
 export function renderToolUseMessage(input: Partial<z.infer<ReturnType<typeof inputSchema>>>): React.ReactNode {
   if (!input.uri || !input.server) {
     return null;

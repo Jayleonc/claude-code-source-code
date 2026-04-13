@@ -1,14 +1,14 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useEffect, useState } from 'react';
-import type { CommandResultDisplay } from '../commands.js';
+import type { CommandResultDisplay } from '../commands';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- raw input for "any key" dismiss and y/n prompt
-import { Box, Text, useInput } from '../ink.js';
-import { openBrowser } from '../utils/browser.js';
-import { getDesktopInstallStatus, openCurrentSessionInDesktop } from '../utils/desktopDeepLink.js';
-import { errorMessage } from '../utils/errors.js';
-import { gracefulShutdown } from '../utils/gracefulShutdown.js';
-import { flushSessionStorage } from '../utils/sessionStorage.js';
-import { LoadingState } from './design-system/LoadingState.js';
+import { Box, Text, useInput } from '../ink';
+import { openBrowser } from '../utils/browser';
+import { getDesktopInstallStatus, openCurrentSessionInDesktop } from '../utils/desktopDeepLink';
+import { errorMessage } from '../utils/errors';
+import { gracefulShutdown } from '../utils/gracefulShutdown';
+import { flushSessionStorage } from '../utils/sessionStorage';
+import { LoadingState } from './design-system/LoadingState';
 const DESKTOP_DOCS_URL = 'https://clau.de/desktop';
 export function getDownloadUrl(): string {
   switch (process.platform) {

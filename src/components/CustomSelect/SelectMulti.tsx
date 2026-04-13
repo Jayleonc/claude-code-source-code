@@ -1,13 +1,13 @@
 import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import React from 'react';
-import { Box, Text } from '../../ink.js';
-import type { PastedContent } from '../../utils/config.js';
-import type { ImageDimensions } from '../../utils/imageResizer.js';
-import type { OptionWithDescription } from './select.js';
-import { SelectInputOption } from './select-input-option.js';
-import { SelectOption } from './select-option.js';
-import { useMultiSelectState } from './use-multi-select-state.js';
+import { Box, Text } from '../../ink';
+import type { PastedContent } from '../../utils/config';
+import type { ImageDimensions } from '../../utils/imageResizer';
+import type { OptionWithDescription } from './select';
+import { SelectInputOption } from './select-input-option';
+import { SelectOption } from './select-option';
+import { useMultiSelectState } from './use-multi-select-state';
 export type SelectMultiProps<T> = {
   readonly isDisabled?: boolean;
   readonly visibleOptionCount?: number;

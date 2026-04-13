@@ -1,15 +1,15 @@
 import { execa } from 'execa'
 import memoize from 'lodash-es/memoize.js'
-import { getSessionId } from '../bootstrap/state.js'
+import { getSessionId } from '../bootstrap/state'
 import {
   getOauthAccountInfo,
   getRateLimitTier,
   getSubscriptionType,
-} from './auth.js'
-import { getGlobalConfig, getOrCreateUserID } from './config.js'
-import { getCwd } from './cwd.js'
-import { type env, getHostPlatformForAnalytics } from './env.js'
-import { isEnvTruthy } from './envUtils.js'
+} from './auth'
+import { getGlobalConfig, getOrCreateUserID } from './config'
+import { getCwd } from './cwd'
+import { type env, getHostPlatformForAnalytics } from './env'
+import { isEnvTruthy } from './envUtils'
 
 // Cache for email fetched asynchronously at startup
 let cachedEmail: string | undefined | null = null // null means not fetched yet
@@ -105,7 +105,7 @@ export const getCoreUserData = memoize(
       deviceId,
       sessionId: getSessionId(),
       email: getEmail(),
-      appVersion: MACRO.VERSION,
+      appVersion: '2.1.88',
       platform: getHostPlatformForAnalytics(),
       organizationUuid,
       accountUuid,

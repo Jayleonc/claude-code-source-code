@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { isBridgeEnabled } from '../bridge/bridgeEnabled.js';
-import { Box, Text } from '../ink.js';
-import { getClaudeAIOAuthTokens } from '../utils/auth.js';
-import { getGlobalConfig, saveGlobalConfig } from '../utils/config.js';
-import type { OptionWithDescription } from './CustomSelect/select.js';
-import { Select } from './CustomSelect/select.js';
-import { PermissionDialog } from './permissions/PermissionDialog.js';
+import { isBridgeEnabled } from '../bridge/bridgeEnabled';
+import { Box, Text } from '../ink';
+import { getClaudeAIOAuthTokens } from '../utils/auth';
+import { getGlobalConfig, saveGlobalConfig } from '../utils/config';
+import type { OptionWithDescription } from './CustomSelect/select';
+import { Select } from './CustomSelect/select';
+import { PermissionDialog } from './permissions/PermissionDialog';
 type RemoteCalloutSelection = 'enable' | 'dismiss';
 type Props = {
   onDone: (selection: RemoteCalloutSelection) => void;

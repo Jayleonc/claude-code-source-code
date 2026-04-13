@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { UP_ARROW } from '../../constants/figures.js';
-import { Box, Text } from '../../ink.js';
-import { getGlobalConfig, saveGlobalConfig } from '../../utils/config.js';
-import { isOpus1mMergeEnabled } from '../../utils/model/model.js';
-import { AnimatedAsterisk } from './AnimatedAsterisk.js';
+import { UP_ARROW } from '../../constants/figures';
+import { Box, Text } from '../../ink';
+import { getGlobalConfig, saveGlobalConfig } from '../../utils/config';
+import { isOpus1mMergeEnabled } from '../../utils/model/model';
+import { AnimatedAsterisk } from './AnimatedAsterisk';
 const MAX_SHOW_COUNT = 6;
 export function shouldShowOpus1mMergeNotice(): boolean {
   return isOpus1mMergeEnabled() && (getGlobalConfig().opus1mMergeNoticeSeenCount ?? 0) < MAX_SHOW_COUNT;

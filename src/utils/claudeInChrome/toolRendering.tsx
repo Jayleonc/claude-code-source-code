@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { supportsHyperlinks } from '../../ink/supports-hyperlinks.js';
-import { Link, Text } from '../../ink.js';
-import { renderToolResultMessage as renderDefaultMCPToolResultMessage } from '../../tools/MCPTool/UI.js';
-import type { MCPToolResult } from '../../utils/mcpValidation.js';
-import { truncateToWidth } from '../format.js';
-import { trackClaudeInChromeTabId } from './common.js';
+import { MessageResponse } from '../../components/MessageResponse';
+import { supportsHyperlinks } from '../../ink/supports-hyperlinks';
+import { Link, Text } from '../../ink';
+import { renderToolResultMessage as renderDefaultMCPToolResultMessage } from '../../tools/MCPTool/UI';
+import type { MCPToolResult } from '../../utils/mcpValidation';
+import { truncateToWidth } from '../format';
+import { trackClaudeInChromeTabId } from './common';
 export type { Tool } from '@modelcontextprotocol/sdk/types.js';
 
 /**

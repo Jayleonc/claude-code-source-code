@@ -1,4 +1,4 @@
-import { feature } from 'bun:bundle'
+import { feature } from '../stubs/bun-bundle'
 import type { BetaMessageStreamParams } from '@anthropic-ai/sdk/resources/beta/messages/messages.mjs'
 import { readdir, readFile, stat } from 'fs/promises'
 import memoize from 'lodash-es/memoize.js'
@@ -7,19 +7,19 @@ import type { QuerySource } from 'src/constants/querySource.js'
 import {
   setLastAPIRequest,
   setLastAPIRequestMessages,
-} from '../bootstrap/state.js'
-import { TICK_TAG } from '../constants/xml.js'
+} from '../bootstrap/state'
+import { TICK_TAG } from '../constants/xml'
 import {
   type LogOption,
   type SerializedMessage,
   sortLogs,
-} from '../types/logs.js'
-import { CACHE_PATHS } from './cachePaths.js'
-import { stripDisplayTags, stripDisplayTagsAllowEmpty } from './displayTags.js'
-import { isEnvTruthy } from './envUtils.js'
-import { toError } from './errors.js'
-import { isEssentialTrafficOnly } from './privacyLevel.js'
-import { jsonParse } from './slowOperations.js'
+} from '../types/logs'
+import { CACHE_PATHS } from './cachePaths'
+import { stripDisplayTags, stripDisplayTagsAllowEmpty } from './displayTags'
+import { isEnvTruthy } from './envUtils'
+import { toError } from './errors'
+import { isEssentialTrafficOnly } from './privacyLevel'
+import { jsonParse } from './slowOperations'
 
 /**
  * Gets the display title for a log/session with fallback logic.

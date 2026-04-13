@@ -1,10 +1,10 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { Text } from '../ink.js';
-import type { ValidationError } from '../utils/settings/validation.js';
-import { Select } from './CustomSelect/index.js';
-import { Dialog } from './design-system/Dialog.js';
-import { ValidationErrorsList } from './ValidationErrorsList.js';
+import { Text } from '../ink';
+import type { ValidationError } from '../utils/settings/validation';
+import { Select } from './CustomSelect/index';
+import { Dialog } from './design-system/Dialog';
+import { ValidationErrorsList } from './ValidationErrorsList';
 type Props = {
   settingsErrors: ValidationError[];
   onContinue: () => void;

@@ -1,29 +1,29 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import { plot as asciichart } from 'asciichart';
 import chalk from 'chalk';
 import figures from 'figures';
 import React, { Suspense, use, useCallback, useEffect, useMemo, useState } from 'react';
 import stripAnsi from 'strip-ansi';
-import type { CommandResultDisplay } from '../commands.js';
-import { useTerminalSize } from '../hooks/useTerminalSize.js';
-import { applyColor } from '../ink/colorize.js';
-import { stringWidth as getStringWidth } from '../ink/stringWidth.js';
-import type { Color } from '../ink/styles.js';
+import type { CommandResultDisplay } from '../commands';
+import { useTerminalSize } from '../hooks/useTerminalSize';
+import { applyColor } from '../ink/colorize';
+import { stringWidth as getStringWidth } from '../ink/stringWidth';
+import type { Color } from '../ink/styles';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- raw j/k/arrow stats navigation
-import { Ansi, Box, Text, useInput } from '../ink.js';
-import { useKeybinding } from '../keybindings/useKeybinding.js';
-import { getGlobalConfig } from '../utils/config.js';
-import { formatDuration, formatNumber } from '../utils/format.js';
-import { generateHeatmap } from '../utils/heatmap.js';
-import { renderModelName } from '../utils/model/model.js';
-import { copyAnsiToClipboard } from '../utils/screenshotClipboard.js';
-import { aggregateClaudeCodeStatsForRange, type ClaudeCodeStats, type DailyModelTokens, type StatsDateRange } from '../utils/stats.js';
-import { resolveThemeSetting } from '../utils/systemTheme.js';
-import { getTheme, themeColorToAnsi } from '../utils/theme.js';
-import { Pane } from './design-system/Pane.js';
-import { Tab, Tabs, useTabHeaderFocus } from './design-system/Tabs.js';
-import { Spinner } from './Spinner.js';
+import { Ansi, Box, Text, useInput } from '../ink';
+import { useKeybinding } from '../keybindings/useKeybinding';
+import { getGlobalConfig } from '../utils/config';
+import { formatDuration, formatNumber } from '../utils/format';
+import { generateHeatmap } from '../utils/heatmap';
+import { renderModelName } from '../utils/model/model';
+import { copyAnsiToClipboard } from '../utils/screenshotClipboard';
+import { aggregateClaudeCodeStatsForRange, type ClaudeCodeStats, type DailyModelTokens, type StatsDateRange } from '../utils/stats';
+import { resolveThemeSetting } from '../utils/systemTheme';
+import { getTheme, themeColorToAnsi } from '../utils/theme';
+import { Pane } from './design-system/Pane';
+import { Tab, Tabs, useTabHeaderFocus } from './design-system/Tabs';
+import { Spinner } from './Spinner';
 function formatPeakDay(dateStr: string): string {
   const date = new Date(dateStr);
   return date.toLocaleDateString('en-US', {

@@ -6,29 +6,29 @@ import { getLastAPIRequest } from 'src/bootstrap/state.js';
 import { logEventTo1P } from 'src/services/analytics/firstPartyEventLogger.js';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from 'src/services/analytics/index.js';
 import { getLastAssistantMessage, normalizeMessagesForAPI } from 'src/utils/messages.js';
-import type { CommandResultDisplay } from '../commands.js';
-import { useTerminalSize } from '../hooks/useTerminalSize.js';
-import { Box, Text, useInput } from '../ink.js';
-import { useKeybinding } from '../keybindings/useKeybinding.js';
-import { queryHaiku } from '../services/api/claude.js';
-import { startsWithApiErrorPrefix } from '../services/api/errors.js';
-import type { Message } from '../types/message.js';
-import { checkAndRefreshOAuthTokenIfNeeded } from '../utils/auth.js';
-import { openBrowser } from '../utils/browser.js';
-import { logForDebugging } from '../utils/debug.js';
-import { env } from '../utils/env.js';
-import { type GitRepoState, getGitState, getIsGit } from '../utils/git.js';
-import { getAuthHeaders, getUserAgent } from '../utils/http.js';
-import { getInMemoryErrors, logError } from '../utils/log.js';
-import { isEssentialTrafficOnly } from '../utils/privacyLevel.js';
-import { extractTeammateTranscriptsFromTasks, getTranscriptPath, loadAllSubagentTranscriptsFromDisk, MAX_TRANSCRIPT_READ_BYTES } from '../utils/sessionStorage.js';
-import { jsonStringify } from '../utils/slowOperations.js';
-import { asSystemPrompt } from '../utils/systemPromptType.js';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.js';
-import { Byline } from './design-system/Byline.js';
-import { Dialog } from './design-system/Dialog.js';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.js';
-import TextInput from './TextInput.js';
+import type { CommandResultDisplay } from '../commands';
+import { useTerminalSize } from '../hooks/useTerminalSize';
+import { Box, Text, useInput } from '../ink';
+import { useKeybinding } from '../keybindings/useKeybinding';
+import { queryHaiku } from '../services/api/claude';
+import { startsWithApiErrorPrefix } from '../services/api/errors';
+import type { Message } from '../types/message';
+import { checkAndRefreshOAuthTokenIfNeeded } from '../utils/auth';
+import { openBrowser } from '../utils/browser';
+import { logForDebugging } from '../utils/debug';
+import { env } from '../utils/env';
+import { type GitRepoState, getGitState, getIsGit } from '../utils/git';
+import { getAuthHeaders, getUserAgent } from '../utils/http';
+import { getInMemoryErrors, logError } from '../utils/log';
+import { isEssentialTrafficOnly } from '../utils/privacyLevel';
+import { extractTeammateTranscriptsFromTasks, getTranscriptPath, loadAllSubagentTranscriptsFromDisk, MAX_TRANSCRIPT_READ_BYTES } from '../utils/sessionStorage';
+import { jsonStringify } from '../utils/slowOperations';
+import { asSystemPrompt } from '../utils/systemPromptType';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint';
+import { Byline } from './design-system/Byline';
+import { Dialog } from './design-system/Dialog';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint';
+import TextInput from './TextInput';
 
 // This value was determined experimentally by testing the URL length limit
 const GITHUB_URL_LIMIT = 7250;
@@ -211,7 +211,7 @@ export function Feedback({
       platform: env.platform,
       gitRepo: envInfo.isGit,
       terminal: env.terminal,
-      version: MACRO.VERSION,
+      version: '2.1.88',
       transcript: normalizeMessagesForAPI(messages),
       errors: sanitizedErrors,
       lastApiRequest: getLastAPIRequest(),
@@ -343,7 +343,7 @@ export function Feedback({
             <Text>
               - Environment info:{' '}
               <Text dimColor>
-                {env.platform}, {env.terminal}, v{MACRO.VERSION}
+                {env.platform}, {env.terminal}, v{'2.1.88'}
               </Text>
             </Text>
             {envInfo.gitState && <Text>

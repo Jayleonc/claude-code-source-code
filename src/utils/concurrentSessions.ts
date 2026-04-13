@@ -1,19 +1,19 @@
-import { feature } from 'bun:bundle'
+import { feature } from '../stubs/bun-bundle'
 import { chmod, mkdir, readdir, readFile, unlink, writeFile } from 'fs/promises'
 import { join } from 'path'
 import {
   getOriginalCwd,
   getSessionId,
   onSessionSwitch,
-} from '../bootstrap/state.js'
-import { registerCleanup } from './cleanupRegistry.js'
-import { logForDebugging } from './debug.js'
-import { getClaudeConfigHomeDir } from './envUtils.js'
-import { errorMessage, isFsInaccessible } from './errors.js'
-import { isProcessRunning } from './genericProcessUtils.js'
-import { getPlatform } from './platform.js'
-import { jsonParse, jsonStringify } from './slowOperations.js'
-import { getAgentId } from './teammate.js'
+} from '../bootstrap/state'
+import { registerCleanup } from './cleanupRegistry'
+import { logForDebugging } from './debug'
+import { getClaudeConfigHomeDir } from './envUtils'
+import { errorMessage, isFsInaccessible } from './errors'
+import { isProcessRunning } from './genericProcessUtils'
+import { getPlatform } from './platform'
+import { jsonParse, jsonStringify } from './slowOperations'
+import { getAgentId } from './teammate'
 
 export type SessionKind = 'interactive' | 'bg' | 'daemon' | 'daemon-worker'
 export type SessionStatus = 'busy' | 'idle' | 'waiting'

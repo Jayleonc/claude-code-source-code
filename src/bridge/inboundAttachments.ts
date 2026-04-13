@@ -16,11 +16,11 @@ import { randomUUID } from 'crypto'
 import { mkdir, writeFile } from 'fs/promises'
 import { basename, join } from 'path'
 import { z } from 'zod/v4'
-import { getSessionId } from '../bootstrap/state.js'
-import { logForDebugging } from '../utils/debug.js'
-import { getClaudeConfigHomeDir } from '../utils/envUtils.js'
-import { lazySchema } from '../utils/lazySchema.js'
-import { getBridgeAccessToken, getBridgeBaseUrl } from './bridgeConfig.js'
+import { getSessionId } from '../bootstrap/state'
+import { logForDebugging } from '../utils/debug'
+import { getClaudeConfigHomeDir } from '../utils/envUtils'
+import { lazySchema } from '../utils/lazySchema'
+import { getBridgeAccessToken, getBridgeBaseUrl } from './bridgeConfig'
 
 const DOWNLOAD_TIMEOUT_MS = 30_000
 

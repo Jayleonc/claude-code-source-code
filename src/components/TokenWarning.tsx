@@ -1,12 +1,12 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import * as React from 'react';
 import { useSyncExternalStore } from 'react';
-import { Box, Text } from '../ink.js';
-import { getFeatureValue_CACHED_MAY_BE_STALE } from '../services/analytics/growthbook.js';
-import { calculateTokenWarningState, getEffectiveContextWindowSize, isAutoCompactEnabled } from '../services/compact/autoCompact.js';
-import { useCompactWarningSuppression } from '../services/compact/compactWarningHook.js';
-import { getUpgradeMessage } from '../utils/model/contextWindowUpgradeCheck.js';
+import { Box, Text } from '../ink';
+import { getFeatureValue_CACHED_MAY_BE_STALE } from '../services/analytics/growthbook';
+import { calculateTokenWarningState, getEffectiveContextWindowSize, isAutoCompactEnabled } from '../services/compact/autoCompact';
+import { useCompactWarningSuppression } from '../services/compact/compactWarningHook';
+import { getUpgradeMessage } from '../utils/model/contextWindowUpgradeCheck';
 type Props = {
   tokenUsage: number;
   model: string;
@@ -25,7 +25,7 @@ function CollapseLabel(t0) {
   } = t0;
   let t1;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = require("../services/contextCollapse/index.js");
+    t1 = require("../services/contextCollapse/index");
     $[0] = t1;
   } else {
     t1 = $[0];
@@ -33,7 +33,7 @@ function CollapseLabel(t0) {
   const {
     getStats,
     subscribe
-  } = t1 as typeof import('../services/contextCollapse/index.js');
+  } = t1 as typeof import('../services/contextCollapse/index');
   let t2;
   if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
     t2 = () => {
@@ -135,7 +135,7 @@ export function TokenWarning(t0) {
   if (feature("CONTEXT_COLLAPSE")) {
     const {
       isContextCollapseEnabled
-    } = require("../services/contextCollapse/index.js") as typeof import('../services/contextCollapse/index.js');
+    } = require("../services/contextCollapse/index") as typeof import('../services/contextCollapse/index');
     if (isContextCollapseEnabled()) {
       collapseMode = true;
     }

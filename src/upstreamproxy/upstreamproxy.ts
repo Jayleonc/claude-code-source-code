@@ -22,11 +22,11 @@
 import { mkdir, readFile, unlink, writeFile } from 'fs/promises'
 import { homedir } from 'os'
 import { join } from 'path'
-import { registerCleanup } from '../utils/cleanupRegistry.js'
-import { logForDebugging } from '../utils/debug.js'
-import { isEnvTruthy } from '../utils/envUtils.js'
-import { isENOENT } from '../utils/errors.js'
-import { startUpstreamProxyRelay } from './relay.js'
+import { registerCleanup } from '../utils/cleanupRegistry'
+import { logForDebugging } from '../utils/debug'
+import { isEnvTruthy } from '../utils/envUtils'
+import { isENOENT } from '../utils/errors'
+import { startUpstreamProxyRelay } from './relay'
 
 export const SESSION_TOKEN_PATH = '/run/ccr/session_token'
 const SYSTEM_CA_BUNDLE = '/etc/ssl/certs/ca-certificates.crt'
@@ -226,7 +226,7 @@ function setNonDumpable(): void {
   if (process.platform !== 'linux' || typeof Bun === 'undefined') return
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const ffi = require('bun:ffi') as typeof import('bun:ffi')
+    const ffi = require('../stubs/bun-ffi') as typeof import('bun:ffi')
     const lib = ffi.dlopen('libc.so.6', {
       prctl: {
         args: ['int', 'u64', 'u64', 'u64', 'u64'],

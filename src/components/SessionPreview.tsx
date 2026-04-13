@@ -1,17 +1,17 @@
 import { c as _c } from "react/compiler-runtime";
 import type { UUID } from 'crypto';
 import React, { useCallback } from 'react';
-import { Box, Text } from '../ink.js';
-import { useKeybinding } from '../keybindings/useKeybinding.js';
-import { getAllBaseTools } from '../tools.js';
-import type { LogOption } from '../types/logs.js';
-import { formatRelativeTimeAgo } from '../utils/format.js';
-import { getSessionIdFromLog, isLiteLog, loadFullLog } from '../utils/sessionStorage.js';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.js';
-import { Byline } from './design-system/Byline.js';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.js';
-import { LoadingState } from './design-system/LoadingState.js';
-import { Messages } from './Messages.js';
+import { Box, Text } from '../ink';
+import { useKeybinding } from '../keybindings/useKeybinding';
+import { getAllBaseTools } from '../tools';
+import type { LogOption } from '../types/logs';
+import { formatRelativeTimeAgo } from '../utils/format';
+import { getSessionIdFromLog, isLiteLog, loadFullLog } from '../utils/sessionStorage';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint';
+import { Byline } from './design-system/Byline';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint';
+import { LoadingState } from './design-system/LoadingState';
+import { Messages } from './Messages';
 type Props = {
   log: LogOption;
   onExit: () => void;

@@ -1,17 +1,17 @@
 import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import * as React from 'react';
-import type { KeyboardEvent } from '../../ink/events/keyboard-event.js';
-import { Box, Text } from '../../ink.js';
-import { useKeybinding } from '../../keybindings/useKeybinding.js';
-import type { Tools } from '../../Tool.js';
-import { getAgentColor } from '../../tools/AgentTool/agentColorManager.js';
-import { getMemoryScopeDisplay } from '../../tools/AgentTool/agentMemory.js';
-import { resolveAgentTools } from '../../tools/AgentTool/agentToolUtils.js';
-import { type AgentDefinition, isBuiltInAgent } from '../../tools/AgentTool/loadAgentsDir.js';
-import { getAgentModelDisplay } from '../../utils/model/agent.js';
-import { Markdown } from '../Markdown.js';
-import { getActualRelativeAgentFilePath } from './agentFileUtils.js';
+import type { KeyboardEvent } from '../../ink/events/keyboard-event';
+import { Box, Text } from '../../ink';
+import { useKeybinding } from '../../keybindings/useKeybinding';
+import type { Tools } from '../../Tool';
+import { getAgentColor } from '../../tools/AgentTool/agentColorManager';
+import { getMemoryScopeDisplay } from '../../tools/AgentTool/agentMemory';
+import { resolveAgentTools } from '../../tools/AgentTool/agentToolUtils';
+import { type AgentDefinition, isBuiltInAgent } from '../../tools/AgentTool/loadAgentsDir';
+import { getAgentModelDisplay } from '../../utils/model/agent';
+import { Markdown } from '../Markdown';
+import { getActualRelativeAgentFilePath } from './agentFileUtils';
 type Props = {
   agent: AgentDefinition;
   tools: Tools;

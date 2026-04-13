@@ -1,16 +1,16 @@
 import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import React, { type ReactNode, useEffect, useRef, useState } from 'react';
-import { useDeclaredCursor } from '../../ink/hooks/use-declared-cursor.js';
-import { stringWidth } from '../../ink/stringWidth.js';
-import { Ansi, Box, Text } from '../../ink.js';
-import { count } from '../../utils/array.js';
-import type { PastedContent } from '../../utils/config.js';
-import type { ImageDimensions } from '../../utils/imageResizer.js';
-import { SelectInputOption } from './select-input-option.js';
-import { SelectOption } from './select-option.js';
-import { useSelectInput } from './use-select-input.js';
-import { useSelectState } from './use-select-state.js';
+import { useDeclaredCursor } from '../../ink/hooks/use-declared-cursor';
+import { stringWidth } from '../../ink/stringWidth';
+import { Ansi, Box, Text } from '../../ink';
+import { count } from '../../utils/array';
+import type { PastedContent } from '../../utils/config';
+import type { ImageDimensions } from '../../utils/imageResizer';
+import { SelectInputOption } from './select-input-option';
+import { SelectOption } from './select-option';
+import { useSelectInput } from './use-select-input';
+import { useSelectState } from './use-select-state';
 
 // Extract text content from ReactNode for width calculation
 function getTextContent(node: ReactNode): string {

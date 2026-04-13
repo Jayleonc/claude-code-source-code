@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { Box, Text } from '../ink.js';
-import { useAppState } from '../state/AppState.js';
-import { getViewedTeammateTask } from '../state/selectors.js';
-import { toInkColor } from '../utils/ink.js';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.js';
-import { OffscreenFreeze } from './OffscreenFreeze.js';
+import { Box, Text } from '../ink';
+import { useAppState } from '../state/AppState';
+import { getViewedTeammateTask } from '../state/selectors';
+import { toInkColor } from '../utils/ink';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint';
+import { OffscreenFreeze } from './OffscreenFreeze';
 
 /**
  * Header shown when viewing a teammate's transcript.

@@ -2,8 +2,8 @@ import codeExcerpt, { type CodeExcerpt } from 'code-excerpt';
 import { readFileSync } from 'fs';
 import React from 'react';
 import StackUtils from 'stack-utils';
-import Box from './Box.js';
-import Text from './Text.js';
+import Box from './Box';
+import Text from './Text';
 
 /* eslint-disable custom-rules/no-process-cwd -- stack trace file:// paths are relative to the real OS cwd, not the virtual cwd */
 

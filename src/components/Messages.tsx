@@ -1,48 +1,48 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../stubs/bun-bundle';
 import chalk from 'chalk';
 import type { UUID } from 'crypto';
 import type { RefObject } from 'react';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { every } from 'src/utils/set.js';
-import { getIsRemoteMode } from '../bootstrap/state.js';
-import type { Command } from '../commands.js';
-import { BLACK_CIRCLE } from '../constants/figures.js';
-import { useTerminalSize } from '../hooks/useTerminalSize.js';
-import type { ScrollBoxHandle } from '../ink/components/ScrollBox.js';
-import { useTerminalNotification } from '../ink/useTerminalNotification.js';
-import { Box, Text } from '../ink.js';
-import { useShortcutDisplay } from '../keybindings/useShortcutDisplay.js';
-import type { Screen } from '../screens/REPL.js';
-import type { Tools } from '../Tool.js';
-import { findToolByName } from '../Tool.js';
-import type { AgentDefinitionsResult } from '../tools/AgentTool/loadAgentsDir.js';
-import type { Message as MessageType, NormalizedMessage, ProgressMessage as ProgressMessageType, RenderableMessage } from '../types/message.js';
-import { type AdvisorBlock, isAdvisorBlock } from '../utils/advisor.js';
-import { collapseBackgroundBashNotifications } from '../utils/collapseBackgroundBashNotifications.js';
-import { collapseHookSummaries } from '../utils/collapseHookSummaries.js';
-import { collapseReadSearchGroups } from '../utils/collapseReadSearch.js';
-import { collapseTeammateShutdowns } from '../utils/collapseTeammateShutdowns.js';
-import { getGlobalConfig } from '../utils/config.js';
-import { isEnvTruthy } from '../utils/envUtils.js';
-import { isFullscreenEnvEnabled } from '../utils/fullscreen.js';
-import { applyGrouping } from '../utils/groupToolUses.js';
-import { buildMessageLookups, createAssistantMessage, deriveUUID, getMessagesAfterCompactBoundary, getToolUseID, getToolUseIDs, hasUnresolvedHooksFromLookup, isNotEmptyMessage, normalizeMessages, reorderMessagesInUI, type StreamingThinking, type StreamingToolUse, shouldShowUserMessage } from '../utils/messages.js';
-import { plural } from '../utils/stringUtils.js';
-import { renderableSearchText } from '../utils/transcriptSearch.js';
-import { Divider } from './design-system/Divider.js';
-import type { UnseenDivider } from './FullscreenLayout.js';
-import { LogoV2 } from './LogoV2/LogoV2.js';
-import { StreamingMarkdown } from './Markdown.js';
-import { hasContentAfterIndex, MessageRow } from './MessageRow.js';
-import { InVirtualListContext, type MessageActionsNav, MessageActionsSelectedContext, type MessageActionsState } from './messageActions.js';
-import { AssistantThinkingMessage } from './messages/AssistantThinkingMessage.js';
-import { isNullRenderingAttachment } from './messages/nullRenderingAttachments.js';
-import { OffscreenFreeze } from './OffscreenFreeze.js';
-import type { ToolUseConfirm } from './permissions/PermissionRequest.js';
-import { StatusNotices } from './StatusNotices.js';
-import type { JumpHandle } from './VirtualMessageList.js';
+import { getIsRemoteMode } from '../bootstrap/state';
+import type { Command } from '../commands';
+import { BLACK_CIRCLE } from '../constants/figures';
+import { useTerminalSize } from '../hooks/useTerminalSize';
+import type { ScrollBoxHandle } from '../ink/components/ScrollBox';
+import { useTerminalNotification } from '../ink/useTerminalNotification';
+import { Box, Text } from '../ink';
+import { useShortcutDisplay } from '../keybindings/useShortcutDisplay';
+import type { Screen } from '../screens/REPL';
+import type { Tools } from '../Tool';
+import { findToolByName } from '../Tool';
+import type { AgentDefinitionsResult } from '../tools/AgentTool/loadAgentsDir';
+import type { Message as MessageType, NormalizedMessage, ProgressMessage as ProgressMessageType, RenderableMessage } from '../types/message';
+import { type AdvisorBlock, isAdvisorBlock } from '../utils/advisor';
+import { collapseBackgroundBashNotifications } from '../utils/collapseBackgroundBashNotifications';
+import { collapseHookSummaries } from '../utils/collapseHookSummaries';
+import { collapseReadSearchGroups } from '../utils/collapseReadSearch';
+import { collapseTeammateShutdowns } from '../utils/collapseTeammateShutdowns';
+import { getGlobalConfig } from '../utils/config';
+import { isEnvTruthy } from '../utils/envUtils';
+import { isFullscreenEnvEnabled } from '../utils/fullscreen';
+import { applyGrouping } from '../utils/groupToolUses';
+import { buildMessageLookups, createAssistantMessage, deriveUUID, getMessagesAfterCompactBoundary, getToolUseID, getToolUseIDs, hasUnresolvedHooksFromLookup, isNotEmptyMessage, normalizeMessages, reorderMessagesInUI, type StreamingThinking, type StreamingToolUse, shouldShowUserMessage } from '../utils/messages';
+import { plural } from '../utils/stringUtils';
+import { renderableSearchText } from '../utils/transcriptSearch';
+import { Divider } from './design-system/Divider';
+import type { UnseenDivider } from './FullscreenLayout';
+import { LogoV2 } from './LogoV2/LogoV2';
+import { StreamingMarkdown } from './Markdown';
+import { hasContentAfterIndex, MessageRow } from './MessageRow';
+import { InVirtualListContext, type MessageActionsNav, MessageActionsSelectedContext, type MessageActionsState } from './messageActions';
+import { AssistantThinkingMessage } from './messages/AssistantThinkingMessage';
+import { isNullRenderingAttachment } from './messages/nullRenderingAttachments';
+import { OffscreenFreeze } from './OffscreenFreeze';
+import type { ToolUseConfirm } from './permissions/PermissionRequest';
+import { StatusNotices } from './StatusNotices';
+import type { JumpHandle } from './VirtualMessageList';
 
 // Memoed logo header: this box is the FIRST sibling before all MessageRows
 // in main-screen mode. If it becomes dirty on every Messages re-render,
@@ -77,12 +77,12 @@ const LogoHeader = React.memo(function LogoHeader(t0) {
 
 // Dead code elimination: conditional import for proactive mode
 /* eslint-disable @typescript-eslint/no-require-imports */
-const proactiveModule = feature('PROACTIVE') || feature('KAIROS') ? require('../proactive/index.js') : null;
-const BRIEF_TOOL_NAME: string | null = feature('KAIROS') || feature('KAIROS_BRIEF') ? (require('../tools/BriefTool/prompt.js') as typeof import('../tools/BriefTool/prompt.js')).BRIEF_TOOL_NAME : null;
-const SEND_USER_FILE_TOOL_NAME: string | null = feature('KAIROS') ? (require('../tools/SendUserFileTool/prompt.js') as typeof import('../tools/SendUserFileTool/prompt.js')).SEND_USER_FILE_TOOL_NAME : null;
+const proactiveModule = feature('PROACTIVE') || feature('KAIROS') ? require('../proactive/index') : null;
+const BRIEF_TOOL_NAME: string | null = feature('KAIROS') || feature('KAIROS_BRIEF') ? (require('../tools/BriefTool/prompt') as typeof import('../tools/BriefTool/prompt')).BRIEF_TOOL_NAME : null;
+const SEND_USER_FILE_TOOL_NAME: string | null = feature('KAIROS') ? (require('../tools/SendUserFileTool/prompt') as typeof import('../tools/SendUserFileTool/prompt')).SEND_USER_FILE_TOOL_NAME : null;
 
 /* eslint-enable @typescript-eslint/no-require-imports */
-import { VirtualMessageList } from './VirtualMessageList.js';
+import { VirtualMessageList } from './VirtualMessageList';
 
 /**
  * In brief-only mode, filter messages to show ONLY Brief tool_use blocks,
@@ -248,11 +248,11 @@ type Props = {
   onSearchMatchesChange?: (count: number, current: number) => void;
   /** Paint an existing DOM subtree to fresh Screen, scan. Element comes
    *  from the main tree (all real providers). Message-relative positions. */
-  scanElement?: (el: import('../ink/dom.js').DOMElement) => import('../ink/render-to-screen.js').MatchPosition[];
+  scanElement?: (el: import('../ink/dom').DOMElement) => import('../ink/render-to-screen').MatchPosition[];
   /** Position-based CURRENT highlight. positions stable (msg-relative),
    *  rowOffset tracks scroll. null clears. */
   setPositions?: (state: {
-    positions: import('../ink/render-to-screen.js').MatchPosition[];
+    positions: import('../ink/render-to-screen').MatchPosition[];
     rowOffset: number;
     currentIdx: number;
   } | null) => void;

@@ -1,15 +1,15 @@
 import { execa } from 'execa';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Select } from '../../components/CustomSelect/index.js';
-import { Dialog } from '../../components/design-system/Dialog.js';
-import { LoadingState } from '../../components/design-system/LoadingState.js';
-import { Box, Text } from '../../ink.js';
-import { logEvent, type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS as SafeString } from '../../services/analytics/index.js';
-import type { LocalJSXCommandOnDone } from '../../types/command.js';
-import { openBrowser } from '../../utils/browser.js';
-import { getGhAuthStatus } from '../../utils/github/ghAuthStatus.js';
-import { createDefaultEnvironment, getCodeWebUrl, type ImportTokenError, importGithubToken, isSignedIn, RedactedGithubToken } from './api.js';
+import { Select } from '../../components/CustomSelect/index';
+import { Dialog } from '../../components/design-system/Dialog';
+import { LoadingState } from '../../components/design-system/LoadingState';
+import { Box, Text } from '../../ink';
+import { logEvent, type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS as SafeString } from '../../services/analytics/index';
+import type { LocalJSXCommandOnDone } from '../../types/command';
+import { openBrowser } from '../../utils/browser';
+import { getGhAuthStatus } from '../../utils/github/ghAuthStatus';
+import { createDefaultEnvironment, getCodeWebUrl, type ImportTokenError, importGithubToken, isSignedIn, RedactedGithubToken } from './api';
 type CheckResult = {
   status: 'not_signed_in';
 } | {

@@ -1,5 +1,5 @@
 import { c as _c } from "react/compiler-runtime";
-import { feature } from 'bun:bundle';
+import { feature } from '../../stubs/bun-bundle';
 import figures from 'figures';
 import React, { type ReactNode, useEffect, useEffectEvent, useMemo, useRef, useState } from 'react';
 import { isCoordinatorMode } from 'src/coordinator/coordinatorMode.js';
@@ -22,24 +22,24 @@ import { type BackgroundTaskState, isBackgroundTask, type TaskState } from 'src/
 import type { DeepImmutable } from 'src/types/utils.js';
 import { intersperse } from 'src/utils/array.js';
 import { TEAM_LEAD_NAME } from 'src/utils/swarm/constants.js';
-import { stopUltraplan } from '../../commands/ultraplan.js';
-import type { CommandResultDisplay } from '../../commands.js';
-import { useRegisterOverlay } from '../../context/overlayContext.js';
-import type { ExitState } from '../../hooks/useExitOnCtrlCDWithKeybindings.js';
-import type { KeyboardEvent } from '../../ink/events/keyboard-event.js';
-import { Box, Text } from '../../ink.js';
-import { useKeybindings } from '../../keybindings/useKeybinding.js';
-import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay.js';
-import { count } from '../../utils/array.js';
-import { Byline } from '../design-system/Byline.js';
-import { Dialog } from '../design-system/Dialog.js';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.js';
-import { AsyncAgentDetailDialog } from './AsyncAgentDetailDialog.js';
-import { BackgroundTask as BackgroundTaskComponent } from './BackgroundTask.js';
-import { DreamDetailDialog } from './DreamDetailDialog.js';
-import { InProcessTeammateDetailDialog } from './InProcessTeammateDetailDialog.js';
-import { RemoteSessionDetailDialog } from './RemoteSessionDetailDialog.js';
-import { ShellDetailDialog } from './ShellDetailDialog.js';
+import { stopUltraplan } from '../../commands/ultraplan';
+import type { CommandResultDisplay } from '../../commands';
+import { useRegisterOverlay } from '../../context/overlayContext';
+import type { ExitState } from '../../hooks/useExitOnCtrlCDWithKeybindings';
+import type { KeyboardEvent } from '../../ink/events/keyboard-event';
+import { Box, Text } from '../../ink';
+import { useKeybindings } from '../../keybindings/useKeybinding';
+import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay';
+import { count } from '../../utils/array';
+import { Byline } from '../design-system/Byline';
+import { Dialog } from '../design-system/Dialog';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint';
+import { AsyncAgentDetailDialog } from './AsyncAgentDetailDialog';
+import { BackgroundTask as BackgroundTaskComponent } from './BackgroundTask';
+import { DreamDetailDialog } from './DreamDetailDialog';
+import { InProcessTeammateDetailDialog } from './InProcessTeammateDetailDialog';
+import { RemoteSessionDetailDialog } from './RemoteSessionDetailDialog';
+import { ShellDetailDialog } from './ShellDetailDialog';
 type ViewState = {
   mode: 'list';
 } | {
@@ -106,7 +106,7 @@ type ListItem = {
 // ~1.3K lines into external builds. Gate with feature() + require so the
 // bundler can dead-code-eliminate the branch.
 /* eslint-disable @typescript-eslint/no-require-imports */
-const WorkflowDetailDialog = feature('WORKFLOW_SCRIPTS') ? (require('./WorkflowDetailDialog.js') as typeof import('./WorkflowDetailDialog.js')).WorkflowDetailDialog : null;
+const WorkflowDetailDialog = feature('WORKFLOW_SCRIPTS') ? (require('./WorkflowDetailDialog') as typeof import('./WorkflowDetailDialog')).WorkflowDetailDialog : null;
 const workflowTaskModule = feature('WORKFLOW_SCRIPTS') ? require('src/tasks/LocalWorkflowTask/LocalWorkflowTask.js') as typeof import('src/tasks/LocalWorkflowTask/LocalWorkflowTask.js') : null;
 const killWorkflowTask = workflowTaskModule?.killWorkflowTask ?? null;
 const skipWorkflowAgent = workflowTaskModule?.skipWorkflowAgent ?? null;
@@ -114,9 +114,9 @@ const retryWorkflowAgent = workflowTaskModule?.retryWorkflowAgent ?? null;
 // Relative path, not `src/...` path-mapping — Bun's DCE can statically
 // resolve + eliminate `./` requires, but path-mapped strings stay opaque
 // and survive as dead literals in the bundle. Matches tasks.ts pattern.
-const monitorMcpModule = feature('MONITOR_TOOL') ? require('../../tasks/MonitorMcpTask/MonitorMcpTask.js') as typeof import('../../tasks/MonitorMcpTask/MonitorMcpTask.js') : null;
+const monitorMcpModule = feature('MONITOR_TOOL') ? require('../../tasks/MonitorMcpTask/MonitorMcpTask') as typeof import('../../tasks/MonitorMcpTask/MonitorMcpTask') : null;
 const killMonitorMcp = monitorMcpModule?.killMonitorMcp ?? null;
-const MonitorMcpDetailDialog = feature('MONITOR_TOOL') ? (require('./MonitorMcpDetailDialog.js') as typeof import('./MonitorMcpDetailDialog.js')).MonitorMcpDetailDialog : null;
+const MonitorMcpDetailDialog = feature('MONITOR_TOOL') ? (require('./MonitorMcpDetailDialog') as typeof import('./MonitorMcpDetailDialog')).MonitorMcpDetailDialog : null;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // Helper to get filtered background tasks (excludes foregrounded local_agent)

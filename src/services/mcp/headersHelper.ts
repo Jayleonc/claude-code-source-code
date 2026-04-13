@@ -1,17 +1,17 @@
-import { getIsNonInteractiveSession } from '../../bootstrap/state.js'
-import { checkHasTrustDialogAccepted } from '../../utils/config.js'
-import { logAntError } from '../../utils/debug.js'
-import { errorMessage } from '../../utils/errors.js'
-import { execFileNoThrowWithCwd } from '../../utils/execFileNoThrow.js'
-import { logError, logMCPDebug, logMCPError } from '../../utils/log.js'
-import { jsonParse } from '../../utils/slowOperations.js'
-import { logEvent } from '../analytics/index.js'
+import { getIsNonInteractiveSession } from '../../bootstrap/state'
+import { checkHasTrustDialogAccepted } from '../../utils/config'
+import { logAntError } from '../../utils/debug'
+import { errorMessage } from '../../utils/errors'
+import { execFileNoThrowWithCwd } from '../../utils/execFileNoThrow'
+import { logError, logMCPDebug, logMCPError } from '../../utils/log'
+import { jsonParse } from '../../utils/slowOperations'
+import { logEvent } from '../analytics/index'
 import type {
   McpHTTPServerConfig,
   McpSSEServerConfig,
   McpWebSocketServerConfig,
   ScopedMcpServerConfig,
-} from './types.js'
+} from './types'
 
 /**
  * Check if the MCP server config comes from project settings (projectSettings or localSettings)
@@ -48,7 +48,7 @@ export async function getMcpHeadersFromHelper(
     const hasTrust = checkHasTrustDialogAccepted()
     if (!hasTrust) {
       const error = new Error(
-        `Security: headersHelper for MCP server '${serverName}' executed before workspace trust is confirmed. If you see this message, post in ${MACRO.FEEDBACK_CHANNEL}.`,
+        `Security: headersHelper for MCP server '${serverName}' executed before workspace trust is confirmed. If you see this message, post in ${'https://github.com/anthropics/claude-code/issues'}.`,
       )
       logAntError('MCP headersHelper invoked before trust check', error)
       logEvent('tengu_mcp_headersHelper_missing_trust', {})

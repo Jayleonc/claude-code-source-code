@@ -1,10 +1,10 @@
 import type { Attributes } from '@opentelemetry/api'
 import { getSessionId } from 'src/bootstrap/state.js'
-import { getOauthAccountInfo } from './auth.js'
-import { getOrCreateUserID } from './config.js'
-import { envDynamic } from './envDynamic.js'
-import { isEnvTruthy } from './envUtils.js'
-import { toTaggedId } from './taggedId.js'
+import { getOauthAccountInfo } from './auth'
+import { getOrCreateUserID } from './config'
+import { envDynamic } from './envDynamic'
+import { isEnvTruthy } from './envUtils'
+import { toTaggedId } from './taggedId'
 
 // Default configuration for metrics cardinality
 const METRICS_CARDINALITY_DEFAULTS = {
@@ -38,7 +38,7 @@ export function getTelemetryAttributes(): Attributes {
     attributes['session.id'] = sessionId
   }
   if (shouldIncludeAttribute('OTEL_METRICS_INCLUDE_VERSION')) {
-    attributes['app.version'] = MACRO.VERSION
+    attributes['app.version'] = '2.1.88'
   }
 
   // Only include OAuth account data when actively using OAuth authentication

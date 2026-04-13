@@ -1,15 +1,15 @@
 import type { ToolResultBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import * as React from 'react';
 import { extractTag } from 'src/utils/messages.js';
-import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.js';
-import { FilePathLink } from '../../components/FilePathLink.js';
-import { MessageResponse } from '../../components/MessageResponse.js';
-import { Text } from '../../ink.js';
-import { FILE_NOT_FOUND_CWD_NOTE, getDisplayPath } from '../../utils/file.js';
-import { formatFileSize } from '../../utils/format.js';
-import { getPlansDirectory } from '../../utils/plans.js';
-import { getTaskOutputDir } from '../../utils/task/diskOutput.js';
-import type { Input, Output } from './FileReadTool.js';
+import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage';
+import { FilePathLink } from '../../components/FilePathLink';
+import { MessageResponse } from '../../components/MessageResponse';
+import { Text } from '../../ink';
+import { FILE_NOT_FOUND_CWD_NOTE, getDisplayPath } from '../../utils/file';
+import { formatFileSize } from '../../utils/format';
+import { getPlansDirectory } from '../../utils/plans';
+import { getTaskOutputDir } from '../../utils/task/diskOutput';
+import type { Input, Output } from './FileReadTool';
 
 /**
  * Check if a file path is an agent output file and extract the task ID.

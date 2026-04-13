@@ -4,13 +4,13 @@ import { MessageResponse } from 'src/components/MessageResponse.js';
 import { RejectedPlanMessage } from 'src/components/messages/UserToolResultMessage/RejectedPlanMessage.js';
 import { BLACK_CIRCLE } from 'src/constants/figures.js';
 import { getModeColor } from 'src/utils/permissions/PermissionMode.js';
-import { Box, Text } from '../../ink.js';
-import type { ToolProgressData } from '../../Tool.js';
-import type { ProgressMessage } from '../../types/message.js';
-import { getDisplayPath } from '../../utils/file.js';
-import { getPlan } from '../../utils/plans.js';
-import type { ThemeName } from '../../utils/theme.js';
-import type { Output } from './ExitPlanModeV2Tool.js';
+import { Box, Text } from '../../ink';
+import type { ToolProgressData } from '../../Tool';
+import type { ProgressMessage } from '../../types/message';
+import { getDisplayPath } from '../../utils/file';
+import { getPlan } from '../../utils/plans';
+import type { ThemeName } from '../../utils/theme';
+import type { Output } from './ExitPlanModeV2Tool';
 export function renderToolUseMessage(): React.ReactNode {
   return null;
 }

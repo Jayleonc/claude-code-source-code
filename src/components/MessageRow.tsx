@@ -1,17 +1,17 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import type { Command } from '../commands.js';
-import { Box } from '../ink.js';
-import type { Screen } from '../screens/REPL.js';
-import type { Tools } from '../Tool.js';
-import type { RenderableMessage } from '../types/message.js';
-import { getDisplayMessageFromCollapsed, getToolSearchOrReadInfo, getToolUseIdsFromCollapsedGroup, hasAnyToolInProgress } from '../utils/collapseReadSearch.js';
-import { type buildMessageLookups, EMPTY_STRING_SET, getProgressMessagesFromLookup, getSiblingToolUseIDsFromLookup, getToolUseID } from '../utils/messages.js';
-import { hasThinkingContent, Message } from './Message.js';
-import { MessageModel } from './MessageModel.js';
-import { shouldRenderStatically } from './Messages.js';
-import { MessageTimestamp } from './MessageTimestamp.js';
-import { OffscreenFreeze } from './OffscreenFreeze.js';
+import type { Command } from '../commands';
+import { Box } from '../ink';
+import type { Screen } from '../screens/REPL';
+import type { Tools } from '../Tool';
+import type { RenderableMessage } from '../types/message';
+import { getDisplayMessageFromCollapsed, getToolSearchOrReadInfo, getToolUseIdsFromCollapsedGroup, hasAnyToolInProgress } from '../utils/collapseReadSearch';
+import { type buildMessageLookups, EMPTY_STRING_SET, getProgressMessagesFromLookup, getSiblingToolUseIDsFromLookup, getToolUseID } from '../utils/messages';
+import { hasThinkingContent, Message } from './Message';
+import { MessageModel } from './MessageModel';
+import { shouldRenderStatically } from './Messages';
+import { MessageTimestamp } from './MessageTimestamp';
+import { OffscreenFreeze } from './OffscreenFreeze';
 export type Props = {
   message: RenderableMessage;
   /** Whether the previous message in renderableMessages is also a user message. */

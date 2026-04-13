@@ -1,18 +1,18 @@
-import { getDirectConnectServerUrl, getSessionId } from '../bootstrap/state.js'
-import { stringWidth } from '../ink/stringWidth.js'
-import type { LogOption } from '../types/logs.js'
-import { getSubscriptionName, isClaudeAISubscriber } from './auth.js'
-import { getCwd } from './cwd.js'
-import { getDisplayPath } from './file.js'
+import { getDirectConnectServerUrl, getSessionId } from '../bootstrap/state'
+import { stringWidth } from '../ink/stringWidth'
+import type { LogOption } from '../types/logs'
+import { getSubscriptionName, isClaudeAISubscriber } from './auth'
+import { getCwd } from './cwd'
+import { getDisplayPath } from './file'
 import {
   truncate,
   truncateToWidth,
   truncateToWidthNoEllipsis,
-} from './format.js'
-import { getStoredChangelogFromMemory, parseChangelog } from './releaseNotes.js'
-import { gt } from './semver.js'
-import { loadMessageLogs } from './sessionStorage.js'
-import { getInitialSettings } from './settings/settings.js'
+} from './format'
+import { getStoredChangelogFromMemory, parseChangelog } from './releaseNotes'
+import { gt } from './semver'
+import { loadMessageLogs } from './sessionStorage'
+import { getInitialSettings } from './settings/settings'
 
 // Layout constants
 const MAX_LEFT_WIDTH = 50
@@ -245,7 +245,7 @@ export function getLogoDisplayData(): {
   billingType: string
   agentName: string | undefined
 } {
-  const version = process.env.DEMO_VERSION ?? MACRO.VERSION
+  const version = process.env.DEMO_VERSION ?? '2.1.88'
   const serverUrl = getDirectConnectServerUrl()
   const displayPath = process.env.DEMO_VERSION
     ? '/code/claude'
@@ -312,7 +312,7 @@ export function formatModelAndBilling(
 export function getRecentReleaseNotesSync(maxItems: number): string[] {
   // For ants, use bundled changelog
   if (process.env.USER_TYPE === 'ant') {
-    const changelog = MACRO.VERSION_CHANGELOG
+    const changelog = ''
     if (changelog) {
       const commits = changelog.trim().split('\n').filter(Boolean)
       return commits.slice(0, maxItems)

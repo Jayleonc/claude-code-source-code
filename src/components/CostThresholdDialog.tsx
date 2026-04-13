@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { Box, Link, Text } from '../ink.js';
-import { Select } from './CustomSelect/index.js';
-import { Dialog } from './design-system/Dialog.js';
+import { Box, Link, Text } from '../ink';
+import { Select } from './CustomSelect/index';
+import { Dialog } from './design-system/Dialog';
 type Props = {
   onDone: () => void;
 };

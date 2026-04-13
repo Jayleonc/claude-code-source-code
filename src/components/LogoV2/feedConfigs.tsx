@@ -1,13 +1,13 @@
 import figures from 'figures';
 import { homedir } from 'os';
 import * as React from 'react';
-import { Box, Text } from '../../ink.js';
-import type { Step } from '../../projectOnboardingState.js';
-import { formatCreditAmount, getCachedReferrerReward } from '../../services/api/referral.js';
-import type { LogOption } from '../../types/logs.js';
-import { getCwd } from '../../utils/cwd.js';
-import { formatRelativeTimeAgo } from '../../utils/format.js';
-import type { FeedConfig, FeedLine } from './Feed.js';
+import { Box, Text } from '../../ink';
+import type { Step } from '../../projectOnboardingState';
+import { formatCreditAmount, getCachedReferrerReward } from '../../services/api/referral';
+import type { LogOption } from '../../types/logs';
+import { getCwd } from '../../utils/cwd';
+import { formatRelativeTimeAgo } from '../../utils/format';
+import type { FeedConfig, FeedLine } from './Feed';
 export function createRecentActivityFeed(activities: LogOption[]): FeedConfig {
   const lines: FeedLine[] = activities.map(log => {
     const time = formatRelativeTimeAgo(log.modified);
